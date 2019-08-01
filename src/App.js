@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import Studio from './studio'
+
+class App extends React.Component {
+  state = {
+    artwork: [],
+  };
+
+  addArt = artPiece => {
+    this.setState({
+      artwork: [...this.state.artwork, artPiece]
+    })
+  }
+
+
+  render(){
+    return (
+      <div className="App">
+        <header>     
+        </header>
+        <Studio addArt={this.props.addArt}/>
+      </div>
+    );
+  }
+  
+  
 }
 
 export default App;

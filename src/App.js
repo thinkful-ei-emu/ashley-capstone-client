@@ -8,19 +8,24 @@ class App extends React.Component {
     artwork: [],
   };
 
-  addArt = artPiece => {
+  addArt = (artPiece) => {
+    console.log('addart ran')
     this.setState({
-      artwork: [...this.state.artwork, artPiece]
-    })
+      artwork: [...this.state.artwork, artPiece]      
+    })   
+    
   }
 
 
   render(){
+   const {artwork} = this.state;
     return (
       <div className="App">
-        <header>     
-        </header>
-        <Studio addArt={this.props.addArt}/>
+        
+        <Studio addArt={this.addArt} artwork={artwork}/>
+   
+        
+    
       </div>
     );
   }

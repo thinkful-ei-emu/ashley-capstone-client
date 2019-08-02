@@ -5,54 +5,60 @@ import { EEXIST } from 'constants';
 
 class Studio extends React.Component {  
   
-  static defaultProps = {
-    loadTimeOffset: 5,
-    lazyRadius: 30,
-    brushRadius: 12,
-    brushColor: "#444",
-    catenaryColor: "#0a0302",
-    gridColor: "rgba(150,150,150,0.17)",
-    hideGrid: false,
-    canvasWidth: 400,
-    canvasHeight: 400,
-    disabled: false,
-    imgSrc: "",
-    saveData: null,
-    immediateLoading: false
-  };
+  // static defaultProps = {
+  //   loadTimeOffset: 5,
+  //   lazyRadius: 30,
+  //   brushRadius: 12,
+  //   brushColor: "#444",
+  //   catenaryColor: "#0a0302",
+  //   gridColor: "rgba(150,150,150,0.17)",
+  //   hideGrid: false,
+  //   canvasWidth: 400,
+  //   canvasHeight: 400,
+  //   disabled: false,
+  //   imgSrc: "",
+  //   saveData: null,
+  //   immediateLoading: false
+  // };
 
+ 
   handleSubmit = e => {
     e.preventDefault();
-    let artString = this.savedCanvas.getSaveData()
-    const artpiece = {title: e.target["art-title"].value, artpiece: artString}
-    console.log(artpiece);
+    let artData = this.saveableCanvas.getSaveData()
+    
+    const artpiece = {title: e.target["art-title"].value, artImage: artData}
+    this.props.addArt(artpiece)
   }
 
-  saveArt = e => {
+  loadArt = e => {
     e.preventDefault();
-    // localStorage.setItem(
-    //   "savedDrawing",
-    //   this.saveableCanvas.getSaveData()
-    // );
+    const {artwork} = this.props;
+    console.log(artwork)
+ 
+    artwork.map(artpiece => this.loadableCanvas.loadSaveData(artpiece.artImage, true));
     
 
-    
   }
+
 
   render() {
+    
+   
     return (
       <div className="studio">
         <form onSubmit={this.handleSubmit}>
           <label>Create Your Art:</label>
           <input type="text" name="art-title" id="art-title-input" required />
-          <CanvasDraw  ref={canvasDraw => (this.savedCanvas = canvasDraw)}/>   
-        <button type="submit">Add Artwork</button>
+          <CanvasDraw   ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
+        <button type="submit">Add Artwork</button>        
+        </form> 
        
-        </form>  
-           
-        {/* <button onClick={this.saveArt}>
-            Save
-          </button> */}
+        <button type="button" onClick={this.loadArt}>Load Artwork</button>
+
+        <CanvasDraw disabled hideGrid ref={canvasDraw => (this.loadableCanvas = canvasDraw)}/>
+        
+    
+
       </div>
     );
   }

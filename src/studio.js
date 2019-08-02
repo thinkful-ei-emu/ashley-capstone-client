@@ -1,6 +1,6 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
-import { EEXIST } from 'constants';
+
 
 
 class Studio extends React.Component {  
@@ -30,20 +30,20 @@ class Studio extends React.Component {
     this.props.addArt(artpiece)
   }
 
-  loadArt = e => {
-    e.preventDefault();
-    const {artwork} = this.props;
-    console.log(artwork)
+  // loadArt = e => {
+  //   e.preventDefault();
+    
+  //   console.log(artwork)
  
-    artwork.map(artpiece => this.loadableCanvas.loadSaveData(artpiece.artImage, true));
+    
     
 
-  }
+  // }
 
 
-  render() {
+  render() {    
+    const {artwork} = this.props;
     
-   
     return (
       <div className="studio">
         <form onSubmit={this.handleSubmit}>
@@ -53,9 +53,12 @@ class Studio extends React.Component {
         <button type="submit">Add Artwork</button>        
         </form> 
        
-        <button type="button" onClick={this.loadArt}>Load Artwork</button>
+        {/* <button type="button" onClick={this.loadArt}>Load Artwork</button> */}
+        <ul>
+          {artwork.map((artpiece, index )=> 
+          <li key={index}>{artpiece.title}<CanvasDraw disabled hideGrid immediateLoading saveData={artpiece.artImage}/></li>)}
+        </ul>
 
-        <CanvasDraw disabled hideGrid ref={canvasDraw => (this.loadableCanvas = canvasDraw)}/>
         
     
 

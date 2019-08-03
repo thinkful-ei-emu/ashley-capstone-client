@@ -54,17 +54,19 @@ undoArt = e => {
       <div className="studio">
         
         <form onSubmit={this.handleSubmit}>
-          
-        <CompactPicker onChangeComplete={this.onChangeComplete}/><br></br>
+         <div className="color-picker-container">
+         <CompactPicker  onChangeComplete={this.onChangeComplete}/>
+           </div> 
+        
           <label>Title:</label>
           <input type="text" name="art-title" id="art-title-input" required />
           
-          <CanvasDraw className="saved-canvas" hideGrid={true} lazyRadius={0} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
+          <CanvasDraw canvasWidth= {700} canvasHeight= {600} className="saved-canvas" hideGrid={true} lazyRadius={0} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
           <toolbar>
-            <button type="button" onClick={this.clearArt}>Clear</button>
-            <button type="button" onClick={this.undoArt}>Undo</button>
-            <button type="submit">Add Artwork</button>
-            </toolbar>       
+            <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>
+            <button  className="tool-button" type="button" onClick={this.undoArt}>Undo</button>            
+            </toolbar><br></br>
+            <button className="add-button" type="submit">Add Artwork</button>       
         </form>  
              
         

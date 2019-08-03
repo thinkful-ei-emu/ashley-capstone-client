@@ -1,12 +1,15 @@
-
+* {
+  box-sizing: border-box;
+  
+}
 .studio {
-  margin: auto 0;
+  margin: 0 auto;
   text-align: center;
 }
 
 .saved-canvas {
   border: black solid 3px;
-  margin: auto 0;
+  margin: 2% auto;
   text-align: center;
 }
 .loaded-canvas {
@@ -14,3 +17,18 @@
   margin: auto 0;
   text-align: center;
 }
+
+.color-picker-container {
+  margin: 2%;
+}
+
+.add-button {
+padding: 1% 2%;
+margin: 1%;
+}
+
+.tool-button {
+  padding: .5% .75%;
+ 
+}
+

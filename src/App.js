@@ -1,11 +1,11 @@
 import React from 'react';
-
 import './App.css';
-import Studio from './studio'
+import Studio from './studio/studio'
 
 class App extends React.Component {
   state = {
     artwork: [],
+    color: '',
   };
 
   addArt = (artPiece) => {
@@ -16,13 +16,20 @@ class App extends React.Component {
     
   }
 
+  updateColor = (color) => {
+    console.log('updateColor ran')
+    this.setState({
+      color: color,     
+    })   
+  }
+
 
   render(){
-   const {artwork} = this.state;
+   const {artwork, color} = this.state;   
     return (
       <div className="App">
         
-        <Studio addArt={this.addArt} artwork={artwork}/>
+        <Studio updateColor={this.updateColor} color={color} addArt={this.addArt} artwork={artwork}/>
    
         
     

@@ -1,0 +1,16 @@
+
+.studio {
+  margin: auto 0;
+  text-align: center;
+}
+
+.saved-canvas {
+  border: black solid 3px;
+  margin: auto 0;
+  text-align: center;
+}
+.loaded-canvas {
+  border: black solid 3px;
+  margin: auto 0;
+  text-align: center;
+}

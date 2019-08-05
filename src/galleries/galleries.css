@@ -1,0 +1,30 @@
+
+
+ .gallery-page {
+  list-style-type: none;
+  margin: 150px 0 0px;
+  height: calc(100vh - 150px);
+  padding: 0;  
+  background-color: gray;
+  
+}
+
+
+.gallery-list {
+  list-style-type: none;
+  margin: 20px 0 0;
+  padding: 0;  
+  background-color: gray;
+}
+
+.gallery-list-names {
+  background-color: #1d2227;
+  color: #b5b3b3;
+  display: block; 
+  font-size: 20px;
+  margin: 0 0 8px auto;
+  width: 100%;
+  padding: 20px 16px;
+  text-decoration: none;
+  text-align: left;
+}

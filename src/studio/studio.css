@@ -3,6 +3,7 @@
   
 }
 .studio {
+  /* border: red 3px solid; */
   margin: 0 auto;
   text-align: center;
 }
@@ -14,12 +15,12 @@
 }
 .loaded-canvas {
   border: black solid 3px;
-  margin: auto 0;
+  margin:  0 auto;
   text-align: center;
 }
 
 .color-picker-container {
-  margin: 2%;
+  margin: 1%;
 }
 
 .add-button {
@@ -28,7 +29,13 @@ margin: 1%;
 }
 
 .tool-button {
-  padding: .5% .75%;
- 
+  padding: .5% .75%; 
 }
 
+.gallery-select-container, .title-container, .brush-size-container{
+  padding: .3%;
+}
+
+.brush-label, .title-label {
+  padding: 0 1%;
+}

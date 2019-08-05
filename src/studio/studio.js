@@ -7,73 +7,79 @@ import './studio.css'
 
 class Studio extends React.Component {  
   
-  // static defaultProps = {
-  //   loadTimeOffset: 5,
-  //   lazyRadius: 30,
-  //   brushRadius: 12,
-  //   brushColor: "#444",
-  //   catenaryColor: "#0a0302",
-  //   gridColor: "rgba(150,150,150,0.17)",
-  //   hideGrid: false,
-  //   canvasWidth: 400,
-  //   canvasHeight: 400,
-  //   disabled: false,
-  //   imgSrc: "",
-  //   saveData: null,
-  //   immediateLoading: false
-  // };
-
- 
+   
   handleSubmit = e => {
     e.preventDefault();
     let artData = this.saveableCanvas.getSaveData()
     
     const artpiece = {title: e.target["art-title"].value, artImage: artData}
     this.props.addArt(artpiece)
+    e.target["art-title"].value=""
+    this.saveableCanvas.clear()
   }
 
-onChangeComplete = (color, event) => {
-  console.log(color);
-  this.props.updateColor(color.hex);
-}
+  onChangeComplete = (color, event) => {
+    console.log(color);
+    this.props.updateColor(color.hex);
+  }
 
-clearArt = e => {
-  e.preventDefault();
-  this.saveableCanvas.clear();
-}
-undoArt = e => {
-  e.preventDefault();
-  this.saveableCanvas.undo();
-}
+  clearArt = e => {
+    e.preventDefault();
+    this.saveableCanvas.clear();
+  }
+  undoArt = e => {
+    e.preventDefault();
+    this.saveableCanvas.undo();
+  }
+
+  adjustBrushSize = e => {
+    e.preventDefault(); 
+    
+    this.props.updateBrushSize(parseInt(e.target.value, 10)); 
+  
+  }
 
 
   render() {    
-    const {artwork, color} = this.props;
+    const {color, brushSize} = this.props; 
+    
     
     return (
       <div className="studio">
         
         <form onSubmit={this.handleSubmit}>
-         <div className="color-picker-container">
-         <CompactPicker  onChangeComplete={this.onChangeComplete}/>
+          <div className="flex-container">
+          <div className="color-picker-container">
+         <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
            </div> 
-        
-          <label>Title:</label>
+           <div className="brush-size-container">
+           <label className="brush-label">Brush Size:</label>
+           <input onChange={this.adjustBrushSize} defaultValue={"10"} type="range" name="brush-size" min="1" max="100"></input>
+             </div>
+
+        <div className="title-container">
+        <label className="title-label">Title:</label>
           <input type="text" name="art-title" id="art-title-input" required />
+        </div>
+        <div className="gallery-select-container">          
+        <label>Save to Gallery:</label><br></br>
+          <select id="art-gallery-select" name="art-gallery-id">
+          <option value={null}>Select a Gallery</option>
+          {/* {galleries.map(gallery => (
+            <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
+          ))} */}
+          </select>
+          </div>
+          </div>           
           
-          <CanvasDraw canvasWidth= {700} canvasHeight= {600} className="saved-canvas" hideGrid={true} lazyRadius={0} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
-          <toolbar>
+          <CanvasDraw brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
+          <div>
             <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>
             <button  className="tool-button" type="button" onClick={this.undoArt}>Undo</button>            
-            </toolbar><br></br>
+            </div><br></br>
             <button className="add-button" type="submit">Add Artwork</button>       
         </form>  
-             
-        
-        <ul>
-          {artwork.map((artpiece, index )=> 
-          <li key={index}>{artpiece.title}<CanvasDraw className="loaded-canvas" disabled={true} hideGrid={true} immediateLoading={true} saveData={artpiece.artImage}/></li>)}
-        </ul>
+      
 
         
     

@@ -4,7 +4,9 @@ import Studio from './studio/studio'
 import {Route, Link, NavLink} from 'react-router-dom'
 import Galleries from './galleries/galleries'
 import AddGallery from './addGallery/addGallery';
-import ArtworkMainPage from './artworkMainPage/artworkMainPage'
+import ArtworkListPage from './artworkListPage/artwortListPage'
+import {addArtworkToGalleries, findArtpiece} from './artwork-helpers/artwork-helpers'
+import ArtpieceMainPage from './artpieceMainPage/artpieceMainPage';
 
 class App extends React.Component {
   state = {
@@ -14,10 +16,10 @@ class App extends React.Component {
     galleries: []
   };
 
-  addArt = (artPiece) => {
+  addArt = (artpiece) => {
     console.log('addart ran')
     this.setState({
-      artwork: [...this.state.artwork, artPiece]      
+      artwork: [...this.state.artwork, artpiece]      
     })   
     
   }
@@ -39,16 +41,19 @@ class App extends React.Component {
     console.log('addGallery ran')
     this.setState({
       galleries: [...this.state.galleries, gallery]      
-    })   
+    })  
     
   }
+
+
+  
 
  renderNavRoutes(){
   const {artwork, color, brushSize, galleries} = this.state; 
   return (
     <>
     {["/", "/gallery/:galleryId"].map(path => (
-      <Route exact key={path} path={path} render={routeProps => (<Galleries galleries={galleries} {...routeProps}/>)} />
+      <Route exact key={path} path={path} render={routeProps => (<Galleries galleries={galleries} artwork={artwork} {...routeProps}/>)} />
     ))}
     </>
   )
@@ -61,10 +66,25 @@ class App extends React.Component {
     <>
     <>
     {["/", "/gallery/:galleryId"].map(path => (
-      <Route exact key={path} path={path} render={routeProps => (<ArtworkMainPage artwork={artwork} {...routeProps}/>)} />
+      <Route exact key={path} path={path} render={routeProps => {
+        const {galleryId} = routeProps.match.params;
+        const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
+        return(
+          <ArtworkListPage artwork={artworkToGalleries} {...routeProps}/>
+
+        )        
+      } } />
     ))}
+      <Route
+        path="/artpiece/:artpieceId"
+         render={routeProps => {
+          const {artpieceId} = routeProps.match.params;
+          const artpiece = findArtpiece(artwork, artpieceId);
+           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} artpieceId={artpieceId} />;
+            }}
+                />
     </>
-    <Route exact  path="/studio" render={routeProps => (<Studio  updateBrushSize= {this.updateBrushSize} brushSize={brushSize} updateColor={this.updateColor} color={color} addArt={this.addArt} {...routeProps}/>)} />
+    <Route exact  path="/studio" render={routeProps => <Studio galleries={galleries} updateBrushSize= {this.updateBrushSize} brushSize={brushSize} updateColor={this.updateColor} color={color} addArt={this.addArt} {...routeProps}/>} />
     </>
     
   )

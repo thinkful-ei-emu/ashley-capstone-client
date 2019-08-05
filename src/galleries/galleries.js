@@ -1,5 +1,6 @@
 import React from 'react'
 import './galleries.css'
+import {NavLink} from 'react-router-dom'
 
 class Galleries extends React.Component {
   
@@ -11,7 +12,8 @@ class Galleries extends React.Component {
       <div className="gallery-page">
        
         <ul className="gallery-list">
-         {galleries.map((gallery, index) => (<li className="gallery-list-names" key={index}>{gallery.name}</li>))} 
+         {galleries.map(gallery => 
+          (<li  key={gallery.id}> <NavLink className="gallery-list-names" to={`/gallery/${gallery.id}`}>{gallery.name}</NavLink></li>))} 
         </ul>
     
         

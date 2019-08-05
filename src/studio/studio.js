@@ -1,7 +1,11 @@
+
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import {CompactPicker, SwatchesPicker, CirclePicker} from 'react-color';
 import './studio.css'
+import Cuid from 'cuid'
+
+
 
 
 
@@ -11,8 +15,8 @@ class Studio extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     let artData = this.saveableCanvas.getSaveData()
-    
-    const artpiece = {title: e.target["art-title"].value, artImage: artData}
+    // let png = document.querySelector("#studio-form canvas").toDataURL()
+    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artImage: artData}
     this.props.addArt(artpiece)
     e.target["art-title"].value=""
     this.saveableCanvas.clear()
@@ -39,15 +43,24 @@ class Studio extends React.Component {
   
   }
 
+  // savePNG = e => {
+   
+    
+  //   let artData = this.saveableCanvas.getSaveData()
+  //   console.log('save length:', artData.length)
+  //   console.log('png length:', png.length)
+   
+  // }
+
 
   render() {    
-    const {color, brushSize} = this.props; 
+    const {color, brushSize, galleries} = this.props; 
     
     
     return (
       <div className="studio">
         
-        <form onSubmit={this.handleSubmit}>
+        <form id="studio-form"onSubmit={this.handleSubmit}>
           <div className="flex-container">
           <div className="color-picker-container">
          <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
@@ -65,18 +78,21 @@ class Studio extends React.Component {
         <label>Save to Gallery:</label><br></br>
           <select id="art-gallery-select" name="art-gallery-id">
           <option value={null}>Select a Gallery</option>
-          {/* {galleries.map(gallery => (
+          {galleries.map(gallery => (
             <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
-          ))} */}
+          ))}
           </select>
           </div>
           </div>           
+         
+          <CanvasDraw  brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
+         
           
-          <CanvasDraw brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
           <div>
             <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>
             <button  className="tool-button" type="button" onClick={this.undoArt}>Undo</button>            
             </div><br></br>
+            {/* <button type="button" onClick={this.savePNG}>Save As PNG</button> */}
             <button className="add-button" type="submit">Add Artwork</button>       
         </form>  
       

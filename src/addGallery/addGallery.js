@@ -1,4 +1,5 @@
 import React from 'react'
+import Cuid from 'cuid'
 
 class AddGallery extends React.Component {
   
@@ -6,9 +7,9 @@ class AddGallery extends React.Component {
     e.preventDefault();
     
     
-    const gallery = {name: e.target["gallery-name"].value}
+    const gallery = {id: Cuid(), name: e.target["gallery-name"].value}
     this.props.addGallery(gallery)
-    e.target["gallery-name"].value = "";
+    e.target["gallery-name"].value = ""; 
   }
   
 

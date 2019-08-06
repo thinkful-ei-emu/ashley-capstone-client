@@ -5,12 +5,7 @@ import Gallery from '../gallery/gallery'
 
 class Galleries extends React.Component {
   
-  // handleDelete = e => {
-  //   e.preventDefault();
-  //   // console.log(this.props.gallery)
-  //   this.props.deleteGallery(this.props.id)
-  // }
-
+ 
   render(){
     const {galleries} = this.props
 

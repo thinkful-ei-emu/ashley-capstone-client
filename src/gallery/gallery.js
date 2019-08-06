@@ -18,14 +18,11 @@ class Gallery extends React.Component {
 
     return (
       <div className="gallery">   
-        <div className="gallery-name">
-        
+        <div className="gallery-name">        
           <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink> 
           <button type='button' className='delete' onClick={this.handleDelete}>Remove</button>   
-          
-  
+            
           </div>    
-      
        
         
         </div>          

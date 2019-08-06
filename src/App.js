@@ -58,17 +58,33 @@ class App extends React.Component {
     });
   }
 
+  updateRating = (ratedArtpiece) => {   
+    // let newArtpiece = this.state.artwork.find(artpiece => artpiece.id == artpieceId)
+    // newArtpiece.rating = [...newArtpiece.rating, rating]
+  
+   
+    let ratedArtwork= this.state.artwork.map(artpiece => 
+     
+      artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece
+      
+     )
+    console.log('in update function', ratedArtwork)
+    
+    this.setState({
+      artwork: ratedArtwork 
+    });
+  }
+
 
   
 
  renderNavRoutes(){
-  const {artwork, color, brushSize, galleries} = this.state; 
+  const {artwork, galleries} = this.state; 
   return (
     <>
     {["/", "/gallery/:galleryId"].map(path => (
       <Route exact key={path} path={path} render={routeProps =>{
-        const{galleryId} = routeProps.match.params;
-        // const gallery = findGallery(galleries, galleryId)
+        const{galleryId} = routeProps.match.params;        
         return(
           <Galleries galleryId={galleryId}  deleteGallery={this.deleteGallery} galleries={galleries} artwork={artwork} {...routeProps}/>
         )
@@ -99,7 +115,7 @@ class App extends React.Component {
          render={routeProps => {
           const {artpieceId} = routeProps.match.params;
           const artpiece = findArtpiece(artwork, artpieceId);
-           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
+           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} updateRating={this.updateRating} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
             }}
                 />
     </>
@@ -117,7 +133,7 @@ class App extends React.Component {
 
 
   render(){
-   const {artwork, color, brushSize, galleries} = this.state;   
+  //  const {artwork, color, brushSize, galleries} = this.state;   
     return (
       <div className="App">
          <nav className="App_nav" role="navigation">

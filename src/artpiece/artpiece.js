@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import CanvasDraw from 'react-canvas-draw'
 import {format} from 'date-fns'
+import {artpieceAverageRating} from '../artwork-helpers/artwork-helpers'
 
 class Artpiece extends React.Component {
   
@@ -13,9 +13,9 @@ class Artpiece extends React.Component {
 
   }
 
-  render(){
- console.log(this.props.deleteArtpiece)
+  
 
+  render(){
     return (
       <div className="artpiece">       
       
@@ -36,14 +36,22 @@ class Artpiece extends React.Component {
         </div>  
         <div className='artpiece-artist-container'>
           <div className='artpiece-artist'>
-            Artist
+            Placeholder: ArtistName(username)
             {' '}
             <span className='artist'>
              {/* add artist(username) */}
             </span>
           </div>
         </div>          
-       
+        <div className='artpiece-rating-container'>
+          <div className='artpiece-rating'>
+            Rating: 
+            {' '}
+            <span className='rating'>
+            {artpieceAverageRating(this.props.rating)}
+            </span>
+          </div>
+        </div> 
         
       </div>
 

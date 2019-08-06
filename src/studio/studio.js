@@ -11,12 +11,15 @@ import Cuid from 'cuid'
 
 class Studio extends React.Component {  
   
+  // state = {
+  //   images: []
+  // }
    
   handleSubmit = e => {
     e.preventDefault();
-    let artData = this.saveableCanvas.getSaveData()
-    // let artData = document.querySelector("#studio-form canvas").toDataURL()
-    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artImage: artData}
+    // let artData = this.saveableCanvas.getSaveData()
+    let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();   
+    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artImage: canvas, rating: []}
     this.props.addArt(artpiece)
     e.target["art-title"].value=""
     this.saveableCanvas.clear()
@@ -43,14 +46,22 @@ class Studio extends React.Component {
   
   }
 
-  // savePNG = e => {
+  savePNG = e => {
    
-    // let artData = document.querySelector("#studio-form canvas").toDataURL()
-  //   let artData = this.saveableCanvas.getSaveData()
-  //   console.log('save length:', artData.length)
-  //   console.log('png length:', png.length)
+    // let artData = document.querySelectorAll("#studio-form canvas").toDataURL()
+    let canvases = [...document.querySelectorAll("#studio-form canvas:nth-of-type(2)")]
+    
+    this.setState({
+      images: canvases.map(canvas => canvas.toDataURL())
+    })
+
+
+    // let artData = this.saveableCanvas.getSaveData()
+    // console.log('save length:', artData.length)
+    // console.log('png length:', png.length)
    
-  // }
+  }
+ 
 
 
   render() {    
@@ -92,7 +103,15 @@ class Studio extends React.Component {
             </div><br></br>
             {/* <button type="button" onClick={this.savePNG}>Save As PNG</button> */}
             <button className="add-button" type="submit">Add Artwork</button>       
-        </form>  
+        </form> 
+        {/* <ul>
+          {
+            this.state.images.map((image, index) => <li key={index}><img src={image}></img></li>)
+          }
+
+        </ul> */}
+
+
       
       </div>
     );

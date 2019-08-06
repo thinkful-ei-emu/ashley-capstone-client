@@ -12,6 +12,9 @@
 .gallery-name {
  display: flex;
  justify-content: flex-start;
+ background-color: #1d2227;
+ margin: 0 0 8px auto;
+ padding: 15px 20px;
 }
 
 .delete {

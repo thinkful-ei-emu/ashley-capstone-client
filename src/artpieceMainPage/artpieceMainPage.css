@@ -1,0 +1,15 @@
+img {
+  background: white;
+  border: black 3px solid;
+  width: 100%;
+  height: auto;
+  
+}
+
+.image-container {
+  padding-top: 3%;
+  height: 350px;
+  width: 550px;  
+  margin: 0 auto;
+ 
+}

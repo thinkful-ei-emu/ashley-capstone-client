@@ -8,6 +8,7 @@ class ArtworkListPage extends React.Component {
 
   render(){
     const {artwork} = this.props
+    console.log('art list', this.props.deleteArtpiece)
     
 
     return (
@@ -22,6 +23,7 @@ class ArtworkListPage extends React.Component {
           id={artpiece.id} 
           title={artpiece.title} 
           uploaded={artpiece.uploaded} 
+          deleteArtpiece={this.props.deleteArtpiece}
           history={this.props.history}
           />
           </li>)}

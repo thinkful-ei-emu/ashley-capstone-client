@@ -6,8 +6,15 @@ import {format} from 'date-fns'
 class Artpiece extends React.Component {
   
 
+  handleDelete = e => {
+    e.preventDefault();
+    this.props.deleteArtpiece(this.props.id);
+    this.props.history.push("/");
+
+  }
+
   render(){
- console.log(this.props)
+ console.log(this.props.deleteArtpiece)
 
     return (
       <div className="artpiece">       
@@ -17,10 +24,7 @@ class Artpiece extends React.Component {
             {this.props.title}
           </Link>
         </h2>
-        <button>
-          Remove
-        </button>
-
+        <button onClick={this.handleDelete}>Remove</button>
         <div className='artpiece-uploaded-container'>
           <div className='artpiece-uploaded'>
             Uploaded

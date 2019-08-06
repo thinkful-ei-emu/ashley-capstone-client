@@ -5,7 +5,7 @@ import {Route, Link, NavLink} from 'react-router-dom'
 import Galleries from './galleries/galleries'
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage'
-import {addArtworkToGalleries, findArtpiece} from './artwork-helpers/artwork-helpers'
+import {addArtworkToGalleries, findArtpiece, findGallery} from './artwork-helpers/artwork-helpers'
 import ArtpieceMainPage from './artpieceMainPage/artpieceMainPage';
 
 class App extends React.Component {
@@ -41,8 +41,21 @@ class App extends React.Component {
     console.log('addGallery ran')
     this.setState({
       galleries: [...this.state.galleries, gallery]      
-    })  
-    
+    })     
+  }
+
+  deleteArtpiece = artpieceId => {
+    let filteredArtwork = this.state.artwork.filter(artpiece => artpiece.id !== artpieceId);
+    this.setState({
+      artwork: filteredArtwork
+    });
+  }
+
+  deleteGallery = galleryId => {
+    let filteredGalleries = this.state.galleries.filter(gallery => gallery.id !== galleryId);
+    this.setState({
+      galleries: filteredGalleries
+    });
   }
 
 
@@ -53,7 +66,13 @@ class App extends React.Component {
   return (
     <>
     {["/", "/gallery/:galleryId"].map(path => (
-      <Route exact key={path} path={path} render={routeProps => (<Galleries galleries={galleries} artwork={artwork} {...routeProps}/>)} />
+      <Route exact key={path} path={path} render={routeProps =>{
+        const{galleryId} = routeProps.match.params;
+        // const gallery = findGallery(galleries, galleryId)
+        return(
+          <Galleries galleryId={galleryId}  deleteGallery={this.deleteGallery} galleries={galleries} artwork={artwork} {...routeProps}/>
+        )
+      } } />
     ))}
     </>
   )
@@ -67,10 +86,10 @@ class App extends React.Component {
     <>
     {["/", "/gallery/:galleryId"].map(path => (
       <Route exact key={path} path={path} render={routeProps => {
-        const {galleryId} = routeProps.match.params;
+        const {galleryId} = routeProps.match.params;        
         const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
         return(
-          <ArtworkListPage artwork={artworkToGalleries} {...routeProps}/>
+          <ArtworkListPage artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
 
         )        
       } } />
@@ -80,7 +99,7 @@ class App extends React.Component {
          render={routeProps => {
           const {artpieceId} = routeProps.match.params;
           const artpiece = findArtpiece(artwork, artpieceId);
-           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} artpieceId={artpieceId} />;
+           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
             }}
                 />
     </>

@@ -15,9 +15,10 @@
   margin: 20px 0 0;
   padding: 0;  
   background-color: gray;
+
 }
 
-.gallery-list-names {
+/* .gallery-list-names {
   background-color: #1d2227;
   color: #b5b3b3;
   display: block; 
@@ -26,5 +27,5 @@
   width: 100%;
   padding: 20px 16px;
   text-decoration: none;
-  text-align: left;
-}
+  text-align: center;
+} */

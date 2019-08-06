@@ -1,0 +1,23 @@
+.name {
+  background-color: #1d2227;
+  color: #b5b3b3;
+  display: inline-block; 
+  font-size: 20px;
+  margin: 0 0 8px auto;
+  /* width: 100%; */
+  /* padding: 10px 50px; */
+  text-decoration: none; 
+}
+
+.gallery-name {
+ display: flex;
+ justify-content: flex-start;
+}
+
+.delete {
+  align-self: flex-end;
+ 
+  margin: 0 0 8px auto;
+  
+}
+

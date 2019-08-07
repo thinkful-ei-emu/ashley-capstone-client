@@ -58,13 +58,11 @@ class App extends React.Component {
     });
   }
 
-  updateRating = (ratedArtpiece) => {   
+  updateRating = (ratedArtpiece) => {  
    
    
-    let ratedArtwork= this.state.artwork.map(artpiece => 
-     
-      artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece
-      
+    let ratedArtwork= this.state.artwork.map(artpiece =>      
+      artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece      
      )
     console.log('in update function', ratedArtwork)
     

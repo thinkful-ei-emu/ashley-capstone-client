@@ -20,7 +20,7 @@ export const artpieceAverageRating = (rating=[]) => {
   let result;
   if(rating.length > 0) {
     for (let i =0; i < rating.length; i++){
-      total += Number(rating[i].rating_val)
+      total += Number(rating[i])
     }  
     result = Math.ceil((total/rating.length)*2)/2
   }
@@ -39,8 +39,8 @@ export const galleryAverageRating = (artwork=[], galleryId) => {
   if(filteredArtwork.length > 0) {
     for (let i =0; i < filteredArtwork.length; i++){
       if(filteredArtwork[i].rating.length > 0) {
-        console.log('in average function', filteredArtwork[i].rating.rating_val)
-        total += Number(filteredArtwork[i].rating.rating_val) 
+        console.log('in average function', filteredArtwork[i].rating)
+        total += Number(filteredArtwork[i].rating) 
         console.log(total)       
       }
       else {

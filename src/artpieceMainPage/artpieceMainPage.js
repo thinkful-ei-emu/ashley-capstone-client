@@ -8,7 +8,7 @@ class ArtpieceMainPage extends React.Component {
  handleRating = e => {
    e.preventDefault();
    const {artpiece} = this.props;
-   const ratedArtpiece = {...artpiece, rating: [...artpiece.rating, {user_name: '', rating_val: e.target["rating-select"].value}]};
+   const ratedArtpiece = {...artpiece, rating: [...artpiece.rating, e.target["rating-select"].value]};
    console.log(ratedArtpiece);
   //  console.log('orig object', artpiece)    
    this.props.updateRating(ratedArtpiece)

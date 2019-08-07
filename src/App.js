@@ -59,9 +59,7 @@ class App extends React.Component {
   }
 
   updateRating = (ratedArtpiece) => {   
-    // let newArtpiece = this.state.artwork.find(artpiece => artpiece.id == artpieceId)
-    // newArtpiece.rating = [...newArtpiece.rating, rating]
-  
+   
    
     let ratedArtwork= this.state.artwork.map(artpiece => 
      

@@ -7,7 +7,7 @@ class Galleries extends React.Component {
   
  
   render(){
-    const {galleries} = this.props
+    const {galleries, artwork} = this.props
 
     return (
       <div className="gallery-page">
@@ -18,6 +18,7 @@ class Galleries extends React.Component {
             <Gallery  id={gallery.id} 
             name={gallery.name} 
             deleteGallery={this.props.deleteGallery}
+            artwork={artwork}
              history={this.props.history}/>
              </li>
              )} 

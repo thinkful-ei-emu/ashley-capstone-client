@@ -47,8 +47,15 @@ class Artpiece extends React.Component {
           <div className='artpiece-rating'>
             Rating: 
             {' '}
-            <span className='rating'>
-            {artpieceAverageRating(this.props.rating)}
+            <span className='rating-val'>
+            {artpieceAverageRating(this.props.rating)}            
+            </span>          
+          </div>
+          <div className='artpiece-reviews'>
+          <span className='review-total'>
+            Reviews:
+            {' '}
+             {this.props.rating.length > 0 ? this.props.rating.length : 0}
             </span>
           </div>
         </div> 

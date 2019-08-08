@@ -1,6 +1,6 @@
 import React from 'react'
 import Cuid from 'cuid'
-import ApiService from '../services/ApiService';
+import ArtisteApiService from '../services/artisteApiService';
 
 class AddGallery extends React.Component {
   
@@ -9,9 +9,10 @@ class AddGallery extends React.Component {
     
     
     const gallery = {name: e.target["gallery-name"].value}
-    ApiService.postGallery(gallery)
+    ArtisteApiService.postGallery(gallery)
     .then(gallery => {
       this.props.addGallery(gallery)
+      this.props.history.goBack("/")
     })
     .catch(error => {
       console.error({error})

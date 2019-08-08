@@ -1,6 +1,6 @@
 import React from 'react'
 import './galleries.css'
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Gallery from '../gallery/gallery'
 
 class Galleries extends React.Component {
@@ -23,6 +23,7 @@ class Galleries extends React.Component {
              </li>
              )} 
         </ul>
+        <button> <Link to="/add-gallery">Add Gallery</Link></button>
        
     
         

@@ -1,6 +1,6 @@
 import config from '../config'
 
-const ApiService = {
+const ArtisteApiService = {
   getGalAndArt() {
     return Promise.all([
       fetch(`${config.API_ENDPOINT}/galleries`),
@@ -32,24 +32,57 @@ const ApiService = {
       })
 
   },
+  postArtpiece(artpiece) {
+    return fetch(`${config.API_ENDPOINT}/artwork`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(artpiece),
+    })
+      .then(res => {
+        if (!res.ok)
+          return res.json().then(e => Promise.reject(e))
+        return res.json()
+      })
+
+  },
 
   deleteGallery(galleryId) {
     return fetch(`${config.API_ENDPOINT}/galleries/${galleryId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
-      }
+      },
      
     })
       .then(res => {
         if (!res.ok)          
           return res.json().then(e => Promise.reject(e))       
-        return res.json()
+        // return res.json()
       })
 
-  }
+  },
+
+  deleteArtpiece(artpieceId) {
+    return fetch(`${config.API_ENDPOINT}/artwork/${artpieceId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+     
+    })
+      .then(res => {
+        if (!res.ok)          
+          return res.json().then(e => Promise.reject(e))       
+        // return res.json()
+      })
+
+  },
+
+      
   
   
 }
 
-export default ApiService;
+export default ArtisteApiService;

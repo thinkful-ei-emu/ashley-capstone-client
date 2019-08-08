@@ -2,14 +2,21 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {format} from 'date-fns'
 import {artpieceAverageRating} from '../artwork-helpers/artwork-helpers'
+import ArtisteApiService from '../services/artisteApiService'
 
 class Artpiece extends React.Component {
   
 
   handleDelete = e => {
     e.preventDefault();
-    this.props.deleteArtpiece(this.props.id);
-    this.props.history.push("/");
+    ArtisteApiService.deleteArtpiece(this.props.id)
+    .then(() => {
+      this.props.deleteArtpiece(this.props.id);
+      this.props.history.push("/");
+     })
+     .catch(error => {
+       console.error({error})
+     })     
 
   }
 

@@ -1,9 +1,9 @@
 
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
-import {CompactPicker, SwatchesPicker, CirclePicker} from 'react-color';
+import {CompactPicker} from 'react-color';
 import './studio.css'
-import Cuid from 'cuid'
+import ArtisteApiService from '../services/artisteApiService'
 
 
 
@@ -17,13 +17,20 @@ class Studio extends React.Component {
    
   handleSubmit = e => {
     e.preventDefault();
-    // let artData = this.saveableCanvas.getSaveData()
-    let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();   
-    console.log(canvas)
-    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artpiece_image: canvas, rating: []}
-    this.props.addArt(artpiece)
-    e.target["art-title"].value=""
-    this.saveableCanvas.clear()
+    //userid is temp, should update to get id from users table
+    let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();
+    const artpiece = {title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, artpiece_image: canvas, user_id: 1}
+    ArtisteApiService.postArtpiece(artpiece)
+    .then(artpiece => {
+      this.props.addArt(artpiece)
+    })
+    .catch(error => {
+      console.error({error})
+    })    
+   
+    e.target["art-title"].value='';
+    e.target["art-gallery-select"].value= null;
+    this.saveableCanvas.clear();
   }
 
   onChangeComplete = (color, event) => {
@@ -88,7 +95,7 @@ class Studio extends React.Component {
           <div className="gallery-select-container">          
           <label>Save to Gallery:</label><br></br>
             <select id="art-gallery-select" name="art-gallery-id">
-            <option value={null}>Select a Gallery</option>
+            {/* <option name="select-default" value={null}>Select a Gallery</option> */}
             {galleries.map(gallery => (
               <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
             ))}

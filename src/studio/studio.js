@@ -19,7 +19,8 @@ class Studio extends React.Component {
     e.preventDefault();
     // let artData = this.saveableCanvas.getSaveData()
     let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();   
-    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artImage: canvas, rating: []}
+    console.log(canvas)
+    const artpiece = {id: Cuid(), title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, uploaded: new Date(), artpiece_image: canvas, rating: []}
     this.props.addArt(artpiece)
     e.target["art-title"].value=""
     this.saveableCanvas.clear()

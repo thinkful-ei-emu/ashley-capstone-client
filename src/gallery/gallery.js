@@ -1,7 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import '../gallery/gallery.css'
-import {galleryAverageRating, totalArtworkInGallery} from '../artwork-helpers/artwork-helpers'
+import {totalArtworkInGallery} from '../artwork-helpers/artwork-helpers'
+import ApiService from '../services/ApiService'
+import config from '../config'
 
 
 class Gallery extends React.Component {
@@ -9,13 +11,40 @@ class Gallery extends React.Component {
 
   handleDelete = e => {
     e.preventDefault();
-    this.props.deleteGallery(this.props.id);
-    this.props.history.push("/");
+    
+    // ApiService.deleteGallery(this.props.id)
+    fetch(`${config.API_ENDPOINT}/galleries/${this.props.id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+     
+    })
+      .then(res => {
+        if (!res.ok){
+          console.log('res not okay', res)
+          return res.json().then(e => Promise.reject(e))
+         
+        }    
+        console.log('res okay', res)
+        return res.json()
+      })
+      .then(() => {
+        console.log(this.props)
+         this.props.deleteGallery(this.props.id);
+         this.props.history.push("/");
+       })
+       .catch(error => {
+         console.error({error})
+       })   
+   
+     }
+   
 
-  }
-
+  
+   
   render(){
-console.log(this.props.artwork)
+
 
     return (
       <div className="gallery">   

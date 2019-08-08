@@ -1,5 +1,6 @@
 import React from 'react'
 import Cuid from 'cuid'
+import ApiService from '../services/ApiService';
 
 class AddGallery extends React.Component {
   
@@ -7,9 +8,17 @@ class AddGallery extends React.Component {
     e.preventDefault();
     
     
-    const gallery = {id: Cuid(), name: e.target["gallery-name"].value}
-    this.props.addGallery(gallery)
+    const gallery = {name: e.target["gallery-name"].value}
+    ApiService.postGallery(gallery)
+    .then(gallery => {
+      this.props.addGallery(gallery)
+    })
+    .catch(error => {
+      console.error({error})
+    })    
     e.target["gallery-name"].value = ""; 
+
+
   }
   
 

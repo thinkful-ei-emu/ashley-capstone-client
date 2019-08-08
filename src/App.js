@@ -7,14 +7,26 @@ import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage'
 import {addArtworkToGalleries, findArtpiece, findGallery} from './artwork-helpers/artwork-helpers'
 import ArtpieceMainPage from './artpieceMainPage/artpieceMainPage';
+import ApiService from './services/ApiService'
 
 class App extends React.Component {
   state = {
     artwork: [],
     color: '',
     brushSize: 10,
-    galleries: []
+    galleries: [],
+    ratings: []
   };
+
+  componentDidMount () {
+    ApiService.getGalAndArt()
+    .then(([galleries, artwork]) => {
+      this.setState({galleries, artwork});
+  })
+  .catch(error => {
+      console.error({error});
+  });
+  }
 
   addArt = (artpiece) => {
     console.log('addart ran')
@@ -52,24 +64,25 @@ class App extends React.Component {
   }
 
   deleteGallery = galleryId => {
+    console.log(galleryId)
     let filteredGalleries = this.state.galleries.filter(gallery => gallery.id !== galleryId);
     this.setState({
       galleries: filteredGalleries
     });
   }
 
-  updateRating = (ratedArtpiece) => {  
+  // updateRating = (ratedArtpiece) => {  
    
    
-    let ratedArtwork= this.state.artwork.map(artpiece =>      
-      artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece      
-     )
-    console.log('in update function', ratedArtwork)
+  //   let ratedArtwork= this.state.artwork.map(artpiece =>      
+  //     artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece      
+  //    )
+  //   console.log('in update function', ratedArtwork)
     
-    this.setState({
-      artwork: ratedArtwork 
-    });
-  }
+  //   this.setState({
+  //     artwork: ratedArtwork 
+  //   });
+  // }
 
 
   
@@ -111,7 +124,7 @@ class App extends React.Component {
          render={routeProps => {
           const {artpieceId} = routeProps.match.params;
           const artpiece = findArtpiece(artwork, artpieceId);
-           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} updateRating={this.updateRating} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
+           return <ArtpieceMainPage {...routeProps} artpiece={artpiece} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
             }}
                 />
     </>

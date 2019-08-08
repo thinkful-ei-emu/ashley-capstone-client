@@ -43,7 +43,7 @@ class Artpiece extends React.Component {
             </span>
           </div>
         </div>          
-        <div className='artpiece-rating-container'>
+        {/* <div className='artpiece-rating-container'>
           <div className='artpiece-rating'>
             Rating: 
             {' '}
@@ -58,7 +58,7 @@ class Artpiece extends React.Component {
              {this.props.rating.length > 0 ? this.props.rating.length : 0}
             </span>
           </div>
-        </div> 
+        </div>  */}
         
       </div>
 

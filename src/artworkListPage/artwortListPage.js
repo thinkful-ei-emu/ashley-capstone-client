@@ -22,7 +22,7 @@ class ArtworkListPage extends React.Component {
           id={artpiece.id} 
           title={artpiece.title} 
           uploaded={artpiece.uploaded}
-          rating={artpiece.rating} 
+         
           deleteArtpiece={this.props.deleteArtpiece}
           history={this.props.history}
           />

@@ -5,15 +5,15 @@ import CanvasDraw from 'react-canvas-draw'
 import '../artpieceMainPage/artpieceMainPage.css'
 
 class ArtpieceMainPage extends React.Component {
- handleRating = e => {
-   e.preventDefault();
-   const {artpiece} = this.props;
-   const ratedArtpiece = {...artpiece, rating: [...artpiece.rating, e.target["rating-select"].value]};
-   console.log(ratedArtpiece);
-  //  console.log('orig object', artpiece)    
-   this.props.updateRating(ratedArtpiece)
-   e.target["rating-select"].value = null
- }
+//  handleRating = e => {
+//    e.preventDefault();
+//    const {artpiece} = this.props;
+//    const ratedArtpiece = {...artpiece, rating: [...artpiece.rating, e.target["rating-select"].value]};
+//    console.log(ratedArtpiece);
+//   //  console.log('orig object', artpiece)    
+//    this.props.updateRating(ratedArtpiece)
+//    e.target["rating-select"].value = null
+//  }
 
   render() {
    const {artpiece, deleteArtpiece} = this.props; 
@@ -25,8 +25,8 @@ class ArtpieceMainPage extends React.Component {
     
     return (
       <section className="artpiece-main">        
-        <Artpiece id={artpiece.id} title={artpiece.title} uploaded={artpiece.uploaded} rating={artpiece.rating}  deleteArtpiece={deleteArtpiece} history={this.props.history} />
-        <form onSubmit={this.handleRating}>
+        <Artpiece id={artpiece.id} title={artpiece.title} uploaded={artpiece.uploaded}  deleteArtpiece={deleteArtpiece} history={this.props.history} />
+        {/* <form onSubmit={this.handleRating}>
         <select id="rating-select" name="rating-id">
             <option value={null}>Select a Rating</option>            
             <option value={1}>1</option>
@@ -36,10 +36,10 @@ class ArtpieceMainPage extends React.Component {
             <option value={5}>5</option>
           </select>
          <button type="submit" >Rate</button>
-        </form>
+        </form> */}
        
          <div className="image-container">
-          <img className="canvas" src={artpiece.artImage} alt="canvas"/>
+          <img className="canvas" src={artpiece.artpiece_image} alt="canvas"/>
          
          
           {/* <CanvasDraw className="loaded-canvas" disabled={true} hideGrid={true} immediateLoading={true} saveData={artpiece.artImage}/> */}

@@ -19,7 +19,7 @@ class Studio extends React.Component {
     e.preventDefault();
     //userid is temp, should update to get id from users table
     let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();
-    const artpiece = {title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, artpiece_image: canvas, user_id: 1}
+    const artpiece = {title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, artpiece_image: canvas}
     ArtisteApiService.postArtpiece(artpiece)
     .then(artpiece => {
       this.props.addArt(artpiece)

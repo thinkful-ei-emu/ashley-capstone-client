@@ -11,9 +11,9 @@ import ArtisteApiService from './services/artisteApiService'
 import LandingPage from './landingPage/landingPage'
 import Login from './login/login'
 import Register from './register/register'
-import TokenService from './services/tokenService'
-import AuthApiService from './services/authApiService'
-import IdleService from './services/idleService'
+import PrivateRoute from './utils/privateRoute'
+import PublicOnlyRoute from './utils/publicOnlyRoute'
+
 class App extends React.Component {
   state = {
     artwork: [],
@@ -33,59 +33,7 @@ class App extends React.Component {
   });
   }
 
-  // componentDidMount() {
-  //   /*
-  //     set the function (callback) to call when a user goes idle
-  //     we'll set this to logout a user when they're idle
-  //   */
-  //   IdleService.setIdleCallback(this.logoutFromIdle)
-
-  //   /* if a user is logged in */
-  //   if (TokenService.hasAuthToken()) {
-  //     /*
-  //       tell the idle service to register event listeners
-  //       the event listeners are fired when a user does something, e.g. move their mouse
-  //       if the user doesn't trigger one of these event listeners,
-  //         the idleCallback (logout) will be invoked
-  //     */
-  //     IdleService.regiserIdleTimerResets()
-
-  //     /*
-  //       Tell the token service to read the JWT, looking at the exp value
-  //       and queue a timeout just before the token expires
-  //     */
-  //     TokenService.queueCallbackBeforeExpiry(() => {
-  //       /* the timoue will call this callback just before the token expires */
-  //       AuthApiService.postRefreshToken()
-  //     })
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   /*
-  //     when the app unmounts,
-  //     stop the event listeners that auto logout (clear the token from storage)
-  //   */
-  //   IdleService.unRegisterIdleResets()
-  //   /*
-  //     and remove the refresh endpoint request
-  //   */
-  //   TokenService.clearCallbackBeforeExpiry()
-  // }
-
-  // logoutFromIdle = () => {
-  //   /* remove the token from localStorage */
-  //   TokenService.clearAuthToken()
-  //   /* remove any queued calls to the refresh endpoint */
-  //   TokenService.clearCallbackBeforeExpiry()
-  //   /* remove the timeouts that auto logout when idle */
-  //   IdleService.unRegisterIdleResets()
-  //   /*
-  //     react won't know the token has been removed from local storage,
-  //     so we need to tell React to rerender
-  //   */
-  //   this.forceUpdate()
-  // }
+  
 
   addArt = (artpiece) => {
     console.log('addart ran')
@@ -150,7 +98,7 @@ class App extends React.Component {
   return (
     <>
     {["/studio", "/gallery/:galleryId"].map(path => (
-      <Route exact key={path} path={path} render={routeProps =>{
+      <PrivateRoute exact key={path} path={path} render={routeProps =>{
         const{galleryId} = routeProps.match.params;        
         return(
           <Galleries galleryId={galleryId}  deleteGallery={this.deleteGallery} galleries={galleries} artwork={artwork} {...routeProps}/>
@@ -158,7 +106,7 @@ class App extends React.Component {
       } } />
     ))}
     <>
-    <Route exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
+    <PrivateRoute exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
     </>
     </>
   )
@@ -170,9 +118,9 @@ class App extends React.Component {
   return (
     <>
     <>
-    <Route exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
-    <Route exact path="/login" component = {Login} />
-    <Route exact path="/register" component = {Register} />
+    <PublicOnlyRoute exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
+    <PublicOnlyRoute exact path="/login" component = {Login} />
+    <PublicOnlyRoute exact path="/register" component = {Register} />
    
    
 
@@ -181,7 +129,7 @@ class App extends React.Component {
     </>
     <>
     {["/gallery/:galleryId"].map(path => (
-      <Route exact key={path} path={path} render={routeProps => {
+      <PrivateRoute exact key={path} path={path} render={routeProps => {
         const {galleryId} = routeProps.match.params;        
         const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
         return(
@@ -199,7 +147,7 @@ class App extends React.Component {
             }}
                 />
     </>
-    <Route exact  path="/studio" render={routeProps => <Studio galleries={galleries} updateBrushSize= {this.updateBrushSize} brushSize={brushSize} updateColor={this.updateColor} color={color} addArt={this.addArt} {...routeProps}/>} />
+    <PrivateRoute exact  path="/studio" render={routeProps => <Studio galleries={galleries} updateBrushSize= {this.updateBrushSize} brushSize={brushSize} updateColor={this.updateColor} color={color} addArt={this.addArt} {...routeProps}/>} />
     
     </>
     
@@ -221,7 +169,8 @@ class App extends React.Component {
          <nav className="App_nav" role="navigation">
            {this.renderNavRoutes()}         
           {/* <AddGallery addGallery={this.addGallery}/> */}
-         <Link to="/studio">Studio</Link>         
+         <Link to="/studio">Studio</Link>
+         <Link to="/add-gallery">Gallery</Link>           
          </nav>
          <header className="App__header">
            <h1><Link to="/">L'Artiste</Link></h1>

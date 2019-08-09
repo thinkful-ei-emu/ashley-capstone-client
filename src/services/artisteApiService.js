@@ -1,10 +1,21 @@
 import config from '../config'
+import TokenService from './tokenService';
 
 const ArtisteApiService = {
   getGalAndArt() {
     return Promise.all([
-      fetch(`${config.API_ENDPOINT}/galleries`),
-      fetch(`${config.API_ENDPOINT}/artwork`)
+      fetch(`${config.API_ENDPOINT}/galleries`, {
+        method: 'GET',
+        headers: {          
+          'authorization': `bearer ${TokenService.getAuthToken()}`
+        },
+      }),
+      fetch(`${config.API_ENDPOINT}/artwork`, {
+        method: 'GET',
+        headers: {          
+          'authorization': `bearer ${TokenService.getAuthToken()}`
+        },
+      })
   ])
       .then(([galleriesRes, artworkRes]) => {
           if (!galleriesRes.ok)
@@ -21,7 +32,8 @@ const ArtisteApiService = {
     return fetch(`${config.API_ENDPOINT}/galleries`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(gallery),
     })
@@ -36,7 +48,8 @@ const ArtisteApiService = {
     return fetch(`${config.API_ENDPOINT}/artwork`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(artpiece),
     })
@@ -52,7 +65,8 @@ const ArtisteApiService = {
     return fetch(`${config.API_ENDPOINT}/galleries/${galleryId}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
      
     })
@@ -68,7 +82,8 @@ const ArtisteApiService = {
     return fetch(`${config.API_ENDPOINT}/artwork/${artpieceId}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
      
     })

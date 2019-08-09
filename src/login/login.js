@@ -5,7 +5,7 @@ import AuthApiService from '../services/authApiService'
 
 
 
-class LandingPage extends React.Component {
+class Login extends React.Component {
   
   state = { error: null }
 
@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
        .then(res => {
          e.target["username"].value = ''
           e.target["password"].value = ''          
-          this.props.history.push("/gallery")
+          this.props.history.push("/studio")
         })
          .catch(res => {
           this.setState({ error: res.error })
@@ -48,7 +48,7 @@ class LandingPage extends React.Component {
               <label htmlFor="password">Password</label>
               <input type="password" name='password' id='password' />
             </div>
-            <button type='submit'>Login Up</button>
+            <button type='submit'>Login</button>
         </form> 
         </section>
               
@@ -61,4 +61,4 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage;
+export default Login;

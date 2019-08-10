@@ -1,9 +1,29 @@
 import React from 'react'
 import './galleries.css'
-import {Link} from 'react-router-dom'
 import Gallery from '../gallery/gallery'
+import TokenService from '../services/tokenService'
 
 class Galleries extends React.Component {
+  
+  goBack = e => {
+    e.preventDefault();
+    this.props.history.goBack()
+  }
+
+  goToAddGallery = e => {
+    e.preventDefault();
+    this.props.history.push("/add-gallery")
+  }
+  
+  goToHomepage = e => {
+    e.preventDefault();
+    this.props.history.push("/homepage")
+  }
+  Logout = e => {
+    e.preventDefault();
+    TokenService.clearAuthToken();
+    this.props.history.push("/")
+  }
   
  
   render(){
@@ -23,7 +43,15 @@ class Galleries extends React.Component {
              </li>
              )} 
         </ul>
-        <button> <Link to="/add-gallery">Add Gallery</Link></button>
+        <div className="buttons-container">
+        <button type="button" onClick={this.goBack}>Back</button>
+        <button type="button" onClick={this.goToAddGallery}>Add Gallery</button>
+        <button type="button" onClick={this.goToHomepage}>Homepage</button><br></br>
+        <button onClick={this.Logout}>Logout</button> 
+        
+        </div>
+        
+      
        
     
         

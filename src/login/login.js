@@ -12,6 +12,7 @@ class Login extends React.Component {
   
   handleSubmit = e => {
        e.preventDefault()
+       e.persist();
       this.setState({ error: null })
       const user = {
         
@@ -25,7 +26,7 @@ class Login extends React.Component {
        .then(res => {
          e.target["username"].value = ''
           e.target["password"].value = ''          
-          this.props.history.push("/studio")
+          this.props.history.push("/homepage")
         })
          .catch(res => {
           this.setState({ error: res.error })
@@ -34,11 +35,14 @@ class Login extends React.Component {
   
    
   render(){
-
+    const {error} = this.state
     return (
       <div className="login-page">  
         <section>      
         <form className='login-form' onSubmit={this.handleSubmit}>
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
+        </div>
             <div>           
          
               <label htmlFor="username">Username</label>

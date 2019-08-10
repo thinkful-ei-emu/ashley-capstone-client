@@ -6,6 +6,7 @@
   height: calc(100vh - 150px);
   padding: 0;  
   background-color: gray;
+  text-align: center;
   
 }
 
@@ -17,6 +18,8 @@
   background-color: gray;
 
 }
+
+
 
 /* .gallery-list-names {
   background-color: #1d2227;

@@ -1,6 +1,5 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import AuthApiService from '../services/authApiService'
 
 
 
@@ -12,7 +11,10 @@ class LandingPage extends React.Component {
   render(){
 
     return (
-      <div className="landing-page">   
+      <div className="landing-page"> 
+        <header className="landing-header">
+           <h1>L'Artiste</h1>
+           </header>  
         <section>        
             <h3>Create your own masterpiece</h3>
         

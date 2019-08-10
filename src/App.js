@@ -13,6 +13,7 @@ import Login from './login/login'
 import Register from './register/register'
 import PrivateRoute from './utils/privateRoute'
 import PublicOnlyRoute from './utils/publicOnlyRoute'
+import Homepage from './homepage/hompage'
 
 class App extends React.Component {
   state = {
@@ -77,21 +78,8 @@ class App extends React.Component {
     });
   }
 
-  // updateRating = (ratedArtpiece) => {  
-   
-   
-  //   let ratedArtwork= this.state.artwork.map(artpiece =>      
-  //     artpiece.id === ratedArtpiece.id? artpiece= Object.assign(artpiece, ratedArtpiece) : artpiece      
-  //    )
-  //   console.log('in update function', ratedArtwork)
-    
-  //   this.setState({
-  //     artwork: ratedArtwork 
-  //   });
-  // }
-
-
-  
+ 
+ 
 
  renderNavRoutes(){
   const {artwork, galleries} = this.state; 
@@ -121,7 +109,7 @@ class App extends React.Component {
     <PublicOnlyRoute exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
     <PublicOnlyRoute exact path="/login" component = {Login} />
     <PublicOnlyRoute exact path="/register" component = {Register} />
-   
+    <Route exact path = "/homepage" component = {Homepage}/>
    
 
 
@@ -154,6 +142,7 @@ class App extends React.Component {
     
   )
  }
+ 
   
   
 
@@ -167,10 +156,8 @@ class App extends React.Component {
     return (
       <div className="App">
          <nav className="App_nav" role="navigation">
-           {this.renderNavRoutes()}         
-          {/* <AddGallery addGallery={this.addGallery}/> */}
-         <Link to="/studio">Studio</Link>
-         <Link to="/add-gallery">Gallery</Link>           
+           {this.renderNavRoutes()}           
+         
          </nav>
          <header className="App__header">
            <h1><Link to="/">L'Artiste</Link></h1>

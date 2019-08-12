@@ -1,26 +1,38 @@
+* {
+  box-sizing: border-box;
+  
+}
 .name {
-  background-color: #1d2227;
-  color: #b5b3b3;
+  
+  color: black;
   display: inline-block; 
   font-size: 20px;
-  margin: 0 0 8px auto;
+  margin: 0 10px 8px auto;
   /* width: 100%; */
   /* padding: 10px 50px; */
   text-decoration: none; 
 }
 
+.count {
+  margin: 0 10px 0;
+  
+}
+
 .gallery-name {
  display: flex;
  justify-content: flex-start;
- background-color: #1d2227;
+ /* background-color: #1d2227; */
  margin: 0 0 8px auto;
- padding: 15px 20px;
+ padding: 15px 20px; 
+ overflow: auto;  
+ width: 100%;
+ 
 }
 
 .delete {
-  align-self: flex-end;
- 
+  align-self: flex-end; 
   margin: 0 0 8px auto;
+  
   
 }
 

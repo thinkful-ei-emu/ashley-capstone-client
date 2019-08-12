@@ -12,9 +12,9 @@ class LandingPage extends React.Component {
 
     return (
       <div className="landing-page"> 
-        <header className="landing-header">
+        {/* <header className="landing-header">
            <h1>L'Artiste</h1>
-           </header>  
+           </header>   */}
         <section>        
             <h3>Create your own masterpiece</h3>
         

@@ -13,14 +13,15 @@ import Login from './login/login'
 import Register from './register/register'
 import PrivateRoute from './utils/privateRoute'
 import PublicOnlyRoute from './utils/publicOnlyRoute'
+import NavLanding from './navLanding/navLanding'
 
 
 
 class App extends React.Component {
   state = {
     artwork: [],
-    color: '',
-    brushSize: 10,
+    // color: '',
+    // brushSize: 10,
     galleries: [],
     ratings: []
   };
@@ -45,18 +46,18 @@ class App extends React.Component {
     
   }
 
-  updateColor = (color) => {
-    console.log('updateColor ran')
-    this.setState({
-      color: color,     
-    })   
-  }
+  // updateColor = (color) => {
+  //   console.log('updateColor ran')
+  //   this.setState({
+  //     color: color,     
+  //   })   
+  // }
 
-  updateBrushSize = (brushSize) => {
-    this.setState({
-      brushSize: brushSize,
-    })
-  }
+  // updateBrushSize = (brushSize) => {
+  //   this.setState({
+  //     brushSize: brushSize,
+  //   })
+  // }
 
   addGallery = (gallery) => {
     console.log('addGallery ran')
@@ -86,7 +87,7 @@ class App extends React.Component {
   const {artwork, galleries} = this.state; 
   return (
     <>
-    {["/studio", "/artpiece/:artpieceId", "/gallery/:galleryId"].map(path => (
+    {[ "/studio", "/artpiece/:artpieceId", "/gallery/:galleryId"].map(path => (
       <PrivateRoute exact key={path} path={path} render={routeProps =>{
         const{galleryId} = routeProps.match.params;        
         return(
@@ -97,6 +98,7 @@ class App extends React.Component {
     <>
     <PrivateRoute exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
     </>
+    <PublicOnlyRoute exact path="/" component = {NavLanding} />
     </>
   )
  }
@@ -112,7 +114,7 @@ class App extends React.Component {
     <PublicOnlyRoute exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
     <PublicOnlyRoute exact path="/login" component = {Login} />
     <PublicOnlyRoute exact path="/register" component = {Register} />
-    {/* <Route exact path = "/homepage" component = {Homepage}/> */}
+  
    
 
 
@@ -138,7 +140,7 @@ class App extends React.Component {
             }}
                 />
     </>
-    <PrivateRoute exact  path="/studio" render={routeProps => <Studio galleries={galleries} updateBrushSize= {this.updateBrushSize} brushSize={brushSize} updateColor={this.updateColor} color={color} addArt={this.addArt} {...routeProps}/>} />
+    <PrivateRoute exact  path="/studio" render={routeProps => <Studio galleries={galleries}  addArt={this.addArt} {...routeProps}/>} />
     
     </>
     
@@ -157,17 +159,19 @@ class App extends React.Component {
   render(){
 
     return (
-      <div className="App">
+      <div className="App">         
          
-         
-         <nav className="App_nav" role="navigation">
-           {this.renderNavRoutes()}          
-         
+         <nav className="App_nav" role="navigation">                   
+         {this.renderNavRoutes()} 
          </nav>
          <header className="App__header">
-         
+        
+         <h1 className="parent-header">   <span><i class="fas fa-palette"></i></span>L'Artiste</h1>
            </header>
-         <main className="App__main"> {this.renderMainRoutes()}</main>
+         <main className="App__main">        
+         
+         {this.renderMainRoutes()}
+         </main>
              
     
       </div>

@@ -15,7 +15,7 @@ class Gallery extends React.Component {
     ArtisteApiService.deleteGallery(this.props.id)
       .then(() => {
          this.props.deleteGallery(this.props.id);
-         this.props.history.push("/");
+         this.props.history.push("/gallery/:gallerId");
        })
        .catch(error => {
          console.error({error})
@@ -33,9 +33,10 @@ class Gallery extends React.Component {
       <div className="gallery">   
         <div className="gallery-name">        
           <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink>           
-          <span> Artwork: 
-          {totalArtworkInGallery(this.props.artwork, this.props.id)}</span>
-          <button type='button' className='delete' onClick={this.handleDelete}>Remove</button>   
+          <div className="count"> 
+          Artwork:{" "}{totalArtworkInGallery(this.props.artwork, this.props.id)}
+          </div>
+          <button type='button' className='delete' onClick={this.handleDelete}><i class="fas fa-trash-alt"></i></button>   
             
           </div>    
        

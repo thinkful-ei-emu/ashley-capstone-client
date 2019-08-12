@@ -1,13 +1,13 @@
 
 .App {
-  /* margin: 0;
-  padding: 0; */
+  margin: 0;
+  padding: 0;  
   font-family: Georgia, serif;
   display: grid;
-  grid-template-areas: "sidebar main";
-  grid-template-columns: .5fr 2.3fr;
-  /* grid-template-rows: 150px 1fr; */
-  min-height: 150vh;
+  grid-template-areas: "sidebar header" "sidebar main";
+  grid-template-columns: .5fr 2.3fr; 
+  grid-template-rows: 130px 1fr; 
+  min-height: 100vh;
   text-align: center;
 
 }
@@ -15,32 +15,34 @@
 .App__nav {
   background-color: #aaa;
   color: #fff;
-  grid-area: sidebar;
+  grid-area: sidebar; 
   height: calc(100vh - 120px);
-  overflow: auto;
-  /* padding: 1% 0; */
-  
+  overflow: auto; 
+  padding: 0% 0; 
   
 }
- /* .App_header {
+ .App_header {
   color: #bdbdbd;
   font-family: Georgia, serif;
   grid-area: header;
-  padding-left: 16px;
-  padding-top: 32px;
+  height: calc(100vh - 120px); 
   text-shadow: 2px 1px 2px black;
   font-size: 35px;
   text-align: center;
   
-}  */
+} 
+.parent-header {
+  font-size: 65px;
+  color: gray;
+  text-shadow: 2px 1px 2px black;
+}
 
 .App__main {  
   grid-area: main;
   height: calc(100vh - 120px);
   overflow: auto;  
   background-color: #efefef;
-  height: 100%;
-  padding: 10px;
+  height: 100%;  
   width: 100%;
   text-align: center;
 }

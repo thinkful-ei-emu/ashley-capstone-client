@@ -9,11 +9,14 @@ import ArtisteApiService from '../services/artisteApiService'
 
 
 
+
 class Studio extends React.Component {  
   
-  // state = {
-  //   images: []
-  // }
+  state = {
+    // images: []
+    color: '',
+    brushSize: 10,
+  }
    
   handleSubmit = e => {
     e.preventDefault();
@@ -35,7 +38,7 @@ class Studio extends React.Component {
 
   onChangeComplete = (color, event) => {
     console.log(color);
-    this.props.updateColor(color.hex);
+    this.updateColor(color.hex);
   }
 
   clearArt = e => {
@@ -50,9 +53,22 @@ class Studio extends React.Component {
   adjustBrushSize = e => {
     e.preventDefault(); 
     
-    this.props.updateBrushSize(parseInt(e.target.value, 10)); 
+    this.updateBrushSize(parseInt(e.target.value, 10)); 
   
   }
+  updateColor = (color) => {
+    console.log('updateColor ran')
+    this.setState({
+      color: color,     
+    })   
+  }
+
+  updateBrushSize = (brushSize) => {
+    this.setState({
+      brushSize: brushSize,
+    })
+  }
+
 
   savePNG = e => {
    
@@ -73,24 +89,25 @@ class Studio extends React.Component {
 
 
   render() {    
-    const {color, brushSize, galleries} = this.props; 
+    const {color, brushSize} = this.state; 
+    const {galleries} = this.props;
     
     
     return (
-      <div className="studio">
-        <header className="landing-header">
+      <div className="studio">      
+        <header className="studio-header">
            <h1>L'Studio</h1>
-           </header>          
-        <form id="studio-form"onSubmit={this.handleSubmit}>
-          <div className="flex-container">
+           </header> 
+           <main>
+           <form id="studio-form"onSubmit={this.handleSubmit}>
+          
             <div className="color-picker-container">
              <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
             </div> 
             <div className="brush-size-container">
-              <label className="brush-label">Brush Size:</label>
+              <label className="brush-label"><i class="fas fa-paint-brush"></i></label>
               <input onChange={this.adjustBrushSize} defaultValue={"10"} type="range" name="brush-size" min="1" max="100"></input>
             </div>
-
           <div className="title-container">
           <label className="title-label">Title:</label>
             <input type="text" name="art-title" id="art-title-input" required />
@@ -104,7 +121,7 @@ class Studio extends React.Component {
             ))}
             </select>
               </div>
-          </div>        
+          
          
           <CanvasDraw  brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
                    
@@ -115,6 +132,8 @@ class Studio extends React.Component {
             {/* <button type="button" onClick={this.savePNG}>Save As PNG</button> */}
             <button className="add-button" type="submit">Add Artwork</button>       
         </form> 
+             </main>          
+        
         {/* <ul>
           {
             this.state.images.map((image, index) => <li key={index}><img src={image}></img></li>)

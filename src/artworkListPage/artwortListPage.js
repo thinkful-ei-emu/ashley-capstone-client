@@ -1,7 +1,6 @@
 import React from 'react'
-import CanvasDraw from 'react-canvas-draw'
 import Artpiece from '../artpiece/artpiece'
-
+import './artworkListPage.css'
 
 class ArtworkListPage extends React.Component {
   
@@ -15,7 +14,7 @@ class ArtworkListPage extends React.Component {
        
        <header className="artwork-header">
            <h1>La Galerie d'Art</h1>
-           </header>  
+           </header> 
         
        <ul>         
           {artwork.map(artpiece => 
@@ -30,7 +29,7 @@ class ArtworkListPage extends React.Component {
           />
           </li>)}
         </ul>
-    
+      
         
       </div>
 

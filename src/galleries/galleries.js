@@ -2,6 +2,8 @@ import React from 'react'
 import './galleries.css'
 import Gallery from '../gallery/gallery'
 import TokenService from '../services/tokenService'
+import Studio from '../studio/studio'
+
 
 
 class Galleries extends React.Component {
@@ -40,9 +42,9 @@ class Galleries extends React.Component {
 
     return (
       <div className="gallery-page">
-       
+       <nav>
         <ul className="gallery-list">
-         {galleries.map(gallery => 
+         {galleries.map((gallery, index) => 
           <li key={gallery.id} className="gallery-list-names" >
             <Gallery  id={gallery.id} 
             name={gallery.name} 
@@ -52,14 +54,14 @@ class Galleries extends React.Component {
              </li>
              )} 
         </ul>
+      
         <div className="buttons-container">
         <button type="button" onClick={this.goBack}>Back</button>
         <button type="button" onClick={this.goToAddGallery}>Add Gallery</button>
         <button type="button" onClick={this.goToStudio}>Studio</button><br></br>
-        <button onClick={this.Logout}>Logout</button> 
-        
-        </div>
-        
+        <button onClick={this.Logout}>Logout</button>        
+        </div>        
+      </nav>
       
        
     

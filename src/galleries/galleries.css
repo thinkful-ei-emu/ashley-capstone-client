@@ -1,34 +1,65 @@
 
-
+* {
+  box-sizing: border-box;
+  
+}
  .gallery-page {
   list-style-type: none;
-  margin: 150px 0 0px;
-  height: calc(100vh - 150px);
-  padding: 0;  
-  background-color: gray;
+  margin-top: 13.1vh;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0; 
   text-align: center;
+  background-color: rgba(238, 189, 126, 0.815);
   
+  justify-content: flex-start;
+  border-right: rgba(138, 96, 62, 0.938) solid 2px;
 }
 
 
 .gallery-list {
   list-style-type: none;
-  margin: 20px 0 0;
-  padding: 0;  
-  background-color: gray;
+ 
+  padding: 5% 5%;  
+ 
+  
 
 }
 
 
 
-/* .gallery-list-names {
-  background-color: #1d2227;
-  color: #b5b3b3;
-  display: block; 
-  font-size: 20px;
-  margin: 0 0 8px auto;
-  width: 100%;
-  padding: 20px 16px;
-  text-decoration: none;
-  text-align: center;
+.buttons-container {
+ 
+}
+
+.gallery-list-names{
+  margin-bottom: 8px;
+  /* background-color: rgba(138, 96, 62, 0.938) */
+  border-bottom: rgba(138, 96, 62, 0.938) solid 3px;
+  
+}
+/* .gallery-list-names:nth-of-type(1n) {
+  border: solid 5px red;
+  
+  
+}
+.gallery-list-names:nth-of-type(2n) {
+  border: solid 5px orange;
+  
+  
+}
+.gallery-list-names:nth-of-type(3n) {
+  border: solid 5px yellow;
+ 
+  
+}
+
+.gallery-list-names:nth-of-type(4n) {
+  border: solid 5px green;
+  
+}
+.gallery-list-names:nth-child(even) {
+ 
+ 
 } */
+

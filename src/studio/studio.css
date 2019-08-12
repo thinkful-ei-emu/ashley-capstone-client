@@ -3,10 +3,23 @@
   
 }
 .studio {
-  /* border: red 3px solid; */
-  margin: 0 auto;
+  
+ 
   text-align: center;
+  min-height: 100vh;
+
+ 
 }
+
+.fas.fa-paint-brush {
+  font-size: 30px;
+}
+
+/* main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 
 .saved-canvas {
   border: black solid 3px;
@@ -20,7 +33,8 @@
 }
 
 .color-picker-container {
-  margin: 1%;
+  margin: 3% 2% 1%;
+  text-align: center;
 }
 
 .add-button {

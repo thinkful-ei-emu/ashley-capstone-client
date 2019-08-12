@@ -13,7 +13,8 @@ import Login from './login/login'
 import Register from './register/register'
 import PrivateRoute from './utils/privateRoute'
 import PublicOnlyRoute from './utils/publicOnlyRoute'
-import Homepage from './homepage/hompage'
+
+
 
 class App extends React.Component {
   state = {
@@ -99,6 +100,8 @@ class App extends React.Component {
     </>
   )
  }
+ 
+
 
  
  renderMainRoutes(){
@@ -109,7 +112,7 @@ class App extends React.Component {
     <PublicOnlyRoute exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
     <PublicOnlyRoute exact path="/login" component = {Login} />
     <PublicOnlyRoute exact path="/register" component = {Register} />
-    <Route exact path = "/homepage" component = {Homepage}/>
+    {/* <Route exact path = "/homepage" component = {Homepage}/> */}
    
 
 
@@ -152,17 +155,20 @@ class App extends React.Component {
 
 
   render(){
-  //  const {artwork, color, brushSize, galleries} = this.state;   
+
     return (
       <div className="App">
+         
+         
          <nav className="App_nav" role="navigation">
-           {this.renderNavRoutes()}           
+           {this.renderNavRoutes()}          
          
          </nav>
          <header className="App__header">
-           <h1>L'Artiste</h1>
+         
            </header>
-         <main className="App__main"> {this.renderMainRoutes()}</main>       
+         <main className="App__main"> {this.renderMainRoutes()}</main>
+             
     
       </div>
     );

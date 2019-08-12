@@ -13,7 +13,9 @@ class ArtworkListPage extends React.Component {
     return (
       <div className="artwork-page">
        
-       
+       <header className="artwork-header">
+           <h1>La Galerie d'Art</h1>
+           </header>  
         
        <ul>         
           {artwork.map(artpiece => 

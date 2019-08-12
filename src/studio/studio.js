@@ -77,7 +77,10 @@ class Studio extends React.Component {
     
     
     return (
-      <div className="studio">        
+      <div className="studio">
+        <header className="landing-header">
+           <h1>L'Studio</h1>
+           </header>          
         <form id="studio-form"onSubmit={this.handleSubmit}>
           <div className="flex-container">
             <div className="color-picker-container">

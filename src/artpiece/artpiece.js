@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {format} from 'date-fns'
+import './artpiece.css'
 import {artpieceAverageRating} from '../artwork-helpers/artwork-helpers'
 import ArtisteApiService from '../services/artisteApiService'
 
@@ -31,7 +32,7 @@ class Artpiece extends React.Component {
             {this.props.title}
           </Link>
         </h2>
-        <button onClick={this.handleDelete}>Remove</button>
+       
         <div className='artpiece-uploaded-container'>
           <div className='artpiece-uploaded'>
             Uploaded
@@ -41,15 +42,16 @@ class Artpiece extends React.Component {
             </span>
           </div>
         </div>  
-        <div className='artpiece-artist-container'>
+        <button className="delete-button" onClick={this.handleDelete}>Remove</button>
+        {/* <div className='artpiece-artist-container'>
           <div className='artpiece-artist'>
             Placeholder: ArtistName(username)
             {' '}
             <span className='artist'>
-             {/* add artist(username) */}
+             add artist(username)
             </span>
           </div>
-        </div>          
+        </div>           */}
         {/* <div className='artpiece-rating-container'>
           <div className='artpiece-rating'>
             Rating: 

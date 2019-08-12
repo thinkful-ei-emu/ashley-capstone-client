@@ -2,7 +2,7 @@ import React from 'react'
 import './galleries.css'
 import Gallery from '../gallery/gallery'
 import TokenService from '../services/tokenService'
-import { tsImportEqualsDeclaration } from '@babel/types';
+
 
 class Galleries extends React.Component {
 
@@ -24,14 +24,14 @@ class Galleries extends React.Component {
     this.props.history.push("/add-gallery")
   }
   
-  goToHomepage = e => {
+  goToStudio = e => {
     e.preventDefault();
-    this.props.history.push("/homepage")
+    this.props.history.push("/studio")
   }
   Logout = e => {
     e.preventDefault();
     TokenService.clearAuthToken();
-    this.props.history.push("/")
+    this.props.history.push("/login")
   }
   
  
@@ -55,7 +55,7 @@ class Galleries extends React.Component {
         <div className="buttons-container">
         <button type="button" onClick={this.goBack}>Back</button>
         <button type="button" onClick={this.goToAddGallery}>Add Gallery</button>
-        {/* <button type="button" onClick={this.goToHomepage}>Homepage</button><br></br> */}
+        <button type="button" onClick={this.goToStudio}>Studio</button><br></br>
         <button onClick={this.Logout}>Logout</button> 
         
         </div>

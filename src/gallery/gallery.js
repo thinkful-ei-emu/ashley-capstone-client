@@ -32,8 +32,7 @@ class Gallery extends React.Component {
     return (
       <div className="gallery">   
         <div className="gallery-name">        
-          <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink> 
-          {/* <span>{galleryAverageRating(this.props.artwork, this.props.id)}</span> */}
+          <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink>           
           <span> Artwork: 
           {totalArtworkInGallery(this.props.artwork, this.props.id)}</span>
           <button type='button' className='delete' onClick={this.handleDelete}>Remove</button>   

@@ -2,12 +2,21 @@ import React from 'react'
 import './galleries.css'
 import Gallery from '../gallery/gallery'
 import TokenService from '../services/tokenService'
+import { tsImportEqualsDeclaration } from '@babel/types';
 
 class Galleries extends React.Component {
-  
+
+
   goBack = e => {
     e.preventDefault();
-    this.props.history.goBack()
+    console.log(this.props.location.pathname)
+    if(this.props.location.pathname === "/gallery/:galleryId"){
+      this.props.history.push('/gallery/:galleryId')
+    }
+    else {
+      this.props.history.goBack()
+    }
+   
   }
 
   goToAddGallery = e => {
@@ -46,7 +55,7 @@ class Galleries extends React.Component {
         <div className="buttons-container">
         <button type="button" onClick={this.goBack}>Back</button>
         <button type="button" onClick={this.goToAddGallery}>Add Gallery</button>
-        <button type="button" onClick={this.goToHomepage}>Homepage</button><br></br>
+        {/* <button type="button" onClick={this.goToHomepage}>Homepage</button><br></br> */}
         <button onClick={this.Logout}>Logout</button> 
         
         </div>

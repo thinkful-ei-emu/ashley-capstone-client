@@ -26,7 +26,7 @@ class Login extends React.Component {
        .then(res => {
          e.target["username"].value = ''
           e.target["password"].value = ''          
-          this.props.history.push("/homepage")
+          this.props.history.push("/gallery/:galleryId")
         })
          .catch(res => {
           this.setState({ error: res.error })

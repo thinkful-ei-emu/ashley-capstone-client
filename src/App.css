@@ -8,9 +8,12 @@
   grid-template-columns: .5fr 2.3fr;
   grid-template-rows: 150px 1fr;
   min-height: 100vh;
-
+  text-align: center;
 }
 
+h1 {
+  font-size: 40px;
+}
 .App__nav {
   background-color: #aaa;
   color: #fff;

@@ -85,7 +85,7 @@ class App extends React.Component {
   const {artwork, galleries} = this.state; 
   return (
     <>
-    {["/studio", "/gallery/:galleryId"].map(path => (
+    {["/studio", "/artpiece/:artpieceId", "/gallery/:galleryId"].map(path => (
       <PrivateRoute exact key={path} path={path} render={routeProps =>{
         const{galleryId} = routeProps.match.params;        
         return(
@@ -160,7 +160,7 @@ class App extends React.Component {
          
          </nav>
          <header className="App__header">
-           <h1><Link to="/">L'Artiste</Link></h1>
+           <h1>L'Artiste</h1>
            </header>
          <main className="App__main"> {this.renderMainRoutes()}</main>       
     

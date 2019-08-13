@@ -96,7 +96,7 @@ class Studio extends React.Component {
     return (
       <div className="studio">      
       
-           <h1>L'Studio</h1>
+           <h1 className="studio-header">L'Studio</h1>
         
            <main>
            <form id="studio-form"onSubmit={this.handleSubmit}>
@@ -113,7 +113,7 @@ class Studio extends React.Component {
             <input type="text" name="art-title" id="art-title-input" required />
           </div>
           <div className="gallery-select-container">          
-          <label>Save to Gallery:</label><br></br>
+          <label className="select-label">Save to Gallery:</label><br></br>
             <select id="art-gallery-select" name="art-gallery-id">
             {/* <option name="select-default" value={null}>Select a Gallery</option> */}
             {galleries.map(gallery => (

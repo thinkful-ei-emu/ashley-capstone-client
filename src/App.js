@@ -14,34 +14,38 @@ import Register from './register/register'
 import PrivateRoute from './utils/privateRoute'
 import PublicOnlyRoute from './utils/publicOnlyRoute'
 import NavLanding from './navLanding/navLanding'
+import TokenService from './services/tokenService'
 
 
 
 class App extends React.Component {
   state = {
-    artwork: [],    
-    currentUser: "",
+    artwork: [],     
     galleries: [],
-    ratings: []
+    // ratings: []
   };
 
   componentDidMount () {
-    ArtisteApiService.getGalAndArt()
-    .then(([galleries, artwork]) => {
-      this.setState({galleries, artwork});
-  })
-  .catch(error => {
-      console.error({error});
-  });
+     this.fetchAllData();
   }
 
-  updateUser = (userName) => {  
-    console.log('update user', userName) 
-    this.setState({
-      currentUser: userName
+  fetchAllData = (galleries=[], artwork=[]) => {
+    if(TokenService.hasAuthToken() === false){
+      return {galleries, artwork}
+    }
+    else{
+      ArtisteApiService.getGalAndArt()
+      .then(([galleries, artwork]) => {
+        this.setState({galleries, artwork});
     })
+    .catch(error => {
+        console.error({error});
+    });
+    }
+  
   }
 
+ 
   addArt = (artpiece) => {
     this.setState({
       artwork: [...this.state.artwork, artpiece]      
@@ -49,6 +53,14 @@ class App extends React.Component {
     
   }
 
+//create handler to clear state
+
+  clearData = () => {
+    this.setState({
+      galleries: [],
+      artwork: []      
+    })   
+  }
 
   addGallery = (gallery) => {    
     this.setState({
@@ -70,9 +82,6 @@ class App extends React.Component {
     });
   }
 
- 
- 
-
  renderNavRoutes(){
   const {artwork, galleries} = this.state; 
   return (
@@ -81,7 +90,7 @@ class App extends React.Component {
       <PrivateRoute exact key={path} path={path} render={routeProps =>{
         const{galleryId} = routeProps.match.params;        
         return(
-          <Galleries galleryId={galleryId}  deleteGallery={this.deleteGallery} galleries={galleries} artwork={artwork} {...routeProps}/>
+          <Galleries galleryId={galleryId} clearData={this.clearData}  deleteGallery={this.deleteGallery} galleries={galleries} artwork={artwork} {...routeProps}/>
         )
       } } />
     ))}
@@ -106,7 +115,7 @@ class App extends React.Component {
     }}/>   
     <PublicOnlyRoute exact path="/login" render = {routeProps => {
       return(
-        <Login {...routeProps} updateUser={this.updateUser}/>
+        <Login {...routeProps} fetchAllData={this.fetchAllData} />
       )
     }} />
     <PublicOnlyRoute exact path="/register" render ={routeProps => {

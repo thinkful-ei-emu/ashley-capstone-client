@@ -6,8 +6,8 @@ class ArtworkListPage extends React.Component {
   
 
   render(){
-    const {artwork, currentUser} = this.props
-        console.log(this.props.currentUser)
+    const {artwork} = this.props
+        
 
     return (
       <div className="artwork-page">
@@ -20,8 +20,7 @@ class ArtworkListPage extends React.Component {
           <Artpiece 
           id={artpiece.id} 
           title={artpiece.title} 
-          uploaded={artpiece.uploaded}
-          user_name = {currentUser}         
+          uploaded={artpiece.uploaded}            
           deleteArtpiece={this.props.deleteArtpiece}
           history={this.props.history}
           />

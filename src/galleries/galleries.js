@@ -17,8 +17,7 @@ class Galleries extends React.Component {
     }
     else {
       this.props.history.goBack()
-    }
-   
+    }   
   }
 
   goToAddGallery = e => {
@@ -33,12 +32,13 @@ class Galleries extends React.Component {
   Logout = e => {
     e.preventDefault();
     TokenService.clearAuthToken();
+    this.props.clearData();
     this.props.history.push("/login")
   }
   
  
   render(){
-    const {galleries, artwork} = this.props
+    const {galleries, artwork} = this.props;
     TokenService.getAuthToken();  
     return (
       <div className="gallery-page">
@@ -63,8 +63,7 @@ class Galleries extends React.Component {
           </div>
           <div className="logout-container">
           <button type="button" className="button logout"onClick={this.Logout}>Logout</button>        
-          </div>
-       
+          </div>     
         
         </div>        
       </div>

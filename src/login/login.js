@@ -1,7 +1,6 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
 import AuthApiService from '../services/authApiService'
-import TokenService from '../services/tokenService'
+import './login.css'
 
 
 
@@ -20,13 +19,12 @@ class Login extends React.Component {
         user_name: e.target["username"].value,
         password: e.target["password"].value,
       }
-      console.log(user)
-      this.props.updateUser(user.user_name)
+      
       AuthApiService.postLogin({
       user
      })
        .then(res => {  
-        TokenService.getAuthToken();                
+          this.props.fetchAllData();       
          e.target["username"].value = ''
           e.target["password"].value = ''               
           this.props.history.push("/gallery/:galleryId")
@@ -43,16 +41,15 @@ class Login extends React.Component {
       <div className="login-page">  
         <section>      
         <form className='login-form' onSubmit={this.handleSubmit}>
-        <div role='alert'>
+        <div className="error-message" role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-            <div>           
-         
-              <label htmlFor="username">Username</label>
+            <div>            
+              <label htmlFor="username">Username:</label>
               <input type="text" name='username' id='username' placeholder='e.g. picaso123'/>
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password:</label>
               <input type="password" name='password' id='password' />
             </div>
             <button type='submit'>Login</button>

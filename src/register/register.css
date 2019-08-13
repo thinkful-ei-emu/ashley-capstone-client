@@ -1,0 +1,12 @@
+#reg-password, #reg-email, #reg-first-name, #reg-last-name, #reg-username {
+  margin: 5px;
+  padding: 1px;
+}
+
+.error-message{
+  color: red;
+}
+
+.reg-label {
+  margin-right: 5px;
+}

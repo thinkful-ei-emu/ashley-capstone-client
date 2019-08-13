@@ -1,0 +1,8 @@
+#password, #username {
+  margin: 8px;
+  padding: 1px;
+}
+
+.error-message{
+  color: red;
+}

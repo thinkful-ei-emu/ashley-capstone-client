@@ -31,12 +31,15 @@ class Gallery extends React.Component {
 
     return (
       <div className="gallery">   
-        <div className="gallery-name">        
-          <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink>           
+        <div className="gallery-name"> 
+        <div>
+        <NavLink className="name" to={`/gallery/${this.props.id}`}>{this.props.name}</NavLink>          
+          </div>       
+          
           <div className="count"> 
           Artwork:{" "}{totalArtworkInGallery(this.props.artwork, this.props.id)}
           </div>
-          <button type='button' className='delete' onClick={this.handleDelete}><i class="fas fa-trash-alt"></i></button>   
+          <button type='button' className='delete' onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></button>   
             
           </div>    
        

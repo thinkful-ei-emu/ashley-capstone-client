@@ -20,14 +20,15 @@ class Login extends React.Component {
         user_name: e.target["username"].value,
         password: e.target["password"].value,
       }
-  
+      console.log(user)
+      this.props.updateUser(user.user_name)
       AuthApiService.postLogin({
       user
      })
-       .then(res => {
+       .then(res => {  
+        TokenService.getAuthToken();                
          e.target["username"].value = ''
-          e.target["password"].value = ''  
-          TokenService.getAuthToken();        
+          e.target["password"].value = ''               
           this.props.history.push("/gallery/:galleryId")
         })
          .catch(res => {

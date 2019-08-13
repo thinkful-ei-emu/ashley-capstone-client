@@ -1,11 +1,12 @@
 import React from 'react'
+import './navLanding.css'
 
 
 export default function NavLanding (){
 
   return (
-    <div>
-      NavigationTest
+    <div className="nav-landing-page">
+    
     </div>
   )
 

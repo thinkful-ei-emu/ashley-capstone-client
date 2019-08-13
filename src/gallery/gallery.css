@@ -5,33 +5,36 @@
 .name {  
   color: black;
   display: inline-block; 
-  font-size: 20px;
-  margin: 0 10px 8px auto;
+  font-size: 22px;
+  margin: 0px 0px 8px auto;
   /* width: 100%; */
-  /* padding: 10px 50px; */
+  /* padding: 10px 5px; */
   text-decoration: none; 
+ 
 }
 
 .count {
-  margin: 0 10px 0;
+  margin: 0 20px 0;
   
 }
 
 .gallery-name {
  display: flex;
- justify-content: flex-start;
- /* background-color: #1d2227; */
- margin: 0 0 8px auto;
+ flex-direction: column;
+ justify-content: center;
+ align-content: center;
+  
+ border-bottom: 2px solid black;
+ margin: 0 0 8px 0;
  padding: 15px 20px; 
- overflow: auto;  
- width: 100%;
+ overflow: auto; 
+
  
 }
 
 .delete {
-  align-self: flex-end; 
+  /* align-self: flex-end;  */
   margin: 0 0 8px auto;
   
   
 }
-

@@ -5,28 +5,33 @@
 .studio { 
  
   text-align: center;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-
- 
+  max-height: 110vh;
+  
 }
+
+
+/* 
+.flex-container{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-content: flex-start;
+ 
+
+} */
 
 .fas.fa-paint-brush {
   font-size: 30px;
 }
 
-/* main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
 .saved-canvas {
   border: black solid 3px;
   margin: 2% auto;
   text-align: center;
+ 
 }
 .loaded-canvas {
   border: black solid 3px;
@@ -35,8 +40,9 @@
 }
 
 .color-picker-container {
-  margin: 3% 2% 1%;
+  margin: 1% 2% 1%;
   text-align: center;
+  align-self: flex-start;
 }
 
 .add-button {

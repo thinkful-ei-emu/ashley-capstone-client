@@ -1,6 +1,6 @@
 import React from 'react'
-import Cuid from 'cuid'
 import ArtisteApiService from '../services/artisteApiService';
+import './addGallery.css'
 
 class AddGallery extends React.Component {
   
@@ -27,16 +27,16 @@ class AddGallery extends React.Component {
   render(){
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Gallery Name:
-          <input
+        <form id= "gallery-form" onSubmit={this.handleSubmit}>
+        <label className="gallery-label">
+          Gallery Name:        
+        </label><br></br>
+        <input
             type="text"
             name="gallery-name"
-            id="gallery-name-input"
+            id="gallery-name-input"            
             required
           />
-        </label>
         <button type="submit">Add Gallery</button>
         </form>
       </div>

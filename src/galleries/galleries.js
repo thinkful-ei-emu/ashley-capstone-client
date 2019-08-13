@@ -39,7 +39,7 @@ class Galleries extends React.Component {
  
   render(){
     const {galleries, artwork} = this.props
-
+    TokenService.getAuthToken();  
     return (
       <div className="gallery-page">
        <div>
@@ -56,10 +56,16 @@ class Galleries extends React.Component {
         </ul>
       
         <div className="buttons-container">
-        <button type="button" onClick={this.goBack}>Back</button>
-        <button type="button" onClick={this.goToAddGallery}>Add Gallery</button>
-        <button type="button" onClick={this.goToStudio}>Studio</button><br></br>
-        <button onClick={this.Logout}>Logout</button>        
+          <div className="top-buttons">
+          <button type="button" className="button back" onClick={this.goBack}>Back</button>
+          <button type="button" className="button add-gallery" onClick={this.goToAddGallery}>Add Gallery</button>
+          <button type="button" className="button studio"onClick={this.goToStudio}>Studio</button>
+          </div>
+          <div className="logout-container">
+          <button type="button" className="button logout"onClick={this.Logout}>Logout</button>        
+          </div>
+       
+        
         </div>        
       </div>
       

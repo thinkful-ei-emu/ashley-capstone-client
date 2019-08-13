@@ -19,9 +19,8 @@ import NavLanding from './navLanding/navLanding'
 
 class App extends React.Component {
   state = {
-    artwork: [],
-    // color: '',
-    // brushSize: 10,
+    artwork: [],    
+    currentUser: "",
     galleries: [],
     ratings: []
   };
@@ -36,31 +35,22 @@ class App extends React.Component {
   });
   }
 
-  
+  updateUser = (userName) => {  
+    console.log('update user', userName) 
+    this.setState({
+      currentUser: userName
+    })
+  }
 
   addArt = (artpiece) => {
-    console.log('addart ran')
     this.setState({
       artwork: [...this.state.artwork, artpiece]      
     })   
     
   }
 
-  // updateColor = (color) => {
-  //   console.log('updateColor ran')
-  //   this.setState({
-  //     color: color,     
-  //   })   
-  // }
 
-  // updateBrushSize = (brushSize) => {
-  //   this.setState({
-  //     brushSize: brushSize,
-  //   })
-  // }
-
-  addGallery = (gallery) => {
-    console.log('addGallery ran')
+  addGallery = (gallery) => {    
     this.setState({
       galleries: [...this.state.galleries, gallery]      
     })     
@@ -87,7 +77,7 @@ class App extends React.Component {
   const {artwork, galleries} = this.state; 
   return (
     <>
-    {[ "/studio", "/artpiece/:artpieceId", "/gallery/:galleryId"].map(path => (
+    {[ "/studio", "/add-gallery", "/artpiece/:artpieceId", "/gallery/:galleryId"].map(path => (
       <PrivateRoute exact key={path} path={path} render={routeProps =>{
         const{galleryId} = routeProps.match.params;        
         return(
@@ -95,10 +85,8 @@ class App extends React.Component {
         )
       } } />
     ))}
-    <>
-    <PrivateRoute exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
-    </>
-    {/* <PublicOnlyRoute exact path="/" component = {NavLanding} /> */}
+   
+    <PublicOnlyRoute exact path={["/", "/login", "/register"]} render = {routeProps=> <NavLanding {...routeProps}/>} />
     </>
   )
  }
@@ -107,18 +95,29 @@ class App extends React.Component {
 
  
  renderMainRoutes(){
-  const {artwork, color, brushSize, galleries} = this.state; 
+  const {artwork, galleries, currentUser} = this.state; 
   return (
     <>
     <>
-    <PublicOnlyRoute exact  path={["/", "/login", "/register"]} component ={LandingPage}/>   
-    <PublicOnlyRoute exact path="/login" component = {Login} />
-    <PublicOnlyRoute exact path="/register" component = {Register} />
+    <PublicOnlyRoute exact  path={["/", "/login", "/register"]} render ={routeProps => {
+      return (
+        <LandingPage {...routeProps}/>
+      )
+    }}/>   
+    <PublicOnlyRoute exact path="/login" render = {routeProps => {
+      return(
+        <Login {...routeProps} updateUser={this.updateUser}/>
+      )
+    }} />
+    <PublicOnlyRoute exact path="/register" render ={routeProps => {
+      return (
+        <Register {...routeProps}/>
+      )
+    }} />
   
-   
-
-
-   
+  <>
+    <PrivateRoute exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
+    </>
     </>
     <>
     {["/gallery/:galleryId"].map(path => (
@@ -126,7 +125,7 @@ class App extends React.Component {
         const {galleryId} = routeProps.match.params;        
         const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
         return(
-          <ArtworkListPage artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
+          <ArtworkListPage currentUser={currentUser} artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
 
         )        
       } } />
@@ -159,17 +158,15 @@ class App extends React.Component {
   render(){
 
     return (
-      <div className="App">         
-         
+      <div className="App">        
+    
          <nav className="App_nav" role="navigation">                   
          {this.renderNavRoutes()} 
-         </nav>
-         <header className="App__header">
-        
+         </nav>  
+         <header className="App_header">        
          <h1 className="parent-header"><span><i className="fas fa-palette"></i></span>L'Artiste</h1>
-           </header>
-         <main className="App__main">      
-        
+           </header>       
+         <main className="App__main">
           {this.renderMainRoutes()} 
       
          

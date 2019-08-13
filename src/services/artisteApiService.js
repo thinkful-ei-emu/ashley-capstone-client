@@ -3,15 +3,16 @@ import TokenService from './tokenService';
 
 const ArtisteApiService = {
   getGalAndArt() {
+    TokenService.getAuthToken();   
     return Promise.all([
       fetch(`${config.API_ENDPOINT}/galleries`, {
-        method: 'GET',
+        // method: 'GET',
         headers: {          
           'authorization': `bearer ${TokenService.getAuthToken()}`
         },
       }),
       fetch(`${config.API_ENDPOINT}/artwork`, {
-        method: 'GET',
+        // method: 'GET',
         headers: {          
           'authorization': `bearer ${TokenService.getAuthToken()}`
         },

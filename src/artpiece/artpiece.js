@@ -13,7 +13,7 @@ class Artpiece extends React.Component {
     ArtisteApiService.deleteArtpiece(this.props.id)
     .then(() => {
       this.props.deleteArtpiece(this.props.id);
-      this.props.history.push("/");
+      this.props.history.goBack();
      })
      .catch(error => {
        console.error({error})
@@ -42,16 +42,17 @@ class Artpiece extends React.Component {
             </span>
           </div>
         </div>  
-        <button className="delete-button" onClick={this.handleDelete}>Remove</button>
+      
         {/* <div className='artpiece-artist-container'>
           <div className='artpiece-artist'>
-            Placeholder: ArtistName(username)
+           Artist:
             {' '}
             <span className='artist'>
-             add artist(username)
+             {this.props.user_name}
             </span>
           </div>
-        </div>           */}
+        </div> */}
+        <button className="delete-button" onClick={this.handleDelete}>Remove</button>          
         {/* <div className='artpiece-rating-container'>
           <div className='artpiece-rating'>
             Rating: 

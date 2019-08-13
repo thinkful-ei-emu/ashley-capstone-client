@@ -95,13 +95,13 @@ class Studio extends React.Component {
     
     return (
       <div className="studio">      
-        <header className="studio-header">
+      
            <h1>L'Studio</h1>
-           </header> 
+        
            <main>
            <form id="studio-form"onSubmit={this.handleSubmit}>
-          
-            <div className="color-picker-container">
+          <div className="flex-container">
+          <div className="color-picker-container">
              <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
             </div> 
             <div className="brush-size-container">
@@ -122,6 +122,8 @@ class Studio extends React.Component {
             </select>
               </div>
           
+          </div>
+           
          
           <CanvasDraw  brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
                    

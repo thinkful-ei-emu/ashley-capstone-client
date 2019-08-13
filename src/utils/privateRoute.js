@@ -4,8 +4,7 @@ import TokenService from '../services/tokenService'
 
 export default function PrivateRoute({ render, ...props }) {
   const Render = render
-  console.log(props)
-  console.log(render)
+ 
   return (
     <Route
       {...props}

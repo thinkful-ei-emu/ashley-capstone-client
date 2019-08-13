@@ -6,15 +6,13 @@ class ArtworkListPage extends React.Component {
   
 
   render(){
-    const {artwork} = this.props
-        
+    const {artwork, currentUser} = this.props
+        console.log(this.props.currentUser)
 
     return (
       <div className="artwork-page">
-       
-       <header className="artwork-header">
-           <h1>La Galerie d'Art</h1>
-           </header> 
+            
+           <h1>La Galerie d'Art</h1>       
         
        <ul className="artwork-list">         
           {artwork.map(artpiece => 
@@ -23,7 +21,7 @@ class ArtworkListPage extends React.Component {
           id={artpiece.id} 
           title={artpiece.title} 
           uploaded={artpiece.uploaded}
-         
+          user_name = {currentUser}         
           deleteArtpiece={this.props.deleteArtpiece}
           history={this.props.history}
           />

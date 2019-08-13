@@ -42,7 +42,7 @@ class Galleries extends React.Component {
 
     return (
       <div className="gallery-page">
-       <nav>
+       <div>
         <ul className="gallery-list">
          {galleries.map((gallery, index) => 
           <li key={gallery.id} className="gallery-list-names" >
@@ -61,7 +61,7 @@ class Galleries extends React.Component {
         <button type="button" onClick={this.goToStudio}>Studio</button><br></br>
         <button onClick={this.Logout}>Logout</button>        
         </div>        
-      </nav>
+      </div>
       
        
     

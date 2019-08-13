@@ -16,7 +16,7 @@ class ArtworkListPage extends React.Component {
            <h1>La Galerie d'Art</h1>
            </header> 
         
-       <ul>         
+       <ul className="artwork-list">         
           {artwork.map(artpiece => 
           <li key={artpiece.id}> 
           <Artpiece 

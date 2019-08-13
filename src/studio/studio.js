@@ -105,7 +105,7 @@ class Studio extends React.Component {
              <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
             </div> 
             <div className="brush-size-container">
-              <label className="brush-label"><i class="fas fa-paint-brush"></i></label>
+              <label className="brush-label"><i className="fas fa-paint-brush"></i></label>
               <input onChange={this.adjustBrushSize} defaultValue={"10"} type="range" name="brush-size" min="1" max="100"></input>
             </div>
           <div className="title-container">

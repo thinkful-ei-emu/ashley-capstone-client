@@ -2,8 +2,7 @@
   box-sizing: border-box;
   
 }
-.name {
-  
+.name {  
   color: black;
   display: inline-block; 
   font-size: 20px;

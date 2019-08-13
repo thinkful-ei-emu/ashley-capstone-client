@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import AuthApiService from '../services/authApiService'
+import TokenService from '../services/tokenService'
 
 
 
@@ -25,7 +26,8 @@ class Login extends React.Component {
      })
        .then(res => {
          e.target["username"].value = ''
-          e.target["password"].value = ''          
+          e.target["password"].value = ''  
+          TokenService.getAuthToken();        
           this.props.history.push("/gallery/:galleryId")
         })
          .catch(res => {

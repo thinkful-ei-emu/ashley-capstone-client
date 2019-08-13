@@ -98,7 +98,7 @@ class App extends React.Component {
     <>
     <PrivateRoute exact  path="/add-gallery" render={ routeProps => <AddGallery addGallery={this.addGallery} {...routeProps}/>} />
     </>
-    <PublicOnlyRoute exact path="/" component = {NavLanding} />
+    {/* <PublicOnlyRoute exact path="/" component = {NavLanding} /> */}
     </>
   )
  }
@@ -166,11 +166,13 @@ class App extends React.Component {
          </nav>
          <header className="App__header">
         
-         <h1 className="parent-header">   <span><i class="fas fa-palette"></i></span>L'Artiste</h1>
+         <h1 className="parent-header"><span><i className="fas fa-palette"></i></span>L'Artiste</h1>
            </header>
-         <main className="App__main">        
+         <main className="App__main">      
+        
+          {this.renderMainRoutes()} 
+      
          
-         {this.renderMainRoutes()}
          </main>
              
     

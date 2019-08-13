@@ -13,6 +13,7 @@ class AddGallery extends React.Component {
     .then(gallery => {
       this.props.addGallery(gallery)
       this.props.history.push('/gallery/:galleryId')
+    
     })
     .catch(error => {
       console.error({error})

@@ -11,7 +11,7 @@
   height: 130vh;
   text-align: center;
   padding: 0;
-  background-color: rgba(238, 189, 126, 0.815);  
+  background-color: rgb(195, 158, 110);
   border-right: black solid 2px;
 }
 
@@ -30,7 +30,7 @@
   border-radius: 10%;
   border: 1px solid gray;
   font-size: 20px;
-
+  align-self: center;
 }
 
 .top-buttons {
@@ -52,9 +52,9 @@
     list-style-type: none;
     margin: 0px 0px 0;
     height: 30vh;
-    text-align: center;
+    /* text-align: center; */
     padding: 0;
-    background-color: rgba(238, 189, 126, 0.815);  
+    /* background-color: rgba(238, 189, 126, 0.815);   */
     border: solid 1px black;
     overflow: auto;
    
@@ -77,6 +77,10 @@
   .button {
     font-size: 20px;  
   
+  }
+
+  .button.studio {
+    display: none;
   }
  
 }

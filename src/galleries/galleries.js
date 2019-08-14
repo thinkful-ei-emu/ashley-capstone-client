@@ -59,7 +59,7 @@ class Galleries extends React.Component {
           <div className="top-buttons">
           <button type="button" className="button back" onClick={this.goBack}>Back</button>
           <button type="button" className="button add-gallery" onClick={this.goToAddGallery}>Add Gallery</button>
-          <button type="button" className="button studio"onClick={this.goToStudio}>Studio</button>
+          <button type="button" className="button studio" onClick={this.goToStudio}>Studio</button>
           </div>
           <div className="logout-container">
           <button type="button" className="button logout"onClick={this.Logout}>Logout</button>        

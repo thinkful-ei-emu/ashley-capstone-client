@@ -1,4 +1,8 @@
 
+* {
+  box-sizing: border-box;
+  
+}
 .App {
   margin: 0 auto;
   padding: 0;  
@@ -9,7 +13,7 @@
   grid-template-rows: 150px 1fr; 
   height: 130vh;
   text-align: center;
-  
+  background-color:  rgb(44, 41, 41);
 }
 
 
@@ -26,27 +30,60 @@
   color: #bdbdbd;
   font-family: Georgia, serif;
   grid-area: header;    
-  text-shadow: 2px 1px 2px black;
-  font-size: 35px;
+  font-size: 2em; 
   text-align: center;
-  min-height: 100vh;
- 
+  min-height: 100vh; 
+  background-color: rgb(44, 41, 41);
   
 } 
+
+.fas.fa-palette{
+color: rgb(151, 106, 22);
+padding-right: 20px;
+}
 .parent-header {  
-  font-size: 65px;
-  color: gray;
-  text-shadow: 2px 1px 2px black; 
-  
+  font-size: 2em;  
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 3px 5px 5px black; 
+}
+
+.letter {
+  padding: 0 2px;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+.purple {
+  color: purple;
 }
 
 .App__main {  
   grid-area: main; 
   /* overflow: auto;   */
-  background-color: #efefef;    
+  background-color: white;    
   width: 100%; 
   text-align: center;
   height: 130vh;
+ 
 }
 
 ul{
@@ -64,46 +101,27 @@ ul{
     min-height: 100vh;
     text-align: center;
     
+    
   }
   
   
   .App__nav {
-    background-color: #aaa;
+    /* background-color: #aaa;
     color: #fff;
-    grid-area: sidebar; 
-    height: calc(110vh - 150px);
+    grid-area: sidebar;  */
+    height: calc(110vh - 130px);
     overflow: auto; 
-    
+    border:green solid 3px;
     
   }
-   .App_header {
-    color: #bdbdbd;
-    font-family: Georgia, serif;
-    grid-area: header;    
-    text-shadow: 2px 1px 2px black;
-    font-size: 35px;
-    text-align: center;
-    min-height: 50vh;
+   .App_header {  
+    min-height: 20vh;
     
   } 
-  .parent-header {  
-    font-size: 65px;
-    color: gray;
-    text-shadow: 2px 1px 2px black;  
-  }
+ 
   
-  .App__main {  
-    grid-area: main; 
-    /* overflow: auto;   */
-    background-color: #efefef;    
-    width: 100%; 
-    text-align: center;
-    height: 110vh;
-  }
+ 
   
-  ul{
-    list-style: none;
-  }
   
   
   

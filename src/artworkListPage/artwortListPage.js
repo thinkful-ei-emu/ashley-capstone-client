@@ -12,7 +12,7 @@ class ArtworkListPage extends React.Component {
     return (
       <div className="artwork-page">
             
-           <h1>La Galerie d'Art</h1>       
+           <h2>La Galerie d'Art</h2>       
         
        <ul className="artwork-list">         
           {artwork.map(artpiece => 

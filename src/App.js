@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Studio from './studio/studio'
-import {Route, Link, NavLink} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Galleries from './galleries/galleries'
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage'
-import {addArtworkToGalleries, findArtpiece, findGallery} from './artwork-helpers/artwork-helpers'
+import {addArtworkToGalleries, findArtpiece} from './artwork-helpers/artwork-helpers'
 import ArtpieceMainPage from './artpieceMainPage/artpieceMainPage';
 import ArtisteApiService from './services/artisteApiService'
 import LandingPage from './landingPage/landingPage'
@@ -21,8 +21,7 @@ import TokenService from './services/tokenService'
 class App extends React.Component {
   state = {
     artwork: [],     
-    galleries: [],
-    // ratings: []
+    galleries: [],    
   };
 
   componentDidMount () {
@@ -44,16 +43,12 @@ class App extends React.Component {
     }
   
   }
-
  
   addArt = (artpiece) => {
     this.setState({
       artwork: [...this.state.artwork, artpiece]      
-    })   
-    
+    })    
   }
-
-//create handler to clear state
 
   clearData = () => {
     this.setState({
@@ -99,10 +94,6 @@ class App extends React.Component {
     </>
   )
  }
- 
-
-
- 
  renderMainRoutes(){
   const {artwork, galleries, currentUser} = this.state; 
   return (
@@ -154,21 +145,13 @@ class App extends React.Component {
     
     
   )
- }
- 
-  
-  
-
-  
-
-  
+ }  
 
 
   render(){
 
     return (
-      <div className="App">        
-    
+      <div className="App">   
          <nav className="App_nav" role="navigation">                   
          {this.renderNavRoutes()} 
          </nav>  
@@ -186,10 +169,7 @@ class App extends React.Component {
            </header>       
          <main className="App__main">
           {this.renderMainRoutes()} 
-      
-         
-         </main>
-             
+         </main>    
     
       </div>
     );

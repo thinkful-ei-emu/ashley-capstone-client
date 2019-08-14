@@ -3,11 +3,10 @@ import ArtisteApiService from '../services/artisteApiService';
 import './addGallery.css'
 
 class AddGallery extends React.Component {
-  
+ 
   handleSubmit = e => {
     e.preventDefault();
-    
-    
+        
     const gallery = {name: e.target["gallery-name"].value}
     ArtisteApiService.postGallery(gallery)
     .then(gallery => {

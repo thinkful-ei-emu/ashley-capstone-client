@@ -1,23 +1,13 @@
 
 import React from 'react'
 import Artpiece from '../artpiece/artpiece'
-import CanvasDraw from 'react-canvas-draw'
+
 import '../artpieceMainPage/artpieceMainPage.css'
 
 class ArtpieceMainPage extends React.Component {
-//  handleRating = e => {
-//    e.preventDefault();
-//    const {artpiece} = this.props;
-//    const ratedArtpiece = {...artpiece, rating: [...artpiece.rating, e.target["rating-select"].value]};
-//    console.log(ratedArtpiece);
-//   //  console.log('orig object', artpiece)    
-//    this.props.updateRating(ratedArtpiece)
-//    e.target["rating-select"].value = null
-//  }
 
   render() {
-   const {artpiece, deleteArtpiece} = this.props; 
-    
+   const {artpiece, deleteArtpiece} = this.props;     
 
     if (!artpiece) {      
       return <p>loading</p>;

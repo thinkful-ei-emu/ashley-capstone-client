@@ -1,6 +1,7 @@
 #reg-password, #reg-email, #reg-first-name, #reg-last-name, #reg-username {
   margin: 5px;
   padding: 1px;
+  font-size: 1.5em;
 }
 
 .error-message{
@@ -9,4 +10,5 @@
 
 .reg-label {
   margin-right: 5px;
+  font-size: 1.5em;
 }

@@ -12,15 +12,13 @@ import ArtisteApiService from '../services/artisteApiService'
 
 class Studio extends React.Component {  
   
-  state = {
-    // images: []
+  state = {    
     color: '',
     brushSize: 10,
   }
    
   handleSubmit = e => {
-    e.preventDefault();
-    //userid is temp, should update to get id from users table
+    e.preventDefault();   
     let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();
     const artpiece = {title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, artpiece_image: canvas}
     ArtisteApiService.postArtpiece(artpiece)
@@ -36,8 +34,7 @@ class Studio extends React.Component {
     this.saveableCanvas.clear();
   }
 
-  onChangeComplete = (color, event) => {
-    console.log(color);
+  onChangeComplete = (color, event) => {   
     this.updateColor(color.hex);
   }
 
@@ -70,23 +67,6 @@ class Studio extends React.Component {
   }
 
 
-  savePNG = e => {
-   
-    // let artData = document.querySelectorAll("#studio-form canvas").toDataURL()
-    let canvases = [...document.querySelectorAll("#studio-form canvas:nth-of-type(2)")]
-    
-    this.setState({
-      images: canvases.map(canvas => canvas.toDataURL())
-    })
-
-
-    // let artData = this.saveableCanvas.getSaveData()
-    // console.log('save length:', artData.length)
-    // console.log('png length:', png.length)
-   
-  }
- 
-
 
   render() {    
     const {color, brushSize} = this.state; 
@@ -114,8 +94,7 @@ class Studio extends React.Component {
           </div>
           <div className="gallery-select-container">          
           <label className="select-label">Save to Gallery:</label><br></br>
-            <select id="art-gallery-select" name="art-gallery-id">
-            {/* <option name="select-default" value={null}>Select a Gallery</option> */}
+            <select id="art-gallery-select" name="art-gallery-id">           
             {galleries.map(gallery => (
               <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
             ))}
@@ -131,20 +110,10 @@ class Studio extends React.Component {
             <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>
             <button  className="tool-button" type="button" onClick={this.undoArt}>Undo</button>            
             </div><br></br>
-            {/* <button type="button" onClick={this.savePNG}>Save As PNG</button> */}
+           
             <button className="add-button" type="submit">Add Artwork</button>       
         </form> 
-             </main>          
-        
-        {/* <ul>
-          {
-            this.state.images.map((image, index) => <li key={index}><img src={image}></img></li>)
-          }
-
-        </ul> */}
-
-
-      
+             </main> 
       </div>
     );
   }

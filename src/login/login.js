@@ -45,11 +45,11 @@ class Login extends React.Component {
           {error && <p className='red'>{error}</p>}
         </div>
             <div>            
-              <label htmlFor="username">Username:</label>
+              <label className="login-user" htmlFor="username">Username:</label>
               <input type="text" name='username' id='username' placeholder='e.g. picaso123'/>
             </div>
             <div>
-              <label htmlFor="password">Password:</label>
+              <label className="login-password" htmlFor="password">Password:</label>
               <input type="password" name='password' id='password' />
             </div>
             <button type='submit'>Login</button>

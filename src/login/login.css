@@ -1,8 +1,13 @@
 #password, #username {
   margin: 8px;
   padding: 1px;
+  font-size: 1.5em;
 }
 
 .error-message{
   color: red;
+}
+
+.login-user, .login-password {
+  font-size: 1.5em;
 }

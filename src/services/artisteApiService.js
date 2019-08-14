@@ -3,19 +3,14 @@ import TokenService from './tokenService';
 
 const ArtisteApiService = {
   getGalAndArt() {    
-    //condition to return empty array if don't have authtoken
-      console.log('log auth', TokenService.hasAuthToken())
-      
-    
+       
       return Promise.all([
-        fetch(`${config.API_ENDPOINT}/galleries`, {
-          // method: 'GET',
+        fetch(`${config.API_ENDPOINT}/galleries`, {          
           headers: {          
             'authorization': `bearer ${TokenService.getAuthToken()}`
           },
         }),
-        fetch(`${config.API_ENDPOINT}/artwork`, {
-          // method: 'GET',
+        fetch(`${config.API_ENDPOINT}/artwork`, {          
           headers: {          
             'authorization': `bearer ${TokenService.getAuthToken()}`
           },
@@ -28,10 +23,7 @@ const ArtisteApiService = {
                 return artworkRes.json().then(e => Promise.reject(e));
   
             return Promise.all([galleriesRes.json(), artworkRes.json()]);
-        })
-       
-  
-    
+        })    
   },
 
   postGallery(gallery) {
@@ -78,8 +70,7 @@ const ArtisteApiService = {
     })
       .then(res => {
         if (!res.ok)          
-          return res.json().then(e => Promise.reject(e))       
-        // return res.json()
+          return res.json().then(e => Promise.reject(e))        
       })
 
   },
@@ -95,13 +86,9 @@ const ArtisteApiService = {
     })
       .then(res => {
         if (!res.ok)          
-          return res.json().then(e => Promise.reject(e))       
-        // return res.json()
+          return res.json().then(e => Promise.reject(e))         
       })
-
-  },
-
-      
+  },     
   
   
 }

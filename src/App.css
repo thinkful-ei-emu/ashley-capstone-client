@@ -13,7 +13,7 @@
   grid-template-rows: 150px 1fr; 
   height: 130vh;
   text-align: center;
-  background-color:  rgb(44, 41, 41);
+  background-color:rgb(44, 41, 41);
 }
 
 
@@ -34,6 +34,7 @@
   text-align: center;
   min-height: 100vh; 
   background-color: rgb(44, 41, 41);
+  
   
 } 
 
@@ -65,20 +66,19 @@ padding-right: 20px;
 }
 
 .green {
-  color: green;
+  color: rgb(8, 170, 8);
 }
 
 .blue {
-  color: blue;
+  color: rgb(55, 133, 236);
 }
 
 .purple {
-  color: purple;
+  color: rgb(158, 10, 158);
 }
 
 .App__main {  
-  grid-area: main; 
-  /* overflow: auto;   */
+  grid-area: main;   
   background-color: white;    
   width: 100%; 
   text-align: center;
@@ -105,10 +105,7 @@ ul{
   }
   
   
-  .App__nav {
-    /* background-color: #aaa;
-    color: #fff;
-    grid-area: sidebar;  */
+  .App__nav { 
     height: calc(110vh - 130px);
     overflow: auto; 
     border:green solid 3px;

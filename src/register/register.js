@@ -2,9 +2,6 @@ import React from 'react'
 import './register.css'
 import AuthApiService from '../services/authApiService'
 
-
-
-
 class Register extends React.Component {
   
   state = { error: null }
@@ -54,7 +51,7 @@ class Register extends React.Component {
               <input type="text" name='last-name' id='reg-last-name' placeholder='e.g. Smith' />
             </div>
             <div>
-              <label htmlFor="email">Email:</label>
+              <label className="reg-label" htmlFor="email">Email:</label>
               <input type="text" name='email' id='reg-email' placeholder='e.g. bobSmith@gmail.com'/>
             </div>
             <div>

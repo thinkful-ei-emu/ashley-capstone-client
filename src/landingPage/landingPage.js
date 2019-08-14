@@ -6,9 +6,7 @@ import LandingImage from '../screenshot-drawing-app.png'
 
 
 
-class LandingPage extends React.Component {
-  
-  
+class LandingPage extends React.Component { 
    
   render(){
 
@@ -31,9 +29,9 @@ class LandingPage extends React.Component {
       <img className="landing-image" src={LandingImage} alt="art sample"/>          
         </div>
       <h2>Join the fun!</h2>
-        <NavLink to="/register">Register</NavLink>  
+        <NavLink to="/register" className="link-size">Register</NavLink>  
         <h2>Already a member?</h2>
-        <NavLink to="/login">Login</NavLink>    
+        <NavLink to="/login" className="link-size">Login</NavLink>    
       </section>
     
       </div>          

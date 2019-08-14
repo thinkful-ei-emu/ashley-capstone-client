@@ -12,8 +12,7 @@ const TokenService = {
   getAuthToken() {
     return window.sessionStorage.getItem(config.TOKEN_KEY)
   },
-  clearAuthToken() {
-    console.info('clearing the auth token')
+  clearAuthToken() {   
     window.sessionStorage.removeItem(config.TOKEN_KEY)
   },
   hasAuthToken() {

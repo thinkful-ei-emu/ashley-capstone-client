@@ -1,7 +1,5 @@
 import config from '../config'
 import TokenService from './tokenService'
-import IdleService from './idleService'
-
 
 const AuthApiService = {
   postUser(user) {
@@ -45,33 +43,7 @@ const AuthApiService = {
         return res
       })  
   },
-  // postRefreshToken(user) {
-  //   return fetch(`${config.API_ENDPOINT}/auth/refresh`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'authorization': `bearer ${TokenService.getAuthToken()}`,
-  //     },     
-  //   })
-  //   .then(res => 
-  //     (!res.ok)
-  //     ? res.json().then(e => Promise.reject(e)) : res.json())
-  //     .then(res => {
-  //       /*
-  //         similar logic to whenever a user logs in, the only differences are:
-  //         - we don't need to queue the idle timers again as the user is already logged in.
-  //         - we'll catch the error here as this refresh is happening behind the scenes
-  //       */
-  //       TokenService.saveAuthToken(res.authToken)
-  //       TokenService.queueCallbackBeforeExpiry(() => {
-  //         AuthApiService.postRefreshToken()
-  //       })
-  //       return res
-  //     })
-  //     .catch(err => {
-  //       console.log('refresh token request error')
-  //       console.error(err)
-  //     })
-  // }
+ 
 }
 
 export default AuthApiService

@@ -1,19 +1,15 @@
-
-
-
 export const addArtworkToGalleries = (artwork = [], galleryId) => (
   (!galleryId) 
   ? artwork 
-  : artwork.filter(artpiece => artpiece.gallery_id == galleryId)
+  : artwork.filter(artpiece => artpiece.gallery_id === Number(galleryId))
 )
  
-
 export const findArtpiece = (artwork=[], artpieceId) => (
-  artwork.find(artpiece => artpiece.id == artpieceId)
+  artwork.find(artpiece => artpiece.id === Number(artpieceId))
 )
 
 export const findGallery = (galleries=[], galleryId) => (
-  galleries.find(gallery => gallery.id == galleryId)
+  galleries.find(gallery => gallery.id === Number(galleryId))
 )
 export const artpieceAverageRating = (rating=[]) => {
   let total = 0;

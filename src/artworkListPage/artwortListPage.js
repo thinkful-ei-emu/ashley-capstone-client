@@ -10,10 +10,8 @@ class ArtworkListPage extends React.Component {
         
 
     return (
-      <div className="artwork-page">
-            
-           <h2>La Galerie d'Art</h2>       
-        
+      <div className="artwork-page">            
+           <h2>La Galerie d'Art</h2>        
        <ul className="artwork-list">         
           {artwork.map(artpiece => 
           <li key={artpiece.id}> 

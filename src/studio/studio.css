@@ -7,8 +7,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  max-height: 110vh;
-  
+  max-height: 110vh;  
 }
 
 .studio-header{
@@ -18,7 +17,6 @@
 .fas.fa-paint-brush {
   font-size: 30px;
 }
-
 
 .saved-canvas {  border: black solid 3px;
   margin: 1% auto;

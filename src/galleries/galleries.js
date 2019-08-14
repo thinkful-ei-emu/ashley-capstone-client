@@ -2,13 +2,13 @@ import React from 'react'
 import './galleries.css'
 import Gallery from '../gallery/gallery'
 import TokenService from '../services/tokenService'
-import Studio from '../studio/studio'
+
 
 
 
 class Galleries extends React.Component {
 
-
+  state = {error: null}
   goBack = e => {
     e.preventDefault();
     console.log(this.props.location.pathname)
@@ -22,7 +22,15 @@ class Galleries extends React.Component {
 
   goToAddGallery = e => {
     e.preventDefault();
-    this.props.history.push("/add-gallery")
+    if(this.props.galleries.length >= 7){
+      console.error('too many galleries')
+      this.setState({ error: "Your galleries are full. Please delete a gallery to add a new one." })
+    }
+    else{
+      this.setState({error: null})
+      this.props.history.push("/add-gallery")
+    }
+    
   }
   
   goToStudio = e => {
@@ -38,13 +46,14 @@ class Galleries extends React.Component {
   
  
   render(){
+    const {error} = this.state;
     const {galleries, artwork} = this.props;
     TokenService.getAuthToken();  
     return (
       <div className="gallery-page">
        <div>
         <ul className="gallery-list">
-         {galleries.map((gallery, index) => 
+         {galleries.map(gallery => 
           <li key={gallery.id} className="gallery-list-names" >
             <Gallery  id={gallery.id} 
             name={gallery.name} 
@@ -54,7 +63,9 @@ class Galleries extends React.Component {
              </li>
              )} 
         </ul>
-      
+        <div className="error-message-gallery" role='alert'>
+          {error && <p id='error-message'>{error}</p>}
+        </div>
         <div className="buttons-container">
           <div className="top-buttons">
           <button type="button" className="button back" onClick={this.goBack}>Back</button>

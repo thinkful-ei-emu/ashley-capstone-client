@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {format} from 'date-fns'
 import './artpiece.css'
-import {artpieceAverageRating} from '../artwork-helpers/artwork-helpers'
 import ArtisteApiService from '../services/artisteApiService'
 
 class Artpiece extends React.Component {
@@ -35,7 +34,7 @@ class Artpiece extends React.Component {
        
         <div className='artpiece-uploaded-container'>
           <div className='artpiece-uploaded'>
-            Uploaded
+            Uploaded:
             {' '}
             <span className='uploaded'>
             {format(this.props.uploaded, 'MMM, Do, YYYY')}
@@ -43,32 +42,9 @@ class Artpiece extends React.Component {
           </div>
         </div>  
       
-        {/* <div className='artpiece-artist-container'>
-          <div className='artpiece-artist'>
-           Artist:
-            {' '}
-            <span className='artist'>
-             {this.props.user_name}
-            </span>
-          </div>
-        </div> */}
+       
         <button className="delete-button" onClick={this.handleDelete}>Remove</button>          
-        {/* <div className='artpiece-rating-container'>
-          <div className='artpiece-rating'>
-            Rating: 
-            {' '}
-            <span className='rating-val'>
-            {artpieceAverageRating(this.props.rating)}            
-            </span>          
-          </div>
-          <div className='artpiece-reviews'>
-          <span className='review-total'>
-            Reviews:
-            {' '}
-             {this.props.rating.length > 0 ? this.props.rating.length : 0}
-            </span>
-          </div>
-        </div>  */}
+        
         
       </div>
 

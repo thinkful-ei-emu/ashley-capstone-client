@@ -1,5 +1,5 @@
 export default {
   API_ENDPOINT: 'http://localhost:8000/api',
-  TOKEN_KEY: process.env.REACT_APP_TOKEN_KEY || 'test-auth'  
+  TOKEN_KEY: process.env.TOKEN_KEY || 'auth'  
 }
 

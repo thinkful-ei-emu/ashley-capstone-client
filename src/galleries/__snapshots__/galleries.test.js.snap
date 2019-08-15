@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Galleries component renders a link in ul for each gallery in array 1`] = `
+<ul
+  className="gallery-list"
+>
+  <li
+    className="gallery-list-names"
+    key="1"
+  >
+    <Gallery
+      artwork={
+        Array [
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": 1,
+            "id": 1,
+            "title": "Dogs",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "2",
+            "title": "Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "3",
+            "title": "Silly Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+        ]
+      }
+      id="1"
+      name="Dogs"
+    />
+  </li>
+  <li
+    className="gallery-list-names"
+    key="2"
+  >
+    <Gallery
+      artwork={
+        Array [
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": 1,
+            "id": 1,
+            "title": "Dogs",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "2",
+            "title": "Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "3",
+            "title": "Silly Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+        ]
+      }
+      id="2"
+      name="Cats"
+    />
+  </li>
+  <li
+    className="gallery-list-names"
+    key="3"
+  >
+    <Gallery
+      artwork={
+        Array [
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": 1,
+            "id": 1,
+            "title": "Dogs",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "2",
+            "title": "Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+          Object {
+            "artpiece_image": "placeholder.png",
+            "gallery_id": "2",
+            "id": "3",
+            "title": "Silly Cats",
+            "uploaded": "2019-01-03T00:00:00.000Z",
+          },
+        ]
+      }
+      id="3"
+      name="Birds"
+    />
+  </li>
+</ul>
+`;

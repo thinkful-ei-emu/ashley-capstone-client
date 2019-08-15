@@ -52,6 +52,7 @@ class Galleries extends React.Component {
       <div className="gallery-page">
        <div>
         <ul className="gallery-list">
+         
          {galleries.map(gallery => 
           <li key={gallery.id} className="gallery-list-names" >
             <Gallery  id={gallery.id} 

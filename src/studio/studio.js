@@ -61,8 +61,7 @@ class Studio extends React.Component {
     this.updateBrushSize(parseInt(e.target.value, 10)); 
   
   }
-  updateColor = (color) => {
-    console.log('updateColor ran')
+  updateColor = (color) => {    
     this.setState({
       color: color,     
     })   

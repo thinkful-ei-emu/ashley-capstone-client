@@ -38,31 +38,34 @@ class Register extends React.Component {
     return (
       <div className="register-page">    
       <section>          
-        <form className='signup-form' onSubmit={this.handleSubmit}>
+        <form role="form" className='signup-form' onSubmit={this.handleSubmit}>
         <div className="error-message" role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-            <div>
-              <label className="reg-label" htmlFor="first-name">First name:</label>
-              <input  type="text" name='first-name' id='reg-first-name' placeholder='e.g. Bob'/>
-            </div>
-            <div>
+        <fieldset className="register-fieldset">
+          <div>        
+            <label className="reg-label" htmlFor="first-name">First name:</label>
+              <input  type="text" name='first-name' id='first-name' placeholder='e.g. Bob'/>
+          </div>
+           <div>
               <label className="reg-label" htmlFor="last-name">Last name:</label>
-              <input type="text" name='last-name' id='reg-last-name' placeholder='e.g. Smith' />
-            </div>
-            <div>
+              <input type="text" name='last-name' id='last-name' placeholder='e.g. Smith' />
+           </div>
+          <div>
               <label className="reg-label" htmlFor="email">Email:</label>
-              <input type="text" name='email' id='reg-email' placeholder='e.g. bobSmith@gmail.com'/>
-            </div>
-            <div>
+              <input type="text" name='email' id='email' placeholder='e.g. bobSmith@gmail.com'/>
+          </div>
+          <div>           
               <label className="reg-label" htmlFor="username">Username:</label>
-              <input type="text" name='username' id='reg-username' placeholder='e.g. picaso123'/>
-            </div>
-            <div>
+              <input type="text" name='username' id='username' placeholder='e.g. picaso123'/>
+          </div>
+          <div>            
               <label className="reg-label" htmlFor="password">Password:</label>
-              <input type="password" name='password' id='reg-password' />
-            </div>
-            <button type='submit'>Sign Up</button>
+              <input type="password" name='password' id='password' />
+          </div>      
+                <button className="reg-button" type='submit'>Sign Up</button>
+        </fieldset>   
+          
         </form> 
         </section>
                

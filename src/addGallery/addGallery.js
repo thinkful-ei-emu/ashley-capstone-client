@@ -26,8 +26,8 @@ class AddGallery extends React.Component {
   render(){
     return (
       <div>
-        <form id= "gallery-form" onSubmit={this.handleSubmit}>
-        <label className="gallery-label">
+        <form role="form" id= "gallery-form" onSubmit={this.handleSubmit}>
+        <label className="gallery-label" htmlFor="gallery-name-input">
           Gallery Name:        
         </label><br></br>
         <input

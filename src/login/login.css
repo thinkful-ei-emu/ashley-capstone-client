@@ -2,6 +2,7 @@
   margin: 8px;
   padding: 1px;
   font-size: 1.5em;
+  border: black solid 1px;
 }
 
 .error-message{
@@ -10,4 +11,14 @@
 
 .login-user, .login-password {
   font-size: 1.5em;
+}
+
+.login-button {
+  font-size: 1.5em;
+}
+
+.login-fieldset {
+ text-align: center;
+  margin: 0px;
+  border: none; 
 }

@@ -84,27 +84,26 @@ class Studio extends React.Component {
     return (
       <div className="studio">      
       
-           <h1 className="studio-header">L'Studio</h1>
-        
-           <main>
+           <h1 className="studio-header">L'Studio</h1>        
+          
               <div className="error-message-studio" role='alert'>
           {error && <p id='error-studio-message'>{error}</p>}
           </div>
-           <form id="studio-form"onSubmit={this.handleSubmit}>
+           <form role="form" id="studio-form"onSubmit={this.handleSubmit}>
           <div className="flex-container">
           <div className="color-picker-container">
              <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
             </div> 
             <div className="brush-size-container">
-              <label className="brush-label"><i className="fas fa-paint-brush"></i></label>
-              <input onChange={this.adjustBrushSize} defaultValue={"10"} type="range" name="brush-size" min="1" max="100"></input>
+              <label htmlFor="brush-size" aria-label="brush-size" className="brush-label"><i className="fas fa-paint-brush"></i></label>
+              <input id="brush-size" type="range" name="brush-size" onChange={this.adjustBrushSize} defaultValue={"10"}  min="1" max="100"></input>
             </div>
           <div className="title-container">
-          <label className="title-label">Title:</label>
+          <label htmlFor="art-title-input" className="title-label">Title:</label>
             <input type="text" name="art-title" id="art-title-input" required />
           </div>
           <div className="gallery-select-container">          
-          <label className="select-label">Save to Gallery:</label><br></br>
+          <label htmlFor="art-gallery-select" className="select-label">Save to Gallery:</label><br></br>
             <select id="art-gallery-select" name="art-gallery-id" >           
             {galleries.map(gallery => (
               <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
@@ -120,11 +119,10 @@ class Studio extends React.Component {
           <div>
             <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>
             <button  className="tool-button" type="button" onClick={this.undoArt}>Undo</button>            
-            </div><br></br>
-           
+            </div><br></br>           
             <button className="add-button" type="submit">Add Artwork</button>       
         </form> 
-             </main> 
+            
       </div>
     );
   }

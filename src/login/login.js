@@ -40,10 +40,11 @@ class Login extends React.Component {
     return (
       <div className="login-page">  
         <section>      
-        <form className='login-form' onSubmit={this.handleSubmit}>
+        <form role="form" className='login-form' onSubmit={this.handleSubmit}>
         <div className="error-message" role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
+        <fieldset className= "login-fieldset">       
             <div>            
               <label className="login-user" htmlFor="username">Username:</label>
               <input type="text" name='username' id='username' placeholder='e.g. picaso123'/>
@@ -52,7 +53,8 @@ class Login extends React.Component {
               <label className="login-password" htmlFor="password">Password:</label>
               <input type="password" name='password' id='password' />
             </div>
-            <button type='submit'>Login</button>
+            <button className="login-button" type='submit'>Login</button>
+       </fieldset>
         </form> 
         </section>
               

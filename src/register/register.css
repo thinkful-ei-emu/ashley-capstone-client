@@ -1,7 +1,8 @@
-#reg-password, #reg-email, #reg-first-name, #reg-last-name, #reg-username {
+#password, #email, #first-name, #last-name, #username {
   margin: 5px;
   padding: 1px;
   font-size: 1.5em;
+  border: black solid 1px;
 }
 
 .error-message{
@@ -12,3 +13,14 @@
   margin-right: 5px;
   font-size: 1.5em;
 }
+
+.register-fieldset {
+ text-align: center;
+  margin: 0px;
+  border: none; 
+}
+
+.reg-button {
+  font-size: 1.5em;
+}
+

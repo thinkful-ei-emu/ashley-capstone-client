@@ -17,7 +17,7 @@ export default function NavLanding (){
     <div className="sidebar-img-container"> 
     <img className="mountain sidebar-img" src={MountainsImage} alt="landscape"></img>
     </div>  
-    <div className="sidebar-img-container bug-container">    
+    <div className="sidebar-img-container">    
     <img className="bug sidebar-img" src={Bug} alt="bug"></img>
       </div>
     <div className="green-box box"></div>

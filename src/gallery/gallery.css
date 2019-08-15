@@ -38,7 +38,7 @@
 
 .delete {  
   margin: 0 0 8px auto; 
-  font-size: 20px;
+  font-size: 1em;
 }
 
 @media screen and (max-width: 850px) {
@@ -62,6 +62,7 @@
     justify-self: flex-end; 
     margin: 0 0 8px auto; 
     font-size: 20px;
+    
   }
  
 }

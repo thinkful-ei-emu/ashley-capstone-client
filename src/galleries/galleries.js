@@ -22,8 +22,7 @@ class Galleries extends React.Component {
 
   goToAddGallery = e => {
     e.preventDefault();
-    if(this.props.galleries.length >= 7){
-      console.error('too many galleries')
+    if(this.props.galleries.length >= 7){     
       this.setState({ error: "Your galleries are full. Please delete a gallery to add a new one." })
     }
     else{

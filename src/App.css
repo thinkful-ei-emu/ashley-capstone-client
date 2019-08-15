@@ -22,10 +22,9 @@
   color: #fff;
   grid-area: sidebar; 
   height: calc(110vh - 150px);
-  overflow: auto; 
-  
-  
+  overflow: auto;   
 }
+
  .App_header {
   color: #bdbdbd;
   font-family: Georgia, serif;
@@ -74,7 +73,7 @@ padding-right: 20px;
 }
 
 .purple {
-  color: rgb(158, 10, 158);
+  color: rgb(180, 72, 251);
 }
 
 .App__main {  
@@ -82,13 +81,14 @@ padding-right: 20px;
   background-color: white;    
   width: 100%; 
   text-align: center;
-  height: 130vh;
+  min-height: 130vh;
  
 }
 
 ul{
   list-style: none;
 }
+
 @media screen and (max-width: 850px) {
   .App {
     margin: 0 auto;
@@ -104,19 +104,18 @@ ul{
     
   }
   
-  
-  .App__nav { 
-    height: calc(110vh - 130px);
-    overflow: auto; 
-    border:green solid 3px;
-    
-  }
-   .App_header {  
+  .App_header {  
     min-height: 20vh;
     
   } 
  
   
+@media screen and (max-width: 400px) {
+  .App_header {  
+    min-height: 40vh;
+        
+  } 
+}
  
   
   

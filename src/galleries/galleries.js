@@ -47,7 +47,7 @@ class Galleries extends React.Component {
   render(){
     const {error} = this.state;
     const {galleries, artwork} = this.props;
-    TokenService.getAuthToken();  
+     
     return (
       <div className="gallery-page">
        <div>

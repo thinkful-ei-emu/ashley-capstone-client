@@ -46,6 +46,10 @@ font-size: 25px;
   font-size: 25px;
 }
 
+#error-studio-message {
+  color: red;
+}
+
 .gallery-select-container, .title-container, .brush-size-container{
   padding: .3%;
 }

@@ -56,12 +56,6 @@
   background-color: pink;
 }
 
-/* .gallery-list-names {
-  background-color: pink;
-} */
-
-
-
 
 .button {
   padding: 12px 5px;
@@ -92,10 +86,8 @@
   .gallery-page {  
     list-style-type: none;
     margin: 0px 0px 0;
-    height: 30vh;
-    /* text-align: center; */
-    padding: 0;
-    /* background-color: rgba(238, 189, 126, 0.815);   */
+    height: 30vh;    
+    padding: 0;    
     border: solid 1px black;
     overflow: auto;
    

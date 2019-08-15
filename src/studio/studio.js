@@ -15,23 +15,31 @@ class Studio extends React.Component {
   state = {    
     color: '',
     brushSize: 10,
+    error: null,
   }
    
   handleSubmit = e => {
-    e.preventDefault();   
+    e.preventDefault(); 
+    this.setState({error: null})  
     let canvas = document.querySelector("#studio-form canvas:nth-of-type(2)").toDataURL();
     const artpiece = {title: e.target["art-title"].value, gallery_id: e.target["art-gallery-id"].value, artpiece_image: canvas}
-    ArtisteApiService.postArtpiece(artpiece)
-    .then(artpiece => {
-      this.props.addArt(artpiece)
-    })
-    .catch(error => {
-      console.error({error})
-    })    
-   
-    e.target["art-title"].value='';
-    e.target["art-gallery-select"].value= null;
-    this.saveableCanvas.clear();
+     if(this.props.galleries.length === 0){      
+      this.setState({ error: "Your galleries are empty. Please create a gallery to add your artwork." })
+    }
+    else{
+      ArtisteApiService.postArtpiece(artpiece)
+      .then(artpiece => {
+        this.props.addArt(artpiece)
+      })
+      .catch(error => {
+        console.error({error})      
+      })    
+    
+      e.target["art-title"].value='';
+      e.target["art-gallery-select"].value= null;
+      this.saveableCanvas.clear();
+      }
+    
   }
 
   onChangeComplete = (color, event) => {   
@@ -69,7 +77,7 @@ class Studio extends React.Component {
 
 
   render() {    
-    const {color, brushSize} = this.state; 
+    const {color, brushSize, error} = this.state; 
     const {galleries} = this.props;
     
     
@@ -79,6 +87,9 @@ class Studio extends React.Component {
            <h1 className="studio-header">L'Studio</h1>
         
            <main>
+              <div className="error-message-studio" role='alert'>
+          {error && <p id='error-studio-message'>{error}</p>}
+          </div>
            <form id="studio-form"onSubmit={this.handleSubmit}>
           <div className="flex-container">
           <div className="color-picker-container">
@@ -94,7 +105,7 @@ class Studio extends React.Component {
           </div>
           <div className="gallery-select-container">          
           <label className="select-label">Save to Gallery:</label><br></br>
-            <select id="art-gallery-select" name="art-gallery-id">           
+            <select id="art-gallery-select" name="art-gallery-id" >           
             {galleries.map(gallery => (
               <option key={gallery.id} value={gallery.id}>{gallery.name}</option>
             ))}

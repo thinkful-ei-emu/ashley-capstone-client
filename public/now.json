@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "ashleys-artiste-client",
+  "name": "artiste-client",  
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

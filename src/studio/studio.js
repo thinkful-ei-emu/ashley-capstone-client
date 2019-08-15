@@ -89,7 +89,7 @@ class Studio extends React.Component {
               <div className="error-message-studio" role='alert'>
           {error && <p id='error-studio-message'>{error}</p>}
           </div>
-           <form role="form" id="studio-form"onSubmit={this.handleSubmit}>
+           <form id="studio-form"onSubmit={this.handleSubmit}>
           <div className="flex-container">
           <div className="color-picker-container">
              <CompactPicker  onChangeComplete={this.onChangeComplete}/>         
@@ -114,7 +114,7 @@ class Studio extends React.Component {
           </div>
            
          
-          <CanvasDraw  brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
+          <CanvasDraw name="drawing-canvas" aria-label="drawing canvas" brushRadius={brushSize} canvasWidth= {750} canvasHeight= {550} className="saved-canvas" hideGrid={true} lazyRadius={12} brushColor={color} ref={canvasDraw => (this.saveableCanvas = canvasDraw)}/>   
                    
           <div>
             <button className="tool-button" type="button" onClick={this.clearArt}>Clear</button>

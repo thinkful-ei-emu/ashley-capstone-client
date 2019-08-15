@@ -40,7 +40,7 @@ class Login extends React.Component {
     return (
       <div className="login-page">  
         <section>      
-        <form role="form" className='login-form' onSubmit={this.handleSubmit}>
+        <form className='login-form' onSubmit={this.handleSubmit}>
         <div className="error-message" role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>

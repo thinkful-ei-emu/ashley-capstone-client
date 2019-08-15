@@ -38,7 +38,7 @@ class Register extends React.Component {
     return (
       <div className="register-page">    
       <section>          
-        <form role="form" className='signup-form' onSubmit={this.handleSubmit}>
+        <form className='signup-form' onSubmit={this.handleSubmit}>
         <div className="error-message" role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>

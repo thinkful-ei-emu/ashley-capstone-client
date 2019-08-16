@@ -1,6 +1,6 @@
 .landing-page{
   margin: 0 200px; 
-  padding-top: 30px;   
+  padding-top: 30px; 
 }
 
 p{
@@ -22,7 +22,8 @@ h2{
 }
 
 .bottom-section {
-  margin: 50px 0px 20px;
+  margin: 50px 20px;
+  
 }
 
 .link-size {

@@ -110,7 +110,7 @@ ul{
   } 
  
   
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 320px) {
   .App_header {  
     min-height: 40vh;
         

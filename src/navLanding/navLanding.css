@@ -56,21 +56,19 @@
   .nav-landing-page {  
     display: flex;
     flex-direction: row;
-    min-height: 35vh;     
+    min-height: 0vh; 
+    height: 30vh;    
     justify-content: center;
     align-content: center;
      margin: 60px auto;
-     overflow: scroll; 
+     overflow: visible;
+    
   }
 
   .box{
     display: none;
   }
-  .sidebar-img-container{  
-     /* width: 40vh; */
-     }
-
- 
+  
   .sidebar-img{
     width: 100%;
     height: auto;
@@ -98,7 +96,7 @@
 
 @media screen and (max-width: 320px) {
   .nav-landing-page {  
-    margin: 70px 0px 0;
-    overflow: scroll;  
+    margin: 90px 0px 0;
+    overflow: visible;  
   } 
 }

@@ -14,7 +14,7 @@ Front-end: React, HTML, CSS, Javascript, testing with Enzyme
 
 API: Node.js, Express, PostgreSQL, Knex, testing with Mocha
 
-### API Documentation
+## API Documentation
 
 Link to API Github Repo: [https://github.com/thinkful-ei-emu/ashley-capstone-server] (https://github.com/thinkful-ei-emu/ashley-capstone-server)
 

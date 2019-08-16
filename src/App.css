@@ -98,24 +98,24 @@ ul{
     grid-template-areas:  "header" "sidbar" "main" ;
     grid-template-columns:  1fr; 
     grid-template-rows: 130px 1fr; 
-    min-height: 100vh;
-    text-align: center;
-    
+    min-height: 0vh;
+    height: 0px;
+    text-align: center;  
     
   }
   
   .App_header {  
-    min-height: 20vh;
+    min-height: 40vh;
     
   } 
  
   
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
   .App_header {  
     min-height: 40vh;
         
   } 
-}
+} */
  
   
   

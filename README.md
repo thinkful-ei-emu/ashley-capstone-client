@@ -10,35 +10,35 @@ L'Artiste allows for you to create your own artwork and display it in a gallery 
 
 ### Landing Page
 
-![Landing Page](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-landing.png)
+![Landing Page](./capstone-readme-screenshot-landing.png?raw=true)
 
 ### Login
 
-![Login](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-login.png)
+![Login](./capstone-readme-screenshot-login.png?raw=true)
 
 ### Register
 
-![Register](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-register.png)
+![Register](./capstone-readme-screenshot-register.png?raw=true)
 
 ### Profile
 
-![Profile](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-galleries.png)
+![Profile](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-galleries.png?raw=true)
 
 ### Navigate to a Gallery to View a List of Your Artwork
 
-![Artwork List](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-artworklist.png)
+![Artwork List](./capstone-readme-screenshot-artworklist.png?raw=true)
 
 ### Add Up to 8 Galleries
 
-![Add a Gallery](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-add-gallery.png)
+![Add a Gallery](./capstone-readme-screenshot-add-gallery.png?raw=true)
 
 ### View Your Artwork
 
-![View Artwork](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-artMain.png)
+![View Artwork](./capstone-readme-screenshot-artMain.png?raw=true)
 
 ### Create Artwork at the Studio
 
-![Studio](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-studio.png)
+![Studio](./capstone-readme-screenshot-studio.png?raw=true)
 
 
 ## Technologies

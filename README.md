@@ -46,6 +46,10 @@ Front-end: React, HTML, CSS, Javascript, testing with Enzyme
 
 API: Node.js, Express, PostgreSQL, Knex, testing with Mocha
 
+Canvas Library: [React Canvas Draw](https://www.npmjs.com/package/react-canvas-draw)
+
+Color Palette Library: [React Color](https://casesandberg.github.io/react-color/)
+
 ## API Documentation
 
 Link to API Github Repo: [https://github.com/thinkful-ei-emu/ashley-capstone-server] (https://github.com/thinkful-ei-emu/ashley-capstone-server)

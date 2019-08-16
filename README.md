@@ -4,9 +4,41 @@ Live App: [https://ashleys-artiste-client.now.sh/](https://ashleys-artiste-clien
 
 ## Summary
 
-L'Artiste allows for you to create your own artwork and display it in a gallery of your choice. Just like an artist who runs an exhibition, you can create a variety of art pieces that are organized by galleries of different themes! You can view a list of your galleries by navigating to your profile page
+L'Artiste allows for you to create your own artwork and display it in a gallery of your choice. Just like an artist who runs an exhibition, you can create a variety of art pieces that are organized by galleries of different themes! You can view a list of your galleries by navigating to your profile page.
 
 ## Screenshots
+
+### Landing Page
+
+![Landing Page](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-landing.png)
+
+### Login
+
+![Login](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-login.png)
+
+### Register
+
+![Register](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-register.png)
+
+### Profile
+
+![Profile](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-galleries.png)
+
+### Navigate to a Gallery to View a List of Your Artwork
+
+![Artwork List](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-artworklist.png)
+
+### Add Up to 8 Galleries
+
+![Add a Gallery](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-add-gallery.png)
+
+### View Your Artwork
+
+![View Artwork](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-artMain.png)
+
+### Create Artwork at the Studio
+
+![Studio](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-studio.png)
 
 
 ## Technologies

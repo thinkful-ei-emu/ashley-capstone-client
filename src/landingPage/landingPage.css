@@ -30,6 +30,10 @@ h2{
   font-size: 1.4em;
 }
 
+.sample-user {
+  font-size: 1.4em;
+}
+
 
 @media screen and (max-width: 850px) {
   .landing-page {  

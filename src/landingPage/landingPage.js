@@ -29,6 +29,11 @@ class LandingPage extends React.Component {
       <img className="landing-image" src={LandingImage} alt="art sample"/>          
         </div>
       <h2>Join the fun!</h2>
+        <p>You can try out L'Artiste before making an account by logging on to our public account: </p>
+        <ul className="sample-user">
+          <li>Username: Public123</li>
+          <li>Password: Password321!</li>
+        </ul>
         <NavLink to="/register" className="link-size">Register</NavLink>  
         <h2>Already a member?</h2>
         <NavLink to="/login" className="link-size">Login</NavLink>    

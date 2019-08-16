@@ -11,7 +11,7 @@
   grid-template-areas:  "sidebar header" "sidebar main" ;
   grid-template-columns: .5fr 2.3fr; 
   grid-template-rows: 150px 1fr; 
-  height: 130vh;
+  min-height: 130vh;
   text-align: center;
   background-color:rgb(44, 41, 41);
 }

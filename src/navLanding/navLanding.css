@@ -60,7 +60,7 @@
     height: 30vh;    
     justify-content: center;
     align-content: center;
-     margin: 200px auto;
+     margin: 180px auto;
      overflow: visible;
      padding: 90px 0px 200px;
     
@@ -91,7 +91,7 @@
 }
 @media screen and (max-width: 450px) {
   .nav-landing-page {  
-     margin: 90px auto;
+     margin: 70px auto;
     
   } 
 }

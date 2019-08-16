@@ -96,9 +96,9 @@
     list-style-type: none;
     margin: 120px 0px 0;
     min-height: 30vh;    
-    padding: 0;    
+    padding-top: 20vh;    
     border: solid 1px black;
-    overflow: scroll;
+    overflow: visible;
    
   }
   .gallery-list {
@@ -140,7 +140,15 @@
   
 @media screen and (max-width: 400px) {
   .gallery-page {  
-    margin: 90px 0px 0;  
+    margin: 120px 0px 0; 
+    padding-top: 7vh; 
+  } 
+}
+
+@media screen and (max-width: 320px) {
+  .gallery-page {  
+    margin: 90px 0px 0;
+    padding-top: 5vh;  
   } 
 }
 

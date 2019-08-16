@@ -22,7 +22,7 @@ L'Artiste allows for you to create your own artwork and display it in a gallery 
 
 ### Profile
 
-![Profile](C:\Users\Ashley\projects\Capstone\ashley-capstone-client\capstone-readme-screenshot-galleries.png?raw=true)
+![Profile](./capstone-readme-screenshot-galleries.png?raw=true)
 
 ### Navigate to a Gallery to View a List of Your Artwork
 

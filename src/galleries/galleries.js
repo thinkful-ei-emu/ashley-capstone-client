@@ -34,7 +34,14 @@ class Galleries extends React.Component {
   
   goToStudio = e => {
     e.preventDefault();
-    this.props.history.push("/studio")
+    if(this.props.galleries.length === 0){
+      this.setState({error: "You must create a gallery first to display your artwork"})
+    }
+    else{
+      this.setState({error: null})
+      this.props.history.push("/studio")
+    }
+   
   }
   Logout = e => {
     e.preventDefault();

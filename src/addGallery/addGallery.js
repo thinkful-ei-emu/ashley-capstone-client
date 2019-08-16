@@ -11,7 +11,7 @@ class AddGallery extends React.Component {
     ArtisteApiService.postGallery(gallery)
     .then(gallery => {
       this.props.addGallery(gallery)
-      this.props.history.push('/gallery/:galleryId')
+      this.props.history.goBack()
     
     })
     .catch(error => {

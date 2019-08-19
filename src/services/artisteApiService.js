@@ -5,6 +5,11 @@ const ArtisteApiService = {
   getGalAndArt() {    
        
       return Promise.all([
+        fetch(`${config.API_ENDPOINT}/public/galleries`, {          
+          headers: {          
+            'authorization': `bearer ${TokenService.getAuthToken()}`
+          },
+        }),
         fetch(`${config.API_ENDPOINT}/galleries`, {          
           headers: {          
             'authorization': `bearer ${TokenService.getAuthToken()}`
@@ -16,13 +21,15 @@ const ArtisteApiService = {
           },
         })
     ])
-        .then(([galleriesRes, artworkRes]) => {
+        .then(([publicGalleriesRes, galleriesRes, artworkRes]) => {
+            if (!publicGalleriesRes.ok)
+                return publicGalleriesRes.json().then(e => Promise.reject(e));
             if (!galleriesRes.ok)
                 return galleriesRes.json().then(e => Promise.reject(e));
             if (!artworkRes.ok)
                 return artworkRes.json().then(e => Promise.reject(e));
   
-            return Promise.all([galleriesRes.json(), artworkRes.json()]);
+            return Promise.all([publicGalleriesRes.json(), galleriesRes.json(), artworkRes.json()]);
         })    
   },
 

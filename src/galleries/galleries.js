@@ -12,12 +12,13 @@ class Galleries extends React.Component {
   goBack = e => {
     e.preventDefault();
     console.log(this.props.location.pathname)
-    if(this.props.location.pathname === "/gallery/:galleryId"){
-      this.props.history.push('/gallery/:galleryId')
-    }
-    else {
-      this.props.history.goBack()
-    }   
+    this.props.history.goBack()
+    // if(this.props.location.pathname === "/gallery/:galleryId"){
+    //   this.props.history.push('/gallery/:galleryId')
+    // }
+    // else {
+    //   this.props.history.goBack()
+    // }   
   }
 
   goToAddGallery = e => {

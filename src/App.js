@@ -4,7 +4,7 @@ import Studio from './studio/studio'
 import {Route} from 'react-router-dom'
 import Galleries from './galleries/galleries'
 import AddGallery from './addGallery/addGallery';
-import ArtworkListPage from './artworkListPage/artwortListPage'
+import ArtworkListPage from './artworkListPage/artworkListPage'
 import {addArtworkToGalleries, findArtpiece} from './artwork-helpers/artwork-helpers'
 import ArtpieceMainPage from './artpieceMainPage/artpieceMainPage';
 import ArtisteApiService from './services/artisteApiService'
@@ -15,27 +15,32 @@ import PrivateRoute from './utils/privateRoute'
 import PublicOnlyRoute from './utils/publicOnlyRoute'
 import NavLanding from './navLanding/navLanding'
 import TokenService from './services/tokenService'
+import HomePage from './homepage/homepage'
+import PublicArtwork from './publicArtwork/publicArtwork'
+import PublicArtPieceMain from './publicArtpieceMain/publicArtpieceMain'
+import NavButtons from './navigation/navButtons'
 
 
 
 class App extends React.Component {
   state = {
     artwork: [],     
-    galleries: [],    
+    galleries: [],
+    publicGalleries: [],    
   };
 
   componentDidMount () {
      this.fetchAllData();
   }
 
-  fetchAllData = (galleries=[], artwork=[]) => {
+  fetchAllData = (publicGalleries=[], galleries=[], artwork=[]) => {
     if(TokenService.hasAuthToken() === false){
-      return {galleries, artwork}
+      return {publicGalleries, galleries, artwork}
     }
     else{
       ArtisteApiService.getGalAndArt()
-      .then(([galleries, artwork]) => {
-        this.setState({galleries, artwork});
+      .then(([publicGalleries, galleries, artwork]) => {
+        this.setState({publicGalleries, galleries, artwork});
     })
     .catch(error => {
         console.error({error});
@@ -89,13 +94,17 @@ class App extends React.Component {
         )
       } } />
     ))}
-   
+     <Route exact path={["/public/gallery/:galleryId", "public/artpiece/:artpieceId"]} render = {routeProps => {
+      return(
+        <NavButtons clearData={this.clearData}  {...routeProps} />
+      )
+    }} />
     <PublicOnlyRoute exact path={["/", "/login", "/register"]} render = {routeProps=> <NavLanding {...routeProps}/>} />
     </>
   )
  }
  renderMainRoutes(){
-  const {artwork, galleries, currentUser} = this.state; 
+  const {artwork, galleries, publicGalleries} = this.state; 
   return (
     <>
     <>
@@ -120,18 +129,45 @@ class App extends React.Component {
     </>
     </>
     <>
+  {[ "/public/gallery/:galleryId"].map(path => (
+    <Route exact key={path} path={path} render={routeProps =>{
+      const{galleryId} = routeProps.match.params;        
+      return(
+        <HomePage galleryId={galleryId} clearData={this.clearData}  publicGalleries={publicGalleries} artwork={artwork} {...routeProps}/>
+      )
+    } } />
+  ))}
+    {
+
+  }
+      {["/public/gallery/:galleryId"].map(path => (
+      <Route exact key={path} path={path} render={routeProps => {
+        const {galleryId} = routeProps.match.params;        
+        const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
+        return(
+          <PublicArtwork artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
+
+        )        
+      } } />
+    ))}
+      <Route path="/public/artpiece/:artpieceId" render={routeProps => {
+          const {artpieceId} = routeProps.match.params;
+          const artpiece = findArtpiece(artwork, artpieceId);
+           return <PublicArtPieceMain {...routeProps} artpiece={artpiece} deleteArtpiece={this.deleteArtpiece} artpieceId={artpieceId} />;
+            }} />  
+
     {["/gallery/:galleryId"].map(path => (
       <PrivateRoute exact key={path} path={path} render={routeProps => {
         const {galleryId} = routeProps.match.params;        
         const artworkToGalleries = addArtworkToGalleries(artwork, galleryId);
         return(
-          <ArtworkListPage currentUser={currentUser} artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
+          <ArtworkListPage artwork={artworkToGalleries} deleteArtpiece={this.deleteArtpiece} {...routeProps}/>
 
         )        
       } } />
     ))}
       <Route
-        path="/artpiece/:artpieceId"
+       exact path="/artpiece/:artpieceId"
          render={routeProps => {
           const {artpieceId} = routeProps.match.params;
           const artpiece = findArtpiece(artwork, artpieceId);

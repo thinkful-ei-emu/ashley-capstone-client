@@ -22,7 +22,8 @@
   color: #fff;
   grid-area: sidebar; 
   height: calc(110vh - 150px);
-  overflow: auto;   
+  overflow: auto;
+     
 }
 
  .App_header {

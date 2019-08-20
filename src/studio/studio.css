@@ -1,16 +1,13 @@
 * {
   box-sizing: border-box;
-  
 }
-.studio { 
- 
+.studio {
   text-align: center;
   display: flex;
   flex-direction: column;
- 
 }
 
-.studio-header{
+.studio-header {
   font-size: 40px;
 }
 
@@ -18,14 +15,14 @@
   font-size: 30px;
 }
 
-.saved-canvas {  border: black solid 3px;
+.saved-canvas {
+  border: black solid 3px;
   margin: 1% auto;
   text-align: center;
- 
 }
 .loaded-canvas {
   border: black solid 3px;
-  margin:  0 auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -36,13 +33,13 @@
 }
 
 .add-button {
-padding: 1% 2%;
-margin: 1%;
-font-size: 25px;
+  padding: 1% 2%;
+  margin: 1%;
+  font-size: 25px;
 }
 
 .tool-button {
-  padding: .5% .75%; 
+  padding: 0.5% 0.75%;
   font-size: 25px;
 }
 
@@ -50,27 +47,29 @@ font-size: 25px;
   color: red;
 }
 
-.gallery-select-container, .title-container, .brush-size-container{
-  padding: .3%;
+.gallery-select-container,
+.title-container,
+.brush-size-container {
+  padding: 0.3%;
 }
-.brush-size-container{
+.brush-size-container {
   margin-bottom: 2px;
 }
-.select-label{
+.select-label {
   font-size: 25px;
 }
-#art-gallery-select{
+#art-gallery-select {
   margin: 1%;
   font-size: 25px;
 }
-#art-title-input{
+#art-title-input {
   font-size: 25px;
   border: black 1px solid;
 }
 
-.brush-label, .title-label {
+.brush-label,
+.title-label {
   padding: 0 1%;
-
 }
 .title-label {
   font-size: 25px;

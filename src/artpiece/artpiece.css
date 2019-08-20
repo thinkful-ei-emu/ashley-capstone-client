@@ -15,3 +15,13 @@
 .artpiece-uploaded {
   font-size: 1.3em;
 }
+
+@media screen and (max-width: 500px) {
+  .artpiece-title {
+    font-size: 1.7em;
+  }
+
+  .artpiece-uploaded {
+    font-size: 1.2em;
+  }
+}

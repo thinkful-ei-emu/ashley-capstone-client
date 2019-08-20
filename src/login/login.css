@@ -1,15 +1,17 @@
-#password, #username {
+#password,
+#username {
   margin: 8px;
   padding: 1px;
   font-size: 1.5em;
   border: black solid 1px;
 }
 
-.error-message{
+.error-message {
   color: red;
 }
 
-.login-user, .login-password {
+.login-user,
+.login-password {
   font-size: 1.5em;
 }
 
@@ -20,7 +22,34 @@
 }
 
 .login-fieldset {
- text-align: center;
+  text-align: center;
   margin: 0px;
-  border: none; 
+  border: none;
+}
+
+@media screen and (max-width: 850px) {
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 320px) {
+  #password,
+  #username {
+    margin: 0px;
+    padding: 1px;
+    font-size: 0.2em;
+    border: black solid 1px;
+  }
+  .login-user,
+  .login-password {
+    font-size: 1em;
+  }
+
+  .login-button {
+    font-size: 1.2em;
+    margin-top: 7px;
+    margin-bottom: 50px;
+  }
 }

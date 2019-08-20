@@ -1,51 +1,46 @@
-
 * {
   box-sizing: border-box;
-  
 }
 .App {
   margin: 0 auto;
-  padding: 0;  
+  padding: 0;
   font-family: Georgia, serif;
-  display: grid;  
-  grid-template-areas:  "sidebar header" "sidebar main" ;
-  grid-template-columns: .5fr 2.3fr; 
-  grid-template-rows: 150px 1fr; 
+  display: grid;
+  grid-template-areas: 'sidebar header' 'sidebar main';
+  grid-template-columns: 0.5fr 2.3fr;
+  grid-template-rows: 150px 1fr;
   min-height: 130vh;
   text-align: center;
-  background-color:rgb(44, 41, 41);
+  background-color: rgb(44, 41, 41);
 }
-
 
 .App__nav {
   background-color: #aaa;
   color: #fff;
-  grid-area: sidebar; 
+  grid-area: sidebar;
   height: calc(110vh - 150px);
-  overflow: auto;   
+  overflow: auto;
 }
 
- .App_header {
+.App_header {
   color: #bdbdbd;
   font-family: Georgia, serif;
-  grid-area: header;    
-  font-size: 2em; 
+  grid-area: header;
+  font-size: 2em;
   text-align: center;
-  min-height: 100vh; 
-  background-color: rgb(44, 41, 41);
-  
-  
-} 
-
-.fas.fa-palette{
-color: rgb(151, 106, 22);
-padding-right: 20px;
+  min-height: 100vh;
+  background-color: rgb(44, 41, 41); 
 }
-.parent-header {  
-  font-size: 2em;  
+
+.fas.fa-palette {
+  color: rgb(151, 106, 22);
+  padding-right: 20px;
+}
+.parent-header {
+  font-size: 2em;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  text-shadow: 3px 5px 5px black; 
+  text-shadow: 3px 5px 5px black;
 }
 
 .letter {
@@ -76,39 +71,38 @@ padding-right: 20px;
   color: rgb(180, 72, 251);
 }
 
-.App__main {  
-  grid-area: main;   
-  background-color: white;    
-  width: 100%; 
+.App__main {
+  grid-area: main;
+  background-color: white;
+  width: 100%;
   text-align: center;
   min-height: 130vh;
- 
 }
 
-ul{
+ul {
   list-style: none;
 }
 
 @media screen and (max-width: 850px) {
   .App {
     margin: 0 auto;
-    padding: 0;  
+    padding: 0;
     font-family: Georgia, serif;
-    display: grid;  
-    grid-template-areas:  "header" "sidbar" "main" ;
-    grid-template-columns:  1fr; 
-    grid-template-rows: 130px 1fr; 
+    display: grid;
+    grid-template-areas: 'header' 'sidbar' 'main';
+    grid-template-columns: 1fr;
+    grid-template-rows: 130px 1fr;
     min-height: 0vh;
     height: 0px;
-    text-align: center;  
-    
+    text-align: center;
+  }
+  .App__main {
+    overflow-x: hidden;
+    width: 100%;   
   }
   
-  .App_header {  
+  .App_header {
     min-height: 40vh;
-    
-  } 
-
+  }
   
 }
-

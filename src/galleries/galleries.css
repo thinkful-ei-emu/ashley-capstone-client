@@ -1,13 +1,8 @@
-
 * {
   box-sizing: border-box;
-  
 }
 
-
-
-
- .gallery-page {
+.gallery-page {
   list-style-type: none;
   margin: 150px 0 0px;
   min-height: 130vh;
@@ -17,45 +12,40 @@
   border-right: black solid 2px;
 }
 
-
 .gallery-list {
-  list-style-type: none; 
+  list-style-type: none;
   margin: 20px 0 20px;
   padding: 0;
-
-
 }
 
-#error-message{
+#error-message {
   font-size: 1.2em;
   color: darkred;
-
 }
 
-.gallery-list-names:nth-of-type(1){
+.gallery-list-names:nth-of-type(1) {
   background-color: red;
 }
-.gallery-list-names:nth-of-type(2){
+.gallery-list-names:nth-of-type(2) {
   background-color: orange;
 }
 
-.gallery-list-names:nth-of-type(3){
+.gallery-list-names:nth-of-type(3) {
   background-color: yellow;
 }
-.gallery-list-names:nth-of-type(4){
-  background-color: rgb(10, 151, 10)
+.gallery-list-names:nth-of-type(4) {
+  background-color: rgb(10, 151, 10);
 }
 
-.gallery-list-names:nth-of-type(5){
+.gallery-list-names:nth-of-type(5) {
   background-color: rgb(80, 160, 251);
 }
-.gallery-list-names:nth-of-type(6){
-  background-color: rgb(221, 40, 221)
+.gallery-list-names:nth-of-type(6) {
+  background-color: rgb(221, 40, 221);
 }
-.gallery-list-names:nth-of-type(7){
+.gallery-list-names:nth-of-type(7) {
   background-color: pink;
 }
-
 
 .button {
   padding: 12px 8px;
@@ -64,91 +54,81 @@
   border: 1px solid gray;
   font-size: 1.2em;
   align-self: center;
- 
 }
-
 
 .top-buttons {
   margin-top: 10px;
   display: flex;
   justify-content: center;
-
 }
-.buttons-container {  
-  display:flex;
+.buttons-container {
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-content: center;
 }
 
 .logout-container {
-  display:flex;
+  display: flex;
   justify-content: center;
   justify-content: center;
   align-content: center;
   padding-top: 5px;
   padding-right: 10px;
- 
 }
 
 @media screen and (max-width: 850px) {
-  .gallery-page {  
+  .gallery-page {
     list-style-type: none;
     margin: 120px 0px 0;
-    min-height: 30vh;    
-    padding-top: 20vh;    
+    min-height: 30vh;
+    padding-top: 20vh;
     border: solid 1px black;
     overflow: visible;
-   
   }
   .gallery-list {
-    list-style-type: none;    
+    list-style-type: none;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
-    align-content: center; 
-    text-align: center;    
-  
-  }
-  
-  .buttons-container {    
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;  
+    align-content: center;
+    text-align: center;
   }
 
-  .logout-container{
-     padding-top: 0px;
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .logout-container {
+    padding-top: 0px;
     padding-right: 0px;
   }
-  .top-buttons{
+  .top-buttons {
     margin-top: 0px;
   }
 
-  
   .button {
-    font-size: 20px;  
-  
+    font-size: 20px;
   }
 
   .button.studio {
     display: none;
   }
- 
 }
-  
+
 @media screen and (max-width: 400px) {
-  .gallery-page {  
-    margin: 120px 0px 0; 
-    padding-top: 7vh; 
-  } 
+  .gallery-page {
+    margin: 120px 0px 0;
+    padding-top: 7vh;
+  }
 }
 
 @media screen and (max-width: 320px) {
-  .gallery-page {  
+  .gallery-page {
     margin: 90px 0px 0;
-    padding-top: 5vh;  
-  } 
+    padding-top: 5vh;
+  }
 }
-

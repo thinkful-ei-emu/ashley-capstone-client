@@ -1,14 +1,13 @@
-#gallery-name-input{
+#gallery-name-input {
   padding: 5px;
   margin: 20px 5px;
 }
 
-.gallery-label{
+.gallery-label {
   font-size: 22px;
   margin: 20px;
 }
 
-#gallery-form{
+#gallery-form {
   padding-top: 50px;
 }
-

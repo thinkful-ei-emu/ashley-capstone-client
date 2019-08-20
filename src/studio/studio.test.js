@@ -1,11 +1,9 @@
 import React from 'react';
+import Studio from './studio';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Galleries from './galleries';
-import ReactDOM from 'react-dom';
-import { MemoryRouter } from 'react-router-dom';
 
-describe(`Galleries component`, () => {
+describe(`Studio component`, () => {
   const props = {
     artwork: [
       {
@@ -46,25 +44,14 @@ describe(`Galleries component`, () => {
     ]
   };
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(
-      <MemoryRouter>
-        <Galleries {...props} />
-      </MemoryRouter>,
-      div
-    );
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
   it('renders empty list', () => {
     //find array of children and look at length
-    const wrapper = shallow(<Galleries galleries={[]} />);
-    expect(wrapper.find('gallery-list').children().length).toEqual(0);
+    const wrapper = shallow(<Studio galleries={[]} />);
+    expect(wrapper.find('art-gallery-select').children().length).toEqual(0);
   });
 
-  it('renders a link in ul for each gallery in array', () => {
-    const ul = shallow(<Galleries {...props} />).find('ul');
-    expect(toJson(ul)).toMatchSnapshot();
+  it('renders a gallery option for each gallery in array', () => {
+    const options = shallow(<Studio {...props} />).find('art-gallery-select');
+    expect(toJson(options)).toMatchSnapshot();
   });
 });

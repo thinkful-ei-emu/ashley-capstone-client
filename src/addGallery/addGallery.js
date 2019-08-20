@@ -1,49 +1,42 @@
-import React from 'react'
+import React from 'react';
 import ArtisteApiService from '../services/artisteApiService';
-import './addGallery.css'
+import './addGallery.css';
 
 class AddGallery extends React.Component {
- 
   handleSubmit = e => {
     e.preventDefault();
-        
-    const gallery = {name: e.target["gallery-name"].value}
+
+    const gallery = { name: e.target['gallery-name'].value };
     ArtisteApiService.postGallery(gallery)
-    .then(gallery => {
-      this.props.addGallery(gallery)
-      this.props.history.goBack()
-    
-    })
-    .catch(error => {
-      console.error({error})
-    })    
-    e.target["gallery-name"].value = ""; 
+      .then(gallery => {
+        this.props.addGallery(gallery);
+        this.props.history.goBack();
+      })
+      .catch(error => {
+        console.error({ error });
+      });
+    e.target['gallery-name'].value = '';
+  };
 
-
-  }
-  
-
-  render(){
+  render() {
     return (
       <div>
-        <form id= "gallery-form" onSubmit={this.handleSubmit}>
-        <label className="gallery-label" htmlFor="gallery-name-input">
-          Gallery Name:        
-        </label><br></br>
-        <input
+        <form id="gallery-form" onSubmit={this.handleSubmit}>
+          <label className="gallery-label" htmlFor="gallery-name-input">
+            Gallery Name:
+          </label>
+          <br />
+          <input
             type="text"
             name="gallery-name"
-            id="gallery-name-input"            
+            id="gallery-name-input"
             required
           />
-        <button type="submit">Add Gallery</button>
+          <button type="submit">Add Gallery</button>
         </form>
       </div>
-
-    )
+    );
   }
-
-  
 }
 
 export default AddGallery;

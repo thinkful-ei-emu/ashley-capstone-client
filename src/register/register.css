@@ -1,11 +1,15 @@
-#password, #email, #first-name, #last-name, #username {
+#password,
+#email,
+#first-name,
+#last-name,
+#username {
   margin: 5px;
   padding: 1px;
   font-size: 1.5em;
   border: black solid 1px;
 }
 
-.error-message{
+.error-message {
   color: red;
 }
 
@@ -15,9 +19,9 @@
 }
 
 .register-fieldset {
- text-align: center;
+  text-align: center;
   margin: 0px;
-  border: none; 
+  border: none;
 }
 
 .reg-button {
@@ -25,4 +29,31 @@
   margin-top: 10px;
   margin-bottom: 50px;
 }
-
+@media screen and (max-width: 850px) {
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 420px) {
+  #password,
+  #email,
+  #first-name,
+  #last-name,
+  #username {
+    margin: 5px 0px;
+    padding: 1px;
+    font-size: 1em;
+    border: black solid 1px;
+  }
+  .reg-label {
+    margin-right: 5px;
+    font-size: 1em;
+  }
+  .reg-button {
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+}

@@ -1,24 +1,19 @@
 .artwork-list {
   list-style: none;
-  margin: 50px 0;
+  margin: 50px auto;
   color: black;
   text-decoration: none;
+  padding: 0 50px;
 }
 
-.artwork-header{
-  
+.artwork-header {
   margin-top: 0px;
 }
 
-.artwork-page{
-  margin: 0;
-  padding: 0;  
+.artwork-page {
+  margin: 0 auto;
+  padding: 0;
   font-family: Georgia, serif;
   text-align: center;
   height: 110px;
-  
-} 
-
-
-
-
+}

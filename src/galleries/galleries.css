@@ -26,6 +26,7 @@
 .gallery-list-names:nth-of-type(1) {
   background-color: red;
 }
+
 .gallery-list-names:nth-of-type(2) {
   background-color: orange;
 }
@@ -33,6 +34,7 @@
 .gallery-list-names:nth-of-type(3) {
   background-color: yellow;
 }
+
 .gallery-list-names:nth-of-type(4) {
   background-color: rgb(10, 151, 10);
 }
@@ -40,9 +42,11 @@
 .gallery-list-names:nth-of-type(5) {
   background-color: rgb(80, 160, 251);
 }
+
 .gallery-list-names:nth-of-type(6) {
   background-color: rgb(221, 40, 221);
 }
+
 .gallery-list-names:nth-of-type(7) {
   background-color: pink;
 }
@@ -61,6 +65,7 @@
   display: flex;
   justify-content: center;
 }
+
 .buttons-container {
   display: flex;
   flex-direction: column;
@@ -94,14 +99,12 @@
     align-content: center;
     text-align: center;
   }
-
   .buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
   }
-
   .logout-container {
     padding-top: 0px;
     padding-right: 0px;
@@ -109,11 +112,9 @@
   .top-buttons {
     margin-top: 0px;
   }
-
   .button {
     font-size: 20px;
   }
-
   .button.studio {
     display: none;
   }

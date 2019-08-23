@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .App {
   margin: 0 auto;
   padding: 0;
@@ -36,6 +37,7 @@
   color: rgb(151, 106, 22);
   padding-right: 20px;
 }
+
 .parent-header {
   font-size: 2em;
   -webkit-text-stroke-width: 1px;
@@ -100,7 +102,6 @@ ul {
     overflow-x: hidden;
     width: 100%;
   }
-
   .App_header {
     min-height: 40vh;
   }

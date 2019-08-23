@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 .studio {
   text-align: center;
   display: flex;
@@ -20,6 +21,7 @@
   margin: 1% auto;
   text-align: center;
 }
+
 .loaded-canvas {
   border: black solid 3px;
   margin: 0 auto;
@@ -47,30 +49,32 @@
   color: red;
 }
 
-.gallery-select-container,
-.title-container,
-.brush-size-container {
+.gallery-select-container, .title-container, .brush-size-container {
   padding: 0.3%;
 }
+
 .brush-size-container {
   margin-bottom: 2px;
 }
+
 .select-label {
   font-size: 25px;
 }
+
 #art-gallery-select {
   margin: 1%;
   font-size: 25px;
 }
+
 #art-title-input {
   font-size: 25px;
   border: black 1px solid;
 }
 
-.brush-label,
-.title-label {
+.brush-label, .title-label {
   padding: 0 1%;
 }
+
 .title-label {
   font-size: 25px;
 }

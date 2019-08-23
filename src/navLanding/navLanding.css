@@ -16,13 +16,16 @@
   border-bottom: none;
   margin-bottom: -4px;
 }
+
 .mountain {
   margin-bottom: -4px;
 }
+
 .bug {
   border-top: none;
   margin-bottom: -4px;
 }
+
 .box {
   height: 5vh;
 }
@@ -30,18 +33,23 @@
 .red-box {
   background-color: red;
 }
+
 .orange-box {
   background-color: orange;
 }
+
 .yellow-box {
   background-color: yellow;
 }
+
 .green-box {
   background-color: rgb(8, 170, 8);
 }
+
 .blue-box {
   background-color: rgb(55, 133, 236);
 }
+
 .purple-box {
   background-color: rgb(180, 72, 251);
 }
@@ -58,11 +66,9 @@
     overflow: visible;
     padding: 90px 0px 200px;
   }
-
   .box {
     display: none;
   }
-
   .sidebar-img {
     width: 100%;
     height: auto;
@@ -80,6 +86,7 @@
     margin-bottom: 0px;
   }
 }
+
 @media screen and (max-width: 450px) {
   .nav-landing-page {
     margin: 70px auto 0;

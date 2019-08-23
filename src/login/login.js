@@ -41,8 +41,7 @@ class Login extends React.Component {
           <legend>Sign In</legend>
           <div className="error-message" role="alert">
             {error && <p className="red">{error}</p>}
-          </div>
-          <fieldset className="login-fieldset">
+          </div>          
             <div className="login-flex">
               <label className="login-user" htmlFor="username">
                 Username:
@@ -63,15 +62,15 @@ class Login extends React.Component {
             <button className="login-button" type="submit">
               Login
             </button>
-          </fieldset>
+            <br />
+            <button
+              type="button"
+              className="login-button-back"
+              onClick={this.goBack}
+            >
+              Back
+            </button>         
         </form>
-        <button
-          type="button"
-          className="login-button-back"
-          onClick={this.goBack}
-        >
-          Back
-        </button>
       </div>
     );
   }

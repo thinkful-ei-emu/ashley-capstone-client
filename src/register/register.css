@@ -19,8 +19,11 @@ legend {
 }
 
 .register-page {
-  min-height: 140vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #reg-password,
@@ -44,12 +47,6 @@ legend {
   margin-bottom: 5px;
 }
 
-.register-fieldset {
-  text-align: center;
-  margin: 0px;
-  border: none;
-}
-
 .login-link {
   font-size: 1em;
   display: inline-block;
@@ -63,14 +60,12 @@ legend {
 .reg-button-back {
   font-size: 1.5em;
   margin: 1% 0%;
-  align-self: center;
   border-radius: 30%;
 }
 
 .reg-button {
   font-size: 1.5em;
   margin-top: 10px;
-  align-self: center;
 }
 
 @media screen and (max-width: 850px) {
@@ -106,5 +101,8 @@ legend {
   }
   .member {
     font-size: 1.3em;
+  }
+  .error-message {
+   font-size: .8em;
   }
 }

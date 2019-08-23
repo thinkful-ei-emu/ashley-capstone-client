@@ -43,64 +43,62 @@ class Register extends React.Component {
       <div id="register" className="register-page">
         <form className="signup-form" onSubmit={this.handleSubmit}>
           <legend>Create Account</legend>
-          <fieldset className="register-fieldset">
-            <div className="error-message" role="alert">
-              {error && <p className="red">{error}</p>}
-            </div>
-            <div className="reg-flex">
-              <label className="reg-label" htmlFor="first-name">
-                First name:
-              </label>
-              <input
-                type="text"
-                name="first-name"
-                id="reg-first-name"
-                placeholder="e.g. Bob"
-              />
-            </div>
-            <div className="reg-flex">
-              <label className="reg-label" htmlFor="last-name">
-                Last name:
-              </label>
-              <input
-                type="text"
-                name="last-name"
-                id="reg-last-name"
-                placeholder="e.g. Smith"
-              />
-            </div>
-            <div className="reg-flex">
-              <label className="reg-label" htmlFor="email">
-                Email:
-              </label>
-              <input
-                type="text"
-                name="email"
-                id="reg-email"
-                placeholder="e.g. bobSmith@gmail.com"
-              />
-            </div>
-            <div className="reg-flex">
-              <label className="reg-label" htmlFor="username">
-                Username:
-              </label>
-              <input
-                type="text"
-                name="username"
-                id="reg-username"
-                placeholder="e.g. picaso123"
-              />
-            </div>
-            <div className="reg-flex">
-              <label className="reg-label" htmlFor="password">
-                Password:
-              </label>
-              <input type="password" name="password" id="reg-password" />
-            </div>
-            <button className="reg-button" type="submit">
-              Sign Up
-            </button>
-          </fieldset>
+          <div className="error-message" role="alert">
+            {error && <p className="red">{error}</p>}
+          </div>
+          <div className="reg-flex">
+            <label className="reg-label" htmlFor="first-name">
+              First name:
+            </label>
+            <input
+              type="text"
+              name="first-name"
+              id="reg-first-name"
+              placeholder="e.g. Bob"
+            />
+          </div>
+          <div className="reg-flex">
+            <label className="reg-label" htmlFor="last-name">
+              Last name:
+            </label>
+            <input
+              type="text"
+              name="last-name"
+              id="reg-last-name"
+              placeholder="e.g. Smith"
+            />
+          </div>
+          <div className="reg-flex">
+            <label className="reg-label" htmlFor="email">
+              Email:
+            </label>
+            <input
+              type="text"
+              name="email"
+              id="reg-email"
+              placeholder="e.g. bobSmith@gmail.com"
+            />
+          </div>
+          <div className="reg-flex">
+            <label className="reg-label" htmlFor="username">
+              Username:
+            </label>
+            <input
+              type="text"
+              name="username"
+              id="reg-username"
+              placeholder="e.g. picaso123"
+            />
+          </div>
+          <div className="reg-flex">
+            <label className="reg-label" htmlFor="password">
+              Password:
+            </label>
+            <input type="password" name="password" id="reg-password" />
+          </div>
+          <button className="reg-button" type="submit">
+            Sign Up
+          </button>
         </form>
         <div className="reg-bottom-container">
           <h2 className="member">

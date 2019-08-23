@@ -1,8 +1,33 @@
-#password,
-#email,
-#first-name,
-#last-name,
-#username {
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 0% 1%;
+}
+
+legend {
+  font-size: 1.7em;
+  margin-bottom: 2%;
+}
+
+.reg-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1% 5%;
+}
+
+.register-page {
+  min-height: 140vh;
+  text-align: center;
+}
+
+#reg-password,
+#reg-email,
+#reg-first-name,
+#reg-last-name,
+#reg-username {
   margin: 5px;
   padding: 1px;
   font-size: 1.5em;
@@ -16,6 +41,7 @@
 .reg-label {
   margin-right: 5px;
   font-size: 1.5em;
+  margin-bottom: 5px;
 }
 
 .register-fieldset {
@@ -24,24 +50,43 @@
   border: none;
 }
 
+.login-link {
+  font-size: 1em;
+  display: inline-block;
+  padding: 0 2%;
+}
+
+.member {
+  font-size: 1.5em;
+}
+
+.reg-button-back {
+  font-size: 1.5em;
+  margin: 1% 0%;
+  align-self: center;
+  border-radius: 30%;
+}
+
 .reg-button {
   font-size: 1.5em;
   margin-top: 10px;
-  margin-bottom: 50px;
+  align-self: center;
 }
+
 @media screen and (max-width: 850px) {
-  .login-page {
+  .register-page {
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 }
+
 @media screen and (max-width: 420px) {
-  #password,
-  #email,
-  #first-name,
-  #last-name,
-  #username {
+  #reg-password,
+  #reg-email,
+  #reg-first-name,
+  #reg-last-name,
+  #reg-username {
     margin: 5px 0px;
     padding: 1px;
     font-size: 1em;
@@ -49,11 +94,17 @@
   }
   .reg-label {
     margin-right: 5px;
-    font-size: 1em;
+    font-size: 1.2em;
   }
   .reg-button {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-top: 10px;
-    margin-bottom: 50px;
+  }
+  legend {
+    font-size: 1.4em;
+    margin-bottom: 2%;
+  }
+  .member {
+    font-size: 1.3em;
   }
 }

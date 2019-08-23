@@ -28,39 +28,50 @@ class Login extends React.Component {
       });
   };
 
+  goBack = e => {
+    e.preventDefault();
+    this.props.history.goBack();
+  };
+
   render() {
     const { error } = this.state;
     return (
-      <div className="login-page">
-        <section>
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            <div className="error-message" role="alert">
-              {error && <p className="red">{error}</p>}
+      <div id="login" className="login-page">
+        <form className="login-form" onSubmit={this.handleSubmit}>
+          <legend>Sign In</legend>
+          <div className="error-message" role="alert">
+            {error && <p className="red">{error}</p>}
+          </div>
+          <fieldset className="login-fieldset">
+            <div className="login-flex">
+              <label className="login-user" htmlFor="username">
+                Username:
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="e.g. picaso123"
+              />
             </div>
-            <fieldset className="login-fieldset">
-              <div className="username-container">
-                <label className="login-user" htmlFor="username">
-                  Username:
-                </label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="e.g. picaso123"
-                />
-              </div>
-              <div className= "password-container">
-                <label className="login-password" htmlFor="password">
-                  Password:
-                </label>
-                <input type="password" name="password" id="password" />
-              </div>
-              <button className="login-button" type="submit">
-                Login
-              </button>
-            </fieldset>
-          </form>
-        </section>
+            <div className="login-flex">
+              <label className="login-password" htmlFor="password">
+                Password:
+              </label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <button className="login-button" type="submit">
+              Login
+            </button>
+          </fieldset>
+        </form>
+        <button
+          type="button"
+          className="login-button-back"
+          onClick={this.goBack}
+        >
+          Back
+        </button>
       </div>
     );
   }

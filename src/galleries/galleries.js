@@ -6,8 +6,7 @@ import TokenService from '../services/tokenService';
 class Galleries extends React.Component {
   state = { error: null };
   goBack = e => {
-    e.preventDefault();
-    console.log(this.props.location.pathname);
+    e.preventDefault();    
     if (this.props.location.pathname === '/gallery/:galleryId') {
       this.props.history.push('/gallery/:galleryId');
     } else {
@@ -43,7 +42,7 @@ class Galleries extends React.Component {
     e.preventDefault();
     TokenService.clearAuthToken();
     this.props.clearData();
-    this.props.history.push('/login');
+    this.props.history.push('/');
   };
 
   render() {

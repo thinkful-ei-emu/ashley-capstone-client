@@ -18,6 +18,7 @@ import PrivateRoute from './utils/privateRoute';
 import PublicOnlyRoute from './utils/publicOnlyRoute';
 import NavLanding from './navLanding/navLanding';
 import TokenService from './services/tokenService';
+import ScrollToTop from './scrollToTop/scrollToTop'
 
 class App extends React.Component {
   state = {
@@ -84,6 +85,7 @@ class App extends React.Component {
     const { artwork, galleries } = this.state;
     return (
       <>
+       
         {[
           '/studio',
           '/add-gallery',
@@ -109,12 +111,14 @@ class App extends React.Component {
             }}
           />
         ))}
-
+       
+        <>
         <PublicOnlyRoute
           exact
           path={['/', '/login', '/register']}
           render={routeProps => <NavLanding {...routeProps} />}
         />
+        </>
       </>
     );
   }
@@ -122,10 +126,11 @@ class App extends React.Component {
     const { artwork, galleries, currentUser } = this.state;
     return (
       <>
+    
         <>
           <PublicOnlyRoute
             exact
-            path={['/', '/login', '/register']}
+            path={['/']}
             render={routeProps => {
               return <LandingPage {...routeProps} />;
             }}
@@ -145,14 +150,18 @@ class App extends React.Component {
             }}
           />
 
-          <>
+          <> 
+       
             <PrivateRoute
               exact
               path="/add-gallery"
               render={routeProps => (
+                <ScrollToTop>                
                 <AddGallery addGallery={this.addGallery} {...routeProps} />
+                </ScrollToTop>
               )}
             />
+         
           </>
         </>
         <>
@@ -205,6 +214,7 @@ class App extends React.Component {
             />
           )}
         />
+      
       </>
     );
   }
@@ -212,6 +222,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+  
         <nav className="App_nav" role="navigation">
           {this.renderNavRoutes()}
         </nav>
@@ -231,7 +242,9 @@ class App extends React.Component {
             <span className="yellow letter">e</span>
           </h1>
         </header>
+        <ScrollToTop>        
         <main className="App__main">{this.renderMainRoutes()}</main>
+        </ScrollToTop>
       </div>
     );
   }

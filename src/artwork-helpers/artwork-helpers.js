@@ -33,9 +33,7 @@ export const galleryAverageRating = (artwork = [], galleryId) => {
   if (filteredArtwork.length > 0) {
     for (let i = 0; i < filteredArtwork.length; i++) {
       if (filteredArtwork[i].rating.length > 0) {
-        console.log('in average function', filteredArtwork[i].rating);
         total += Number(filteredArtwork[i].rating);
-        console.log(total);
       } else {
         result = 'Not Rated';
       }

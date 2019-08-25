@@ -22,12 +22,6 @@ class Studio extends React.Component {
       gallery_id: e.target['art-gallery-id'].value,
       artpiece_image: canvas
     };
-    if (this.props.galleries.length === 0) {
-      this.setState({
-        error:
-          'Your galleries are empty. Please create a gallery to add your artwork.'
-      });
-    } else {
       ArtisteApiService.postArtpiece(artpiece)
         .then(artpiece => {
           this.props.addArt(artpiece);
@@ -39,7 +33,7 @@ class Studio extends React.Component {
       e.target['art-title'].value = '';
       e.target['art-gallery-select'].value = null;
       this.saveableCanvas.clear();
-    }
+    
   };
 
   onChangeComplete = (color, event) => {

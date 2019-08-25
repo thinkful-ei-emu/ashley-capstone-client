@@ -6,7 +6,7 @@ import TokenService from '../services/tokenService';
 class Galleries extends React.Component {
   state = { error: null };
   goBack = e => {
-    e.preventDefault();    
+    e.preventDefault();
     if (this.props.location.pathname === '/gallery/:galleryId') {
       this.props.history.push('/gallery/:galleryId');
     } else {
@@ -29,14 +29,8 @@ class Galleries extends React.Component {
 
   goToStudio = e => {
     e.preventDefault();
-    if (this.props.galleries.length === 0) {
-      this.setState({
-        error: 'You must create a gallery first to display your artwork'
-      });
-    } else {
-      this.setState({ error: null });
-      this.props.history.push('/studio');
-    }
+    this.setState({ error: null });
+    this.props.history.push('/studio');
   };
   Logout = e => {
     e.preventDefault();

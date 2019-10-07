@@ -52,7 +52,7 @@ Color Palette Library: [React Color](https://casesandberg.github.io/react-color/
 
 ## API Documentation
 
-Link to API Github Repo: [https://github.com/thinkful-ei-emu/ashley-capstone-server] (https://github.com/thinkful-ei-emu/ashley-capstone-server)
+Link to API Github Repo: [https://github.com/thinkful-ei-emu/ashley-capstone-server](https://github.com/thinkful-ei-emu/ashley-capstone-server)
 
 
 ### `npm start`

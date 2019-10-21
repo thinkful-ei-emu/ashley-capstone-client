@@ -5,8 +5,10 @@ import { Route, Switch } from 'react-router-dom';
 import Galleries from './galleries/galleries';
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage';
-import Header from './header/header'
-import NotFound from './notFound/notFound'
+import Header from './header/header';
+import Home from './home/home';
+import NavHome from './navHome/navHome'
+import NotFound from './notFound/notFound';
 import {
   addArtworkToGalleries,
   findArtpiece
@@ -119,7 +121,14 @@ class App extends React.Component {
             path={['/', '/login', '/register']}
             render={routeProps => <NavLanding {...routeProps} />}
           />
-        </>      
+        </>  
+        <>
+          <Route
+            exact
+            path='/home'
+            render={routeProps => <NavHome {...routeProps} />}
+          />
+        </>       
       </>
     
 
@@ -178,6 +187,13 @@ class App extends React.Component {
           </>
         </>
         <>
+        <PrivateRoute
+            exact
+            path={['/home']}
+            render={routeProps => {
+              return <Home {...routeProps} />;
+            }}
+          />
           {['/gallery/:galleryId'].map(path => (
             <PrivateRoute
               exact
@@ -228,7 +244,7 @@ class App extends React.Component {
           )}
         />
       <>
-      {/* <Route         
+      {/* <Route      
             render={routeProps => {
               return <NotFound {...routeProps} />;
             }}

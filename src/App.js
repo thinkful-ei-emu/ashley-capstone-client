@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import Studio from './studio/studio';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Galleries from './galleries/galleries';
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage';
+import Header from './header/header'
+import NotFound from './notFound/notFound'
 import {
   addArtworkToGalleries,
   findArtpiece
@@ -85,15 +87,14 @@ class App extends React.Component {
     const { artwork, galleries } = this.state;
     return (
       <>
-       
         {[
           '/studio',
-          '/add-gallery',
-          '/artpiece/:artpieceId',
-          '/gallery/:galleryId'
+          '/add-gallery', 
+          '/artpiece',
+          '/gallery',
         ].map(path => (
           <PrivateRoute
-            exact
+            // exact
             key={path}
             path={path}
             render={routeProps => {
@@ -111,22 +112,37 @@ class App extends React.Component {
             }}
           />
         ))}
-       
+
         <>
-        <PublicOnlyRoute
-          exact
-          path={['/', '/login', '/register']}
-          render={routeProps => <NavLanding {...routeProps} />}
-        />
-        </>
+          <Route
+            exact
+            path={['/', '/login', '/register']}
+            render={routeProps => <NavLanding {...routeProps} />}
+          />
+        </>      
       </>
+    
+
     );
   }
+  renderHeaderRoute() {
+    return (
+      <>
+        <Route
+          path={['/']}
+          render={routeProps => {
+            return <Header {...routeProps} />;
+          }}
+        />
+      </>
+    )
+  }
+
   renderMainRoutes() {
     const { artwork, galleries, currentUser } = this.state;
     return (
-      <>
     
+      <>
         <>
           <PublicOnlyRoute
             exact
@@ -149,19 +165,16 @@ class App extends React.Component {
               return <Register {...routeProps} />;
             }}
           />
-
-          <> 
-       
+          <>
             <PrivateRoute
               exact
               path="/add-gallery"
               render={routeProps => (
-                <ScrollToTop>                
-                <AddGallery addGallery={this.addGallery} {...routeProps} />
+                <ScrollToTop>
+                  <AddGallery addGallery={this.addGallery} {...routeProps} />
                 </ScrollToTop>
               )}
             />
-         
           </>
         </>
         <>
@@ -187,7 +200,7 @@ class App extends React.Component {
               }}
             />
           ))}
-          <Route
+          <Route        
             path="/artpiece/:artpieceId"
             render={routeProps => {
               const { artpieceId } = routeProps.match.params;
@@ -214,36 +227,31 @@ class App extends React.Component {
             />
           )}
         />
-      
+      <>
+      {/* <Route         
+            render={routeProps => {
+              return <NotFound {...routeProps} />;
+            }}
+          /> */}
+    
       </>
+      </>
+    
     );
   }
 
   render() {
     return (
       <div className="App">
-  
+
         <nav className="App_nav" role="navigation">
           {this.renderNavRoutes()}
         </nav>
         <header className="App_header">
-          <h1 className="parent-header">
-            <span>
-              <i className="fas fa-palette" />
-            </span>
-            <span className="red letter">L</span>
-            <span className="orange letter">'</span>
-            <span className="yellow letter">A</span>
-            <span className="green letter">r</span>
-            <span className="blue letter">t</span>
-            <span className="purple letter">i</span>
-            <span className="red letter">s</span>
-            <span className="orange letter">t</span>
-            <span className="yellow letter">e</span>
-          </h1>
+        {this.renderHeaderRoute()}
         </header>
-        <ScrollToTop>        
-        <main className="App__main">{this.renderMainRoutes()}</main>
+        <ScrollToTop>
+          <main className="App__main">{this.renderMainRoutes()}</main>
         </ScrollToTop>
       </div>
     );

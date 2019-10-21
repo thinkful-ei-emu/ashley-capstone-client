@@ -11,14 +11,14 @@ class Gallery extends React.Component {
     ArtisteApiService.deleteGallery(this.props.id)
       .then(() => {
         this.props.deleteGallery(this.props.id);
-        this.props.history.push('/gallery/:gallerId');
+        this.props.history.push('/gallery/:galleryId');
       })
       .catch(error => {
         console.error({ error });
       });
   };
 
-  render() {
+  render() {  
     return (
       <div className="gallery">
         <div className="gallery-name">

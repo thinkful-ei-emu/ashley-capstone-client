@@ -21,7 +21,7 @@ class Login extends React.Component {
         this.props.fetchAllData();
         e.target['username'].value = '';
         e.target['password'].value = '';
-        this.props.history.push('/gallery/:galleryId');
+        this.props.history.push('/gallery');
       })
       .catch(res => {
         this.setState({ error: res.error });

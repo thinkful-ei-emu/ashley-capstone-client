@@ -17,11 +17,12 @@ class Login extends React.Component {
     AuthApiService.postLogin({
       user
     })
-      .then(res => {
+      .then(res => {      
         this.props.fetchAllData();
+        this.props.userInfo(res.isCollector, res.userName);
         e.target['username'].value = '';
         e.target['password'].value = '';
-        this.props.history.push('/gallery');
+        this.props.history.push('/home');
       })
       .catch(res => {
         this.setState({ error: res.error });

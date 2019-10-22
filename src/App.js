@@ -27,11 +27,14 @@ import ScrollToTop from './scrollToTop/scrollToTop'
 class App extends React.Component {
   state = {
     artwork: [],
-    galleries: []
+    galleries: [],
+    isCollector: null,
+    userName: '',
   };
 
   componentDidMount() {
     this.fetchAllData();
+    this.userInfo();
   }
 
   fetchAllData = (galleries = [], artwork = []) => {
@@ -84,6 +87,15 @@ class App extends React.Component {
       galleries: filteredGalleries
     });
   };
+
+  userInfo = (collectorStatus, userName) => {
+    if (TokenService.hasAuthToken()) {      
+    this.setState({
+      userName: userName,
+      isCollector: collectorStatus
+    })
+  }   
+  }
 
   renderNavRoutes() {
     const { artwork, galleries } = this.state;
@@ -164,7 +176,7 @@ class App extends React.Component {
             exact
             path="/login"
             render={routeProps => {
-              return <Login {...routeProps} fetchAllData={this.fetchAllData} />;
+              return <Login {...routeProps} userInfo={this.userInfo} fetchAllData={this.fetchAllData} />;
             }}
           />
           <PublicOnlyRoute

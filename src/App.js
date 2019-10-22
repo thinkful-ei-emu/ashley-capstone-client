@@ -5,7 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import Galleries from './galleries/galleries';
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage';
-import Header from './header/header';
+import CollectorHeader from './collectorHeader/collectorHeader';
+import ArtistHeader from './artistHeader/artistHeader';
 import Home from './home/home';
 import NavHome from './navHome/navHome'
 import NotFound from './notFound/notFound';
@@ -146,19 +147,7 @@ class App extends React.Component {
 
     );
   }
-  renderHeaderRoute() {
-    return (
-      <>
-        <Route
-          path={['/']}
-          render={routeProps => {
-            return <Header {...routeProps} />;
-          }}
-        />
-      </>
-    )
-  }
-
+ 
   renderMainRoutes() {
     const { artwork, galleries, currentUser } = this.state;
     return (
@@ -269,14 +258,16 @@ class App extends React.Component {
   }
 
   render() {
+    let header = this.state.isCollector? <CollectorHeader/> : <ArtistHeader/>
     return (
       <div className="App">
 
         <nav className="App_nav" role="navigation">
-          {this.renderNavRoutes()}
+        {this.renderNavRoutes()}
+         
         </nav>
         <header className="App_header">
-        {this.renderHeaderRoute()}
+        {header}
         </header>
         <ScrollToTop>
           <main className="App__main">{this.renderMainRoutes()}</main>

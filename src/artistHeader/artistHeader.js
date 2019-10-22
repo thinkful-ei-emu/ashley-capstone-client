@@ -1,8 +1,10 @@
 import React from 'react'
 
 
-function Header () {
-  return (   
+function ArtistHeader () {
+  console.log('artist header')
+  return ( 
+    <>  
     <h1 className="parent-header">
     <span>
       <i className="fas fa-palette" />
@@ -17,8 +19,10 @@ function Header () {
     <span className="orange letter">t</span>
     <span className="yellow letter">e</span>
   </h1>
+   <p>artist</p>
+   </>
   )
 
 }
 
-export default Header;
+export default ArtistHeader;

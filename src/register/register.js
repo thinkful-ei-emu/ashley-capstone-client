@@ -14,7 +14,9 @@ class Register extends React.Component {
       last_name: e.target['last-name'].value,
       email: e.target['email'].value,
       user_name: e.target['username'].value,
-      password: e.target['password'].value
+      password: e.target['password'].value,
+      collector: e.target['collector'].value
+
     };
 
     this.setState({ error: null });
@@ -25,6 +27,7 @@ class Register extends React.Component {
         e.target['email'].value = '';
         e.target['username'].value = '';
         e.target['password'].value = '';
+        e.target['collector'].value = null;
         this.props.history.push('/login');
       })
       .catch(res => {
@@ -95,6 +98,17 @@ class Register extends React.Component {
               Password:
             </label>
             <input type="password" name="password" id="reg-password" />
+          </div>
+          <div>
+        
+          <input type="radio" name="collector" value={false} required/> 
+          <label className="reg-label" htmlFor="username">
+              Artist
+            </label>       
+          <input type="radio" name="collector" value={true} required/>
+          <label className="reg-label" htmlFor="username">
+              Collector
+            </label>
           </div>
           <button className="reg-button" type="submit">
             Sign Up

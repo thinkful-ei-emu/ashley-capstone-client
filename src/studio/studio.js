@@ -8,9 +8,10 @@ class Studio extends React.Component {
   state = {
     color: '',
     brushSize: 10,
-    error: null
+    error: null,
+    lazyRadius: 0,
   };
-
+  //change lazy radius formatting and to a toggle button(on/off)
   handleSubmit = e => {
     e.preventDefault();
     this.setState({ error: null });
@@ -57,7 +58,6 @@ class Studio extends React.Component {
 
   adjustBrushSize = e => {
     e.preventDefault();
-
     this.updateBrushSize(parseInt(e.target.value, 10));
   };
   updateColor = color => {
@@ -66,6 +66,17 @@ class Studio extends React.Component {
     });
   };
 
+  adjustRadiusSize = e => {
+    e.preventDefault();
+    this.updateLazyRadius(parseInt(e.target.value, 0));
+  }
+
+  updateLazyRadius = lazyRadius => {
+    this.setState({
+      lazyRadius: lazyRadius
+    })
+  }
+
   updateBrushSize = brushSize => {
     this.setState({
       brushSize: brushSize
@@ -73,7 +84,7 @@ class Studio extends React.Component {
   };
 
   render() {
-    const { color, brushSize, error } = this.state;
+    const { color, brushSize, error, lazyRadius } = this.state;
     const { galleries } = this.props;
 
     return (
@@ -106,6 +117,18 @@ class Studio extends React.Component {
                 max="100"
               />
             </div>
+            <div className="lazyRadius-container">
+              <label>Lazy Radius:</label>
+            <input
+                id="lazy-radius"
+                type="range"
+                name="lazy-radius"
+                onChange={this.adjustRadiusSize}
+                defaultValue={'0'}
+                min="0"
+                max="18"
+              />
+            </div>
             <div className="title-container">
               <label htmlFor="art-title-input" className="title-label">
                 Title:
@@ -129,7 +152,7 @@ class Studio extends React.Component {
                   </option>
                 ))}
               </select>
-            </div>
+            </div>           
           </div>
 
           <CanvasDraw
@@ -140,7 +163,7 @@ class Studio extends React.Component {
             canvasHeight={550}
             className="saved-canvas"
             hideGrid={true}
-            lazyRadius={12}
+            lazyRadius={lazyRadius}
             brushColor={color}
             ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           />

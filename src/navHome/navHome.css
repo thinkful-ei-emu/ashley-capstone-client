@@ -1,0 +1,23 @@
+.nav-home {
+  list-style-type: none;
+  margin: 150px 0 0px;
+  min-height: 130vh;
+  text-align: center;
+  padding: 0;
+  background-color: rgb(195, 158, 110);
+  border-right: black solid 2px;
+}
+
+.nav-button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-button-container button {
+  padding: 12px 8px;
+  margin: 0 5px 5px;
+  border-radius: 10%;
+  border: 1px solid gray;
+  font-size: 1.2em;
+  align-self: center;
+}

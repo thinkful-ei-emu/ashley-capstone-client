@@ -6,7 +6,7 @@ function ArtistHeader () {
   return ( 
     <>  
     <h1 className="parent-header">
-    <span>
+    {/* <span>
       <i className="fas fa-palette" />
     </span>
     <span className="red letter">L</span>
@@ -17,9 +17,10 @@ function ArtistHeader () {
     <span className="purple letter">i</span>
     <span className="red letter">s</span>
     <span className="orange letter">t</span>
-    <span className="yellow letter">e</span>
+    <span className="yellow letter">e</span> */}
+    artist header
   </h1>
-   <p>artist</p>
+ 
    </>
   )
 

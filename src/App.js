@@ -23,19 +23,22 @@ import PrivateRoute from './utils/privateRoute';
 import PublicOnlyRoute from './utils/publicOnlyRoute';
 import NavLanding from './navLanding/navLanding';
 import TokenService from './services/tokenService';
-import ScrollToTop from './scrollToTop/scrollToTop'
+import ScrollToTop from './scrollToTop/scrollToTop';
+import UserContext from './context/context';
 
 class App extends React.Component {
+
+  static contextType = UserContext;
+
   state = {
     artwork: [],
     galleries: [],
-    isCollector: null,
-    userName: '',
+    user: {}          
   };
 
   componentDidMount() {
-    this.fetchAllData();
-    this.userInfo();
+    this.fetchAllData(); 
+    this.checkUser();  
   }
 
   fetchAllData = (galleries = [], artwork = []) => {
@@ -61,7 +64,8 @@ class App extends React.Component {
   clearData = () => {
     this.setState({
       galleries: [],
-      artwork: []
+      artwork: [],
+      user: {},
     });
   };
 
@@ -89,14 +93,37 @@ class App extends React.Component {
     });
   };
 
-  userInfo = (collectorStatus, userName) => {
-    if (TokenService.hasAuthToken()) {      
-    this.setState({
-      userName: userName,
-      isCollector: collectorStatus
-    })
-  }   
+  checkUser = () => { 
+    let updateUser; 
+    console.log('checking context user', this.context.user)
+      if (TokenService.hasAuthToken && this.context.user === {}){  
+        console.log('in the if')      
+        let userToken = TokenService.readJwtToken();      
+        updateUser = {
+          userId: userToken.user_id,
+          userName: userToken.sub,
+          collector: userToken.collector
+        } 
+        this.setState({
+          user: updateUser
+        })           
+      }
+      else {
+        updateUser = this.context.user;
+        this.setState({
+          user: updateUser
+        })
+      }
+    
   }
+
+  // userInfo = (collectorStatus, userName) => {     
+  //   this.setState({
+  //     userName: userName,
+  //     isCollector: collectorStatus
+  //   })
+  //  console.log(collectorStatus)
+  // }
 
   renderNavRoutes() {
     const { artwork, galleries } = this.state;
@@ -167,7 +194,7 @@ class App extends React.Component {
             render={routeProps => {
               return <Login {...routeProps} userInfo={this.userInfo} fetchAllData={this.fetchAllData} />;
             }}
-          />
+          />      
           <PublicOnlyRoute
             exact
             path="/register"
@@ -257,14 +284,15 @@ class App extends React.Component {
     );
   }
 
-  render() {
-    let header = this.state.isCollector? <CollectorHeader/> : <ArtistHeader/>
+  render() {  
+    const {user} = this.state;   
+    console.log('logging user from context', user)
+    let header = user ? (user.collector === true ? <CollectorHeader/> : <ArtistHeader/>) : <CollectorHeader/>
     return (
       <div className="App">
 
         <nav className="App_nav" role="navigation">
-        {this.renderNavRoutes()}
-         
+        {this.renderNavRoutes()}         
         </nav>
         <header className="App_header">
         {header}

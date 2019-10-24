@@ -1,27 +1,32 @@
-import React from 'react'
+import React from 'react';
+import './collectorHeader.css';
+import UserContext from '../context/context'
+import {Link} from 'react-router-dom';
 
+class CollectorHeader extends React.Component {
+  static contextType = UserContext;
 
-function CollectorHeader () {
-  console.log('collector header')
-  return ( 
-    <>  
-    <h1 className="parent-header">
-    <span>
-      <i className="fas fa-palette" />
-    </span>
-    <span className="red letter">L</span>
-    <span className="orange letter">'</span>
-    <span className="yellow letter">A</span>
-    <span className="green letter">r</span>
-    <span className="blue letter">t</span>
-    <span className="purple letter">i</span>
-    <span className="red letter">s</span>
-    <span className="orange letter">t</span>
-    <span className="yellow letter">e</span>
-  </h1>
-  <p>collector</p>
-  </>
-  )
+  handleLogoutClick = () => {    
+    this.context.processLogout();
+    this.props.clearData();   
+  }
+  
+
+  render (){
+    const {user} = this.context; 
+    return (
+      <div className= "collector-header">
+     <h1><Link to='/home'>L'Artist</Link></h1>
+     <nav className = "nav-links">
+       <Link to={`/my-galleries`}  className='button' >My Galleries</Link>
+       <Link to='/' onClick={this.handleLogoutClick} className='button'>Logout</Link>
+       <div className="button">{user.userName}</div>
+     </nav>
+     </div>
+   )
+ 
+  }
+  
 
 }
 

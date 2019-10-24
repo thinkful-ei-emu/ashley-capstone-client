@@ -2,19 +2,23 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import TokenService from '../services/tokenService'
 
-export default function PrivateRoute({ render, ...props }) {
+export default function PrivateArtistRoute({ render, ...props }) {
   const Render = render
-
-  return (  
+  const getUserRole = () => {
+    let userToken = TokenService.readJwtToken();
+    return userToken.collector;  
+  }
+   
+  return (
     <Route
       {...props}
      
       render={componentProps => (
-        TokenService.hasAuthToken()       
+        (TokenService.hasAuthToken() && !getUserRole())      
           ? <Render {...componentProps} />
           : <Redirect
               to={{
-                pathname: '/login',
+                pathname: '/home',
                 state: { from: componentProps.location }
               }}
             />

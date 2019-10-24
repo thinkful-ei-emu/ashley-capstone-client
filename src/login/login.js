@@ -11,12 +11,10 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     e.persist();
-    this.setState({ error: null });
-    console.log(e.target['collector'].value)
+    this.setState({ error: null }); 
     const user = {
       user_name: e.target['username'].value,
-      password: e.target['password'].value,
-      collector: e.target['collector'].value,
+      password: e.target['password'].value,      
     };
 
     AuthApiService.postLogin({
@@ -25,8 +23,7 @@ class Login extends React.Component {
       .then(res => {
         this.props.fetchAllData();  
         e.target['username'].value = '';
-        e.target['password'].value = '';
-        e.target['collector'].value = null;
+        e.target['password'].value = '';    
         this.context.processLogin();      
         this.props.history.push('/home');
       })
@@ -64,15 +61,7 @@ class Login extends React.Component {
             <label className="login-password" htmlFor="password">
               Password:
               </label>
-            <input type="password" name="password" id="password" />
-            <input type="radio" name="collector" value={false} required />
-            <label className="login-role" htmlFor="username">
-              Artist
-            </label>
-            <input type="radio" name="collector" value={true} required />
-            <label className="login-role" htmlFor="username">
-              Collector
-            </label>
+            <input type="password" name="password" id="password" />         
           </div>
           <button className="login-button" type="submit">
             Login

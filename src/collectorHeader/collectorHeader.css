@@ -1,0 +1,23 @@
+.collector-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.nav-button {
+  padding: 12px 8px;
+  margin: 0 5px 5px;
+  border-radius: 10%;
+  border: 1px solid gray;
+  font-size: 1.2em;
+  align-self: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+

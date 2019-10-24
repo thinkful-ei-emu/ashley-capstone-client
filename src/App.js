@@ -5,7 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import Galleries from './galleries/galleries';
 import AddGallery from './addGallery/addGallery';
 import ArtworkListPage from './artworkListPage/artwortListPage';
-import Header from './header/header';
+import CollectorHeader from './collectorHeader/collectorHeader';
+import ArtistHeader from './artistHeader/artistHeader';
 import Home from './home/home';
 import NavHome from './navHome/navHome'
 import NotFound from './notFound/notFound';
@@ -22,16 +23,22 @@ import PrivateRoute from './utils/privateRoute';
 import PublicOnlyRoute from './utils/publicOnlyRoute';
 import NavLanding from './navLanding/navLanding';
 import TokenService from './services/tokenService';
-import ScrollToTop from './scrollToTop/scrollToTop'
+import ScrollToTop from './scrollToTop/scrollToTop';
+import UserContext from './context/context';
 
 class App extends React.Component {
+
+  static contextType = UserContext;
+
   state = {
     artwork: [],
-    galleries: []
+    galleries: [],
+    // user: {}          
   };
 
   componentDidMount() {
-    this.fetchAllData();
+    this.fetchAllData(); 
+    // this.checkUser();  
   }
 
   fetchAllData = (galleries = [], artwork = []) => {
@@ -57,7 +64,8 @@ class App extends React.Component {
   clearData = () => {
     this.setState({
       galleries: [],
-      artwork: []
+      artwork: [],
+      user: {},
     });
   };
 
@@ -84,6 +92,38 @@ class App extends React.Component {
       galleries: filteredGalleries
     });
   };
+
+  // checkUser = () => { 
+  //   let updateUser; 
+  //   console.log('checking context user', this.context.user)
+  //     if (TokenService.hasAuthToken && this.context.user === {}){  
+  //       console.log('in the if')      
+  //       let userToken = TokenService.readJwtToken();      
+  //       updateUser = {
+  //         userId: userToken.user_id,
+  //         userName: userToken.sub,
+  //         collector: userToken.collector
+  //       } 
+  //       this.setState({
+  //         user: updateUser
+  //       })           
+  //     }
+  //     else {
+  //       updateUser = this.context.user;
+  //       this.setState({
+  //         user: updateUser
+  //       })
+  //     }
+    
+  // }
+
+  // userInfo = (collectorStatus, userName) => {     
+  //   this.setState({
+  //     userName: userName,
+  //     isCollector: collectorStatus
+  //   })
+  //  console.log(collectorStatus)
+  // }
 
   renderNavRoutes() {
     const { artwork, galleries } = this.state;
@@ -134,19 +174,7 @@ class App extends React.Component {
 
     );
   }
-  renderHeaderRoute() {
-    return (
-      <>
-        <Route
-          path={['/']}
-          render={routeProps => {
-            return <Header {...routeProps} />;
-          }}
-        />
-      </>
-    )
-  }
-
+ 
   renderMainRoutes() {
     const { artwork, galleries, currentUser } = this.state;
     return (
@@ -166,7 +194,7 @@ class App extends React.Component {
             render={routeProps => {
               return <Login {...routeProps} fetchAllData={this.fetchAllData} />;
             }}
-          />
+          />      
           <PublicOnlyRoute
             exact
             path="/register"
@@ -256,15 +284,17 @@ class App extends React.Component {
     );
   }
 
-  render() {
+  render() {  
+    const {user} = this.context;  
+    let header = Object.keys(user).length > 0 ? (user.collector === true ? <CollectorHeader/> : <ArtistHeader/>) : <CollectorHeader/>
     return (
       <div className="App">
 
         <nav className="App_nav" role="navigation">
-          {this.renderNavRoutes()}
+        {this.renderNavRoutes()}         
         </nav>
         <header className="App_header">
-        {this.renderHeaderRoute()}
+        {header}
         </header>
         <ScrollToTop>
           <main className="App__main">{this.renderMainRoutes()}</main>

@@ -24,7 +24,7 @@
   color: red;
 }
 
-.login-user, .login-password {
+.login-user, .login-password, .login-role {
   margin-right: 5px;
   font-size: 1.5em;
   margin-bottom: 5px;

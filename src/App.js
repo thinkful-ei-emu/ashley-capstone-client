@@ -25,6 +25,7 @@ import NavLanding from './navLanding/navLanding';
 import TokenService from './services/tokenService';
 import ScrollToTop from './scrollToTop/scrollToTop';
 import UserContext from './context/context';
+import LandingHeader from './landingHeader/landingHeader';
 
 class App extends React.Component {
 
@@ -32,13 +33,11 @@ class App extends React.Component {
 
   state = {
     artwork: [],
-    galleries: [],
-    // user: {}          
+    galleries: [],            
   };
 
   componentDidMount() {
-    this.fetchAllData(); 
-    // this.checkUser();  
+    this.fetchAllData();  
   }
 
   fetchAllData = (galleries = [], artwork = []) => {
@@ -92,39 +91,7 @@ class App extends React.Component {
       galleries: filteredGalleries
     });
   };
-
-  // checkUser = () => { 
-  //   let updateUser; 
-  //   console.log('checking context user', this.context.user)
-  //     if (TokenService.hasAuthToken && this.context.user === {}){  
-  //       console.log('in the if')      
-  //       let userToken = TokenService.readJwtToken();      
-  //       updateUser = {
-  //         userId: userToken.user_id,
-  //         userName: userToken.sub,
-  //         collector: userToken.collector
-  //       } 
-  //       this.setState({
-  //         user: updateUser
-  //       })           
-  //     }
-  //     else {
-  //       updateUser = this.context.user;
-  //       this.setState({
-  //         user: updateUser
-  //       })
-  //     }
-    
-  // }
-
-  // userInfo = (collectorStatus, userName) => {     
-  //   this.setState({
-  //     userName: userName,
-  //     isCollector: collectorStatus
-  //   })
-  //  console.log(collectorStatus)
-  // }
-
+  
   renderNavRoutes() {
     const { artwork, galleries } = this.state;
     return (
@@ -285,8 +252,10 @@ class App extends React.Component {
   }
 
   render() {  
-    const {user} = this.context;  
-    let header = Object.keys(user).length > 0 ? (user.collector === true ? <CollectorHeader/> : <ArtistHeader/>) : <CollectorHeader/>
+    const {user} = this.context; 
+    console.log('user context', user.collector) 
+    console.log('collector status', user.collector)
+    let header = Object.keys(user).length > 0 ? (user.collector? <CollectorHeader/> : <ArtistHeader/>) : <LandingHeader/>
     return (
       <div className="App">
 

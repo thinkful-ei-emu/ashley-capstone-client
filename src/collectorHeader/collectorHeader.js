@@ -1,26 +1,17 @@
-import React from 'react'
-
+import React from 'react';
+import './collectorHeader.css';
 
 function CollectorHeader () {
   console.log('collector header')
-  return ( 
-    <>  
-    <h1 className="parent-header">
-    <span>
-      <i className="fas fa-palette" />
-    </span>
-    <span className="red letter">L</span>
-    <span className="orange letter">'</span>
-    <span className="yellow letter">A</span>
-    <span className="green letter">r</span>
-    <span className="blue letter">t</span>
-    <span className="purple letter">i</span>
-    <span className="red letter">s</span>
-    <span className="orange letter">t</span>
-    <span className="yellow letter">e</span>
-  </h1>
-  <p>collector</p>
-  </>
+
+  return (
+     <div className= "collector-header">
+    <h1>Collector</h1>
+    <nav>
+      <button>Profile</button>
+      <button>Logout</button> 
+    </nav>
+    </div>
   )
 
 }

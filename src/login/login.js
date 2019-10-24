@@ -11,8 +11,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     e.persist();
-    this.setState({ error: null });
-    console.log(e.target['collector'].value)
+    this.setState({ error: null }); 
     const user = {
       user_name: e.target['username'].value,
       password: e.target['password'].value,

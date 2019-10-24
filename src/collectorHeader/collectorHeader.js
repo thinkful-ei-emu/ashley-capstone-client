@@ -1,18 +1,25 @@
 import React from 'react';
 import './collectorHeader.css';
+import UserContext from '../context/context'
 
-function CollectorHeader () {
-  console.log('collector header')
+class CollectorHeader extends React.Component {
+  static contextType = UserContext;
 
-  return (
-     <div className= "collector-header">
-    <h1>Collector</h1>
-    <nav>
-      <button>Profile</button>
-      <button>Logout</button> 
-    </nav>
-    </div>
-  )
+  render (){
+    const {user} = this.context;
+    console.log(user);
+    return (
+      <div className= "collector-header">
+     <h1>Collector</h1>
+     <nav>
+       <button>{user.userName}</button>
+       <button>Logout</button> 
+     </nav>
+     </div>
+   )
+ 
+  }
+  
 
 }
 

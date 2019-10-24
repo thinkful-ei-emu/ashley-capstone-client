@@ -2,7 +2,7 @@ import React from 'react'
 
 
 function LandingHeader () {
-  console.log('landing header')
+
   return ( 
     <>  
     <h1 className="parent-header">

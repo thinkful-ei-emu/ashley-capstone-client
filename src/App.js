@@ -33,17 +33,18 @@ class App extends React.Component {
 
   state = {
     artwork: [],
-    galleries: [],            
+    galleries: [],           
   };
 
-  componentDidMount() {
-    this.fetchAllData();  
+  componentDidMount() {  
+    this.fetchAllData(); 
   }
 
+  
   fetchAllData = (galleries = [], artwork = []) => {
     if (TokenService.hasAuthToken() === false) {
       return { galleries, artwork };
-    } else {
+    } else {     
       ArtisteApiService.getGalAndArt()
         .then(([galleries, artwork]) => {
           this.setState({ galleries, artwork });
@@ -63,8 +64,7 @@ class App extends React.Component {
   clearData = () => {
     this.setState({
       galleries: [],
-      artwork: [],
-      user: {},
+      artwork: [],        
     });
   };
 
@@ -252,9 +252,7 @@ class App extends React.Component {
   }
 
   render() {  
-    const {user} = this.context; 
-    console.log('user context', user.collector) 
-    console.log('collector status', user.collector)
+    const {user} = this.context;
     let header = Object.keys(user).length > 0 ? (user.collector? <CollectorHeader/> : <ArtistHeader/>) : <LandingHeader/>
     return (
       <div className="App">

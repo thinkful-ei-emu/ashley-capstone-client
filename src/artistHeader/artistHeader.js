@@ -1,28 +1,32 @@
-import React from 'react'
+import React from 'react';
+import './artistHeader.css';
+import UserContext from '../context/context'
+import {Link} from 'react-router-dom'
 
 
-function ArtistHeader () {
-  console.log('artist header')
-  return ( 
-    <>  
-    <h1 className="parent-header">
-    {/* <span>
-      <i className="fas fa-palette" />
-    </span>
-    <span className="red letter">L</span>
-    <span className="orange letter">'</span>
-    <span className="yellow letter">A</span>
-    <span className="green letter">r</span>
-    <span className="blue letter">t</span>
-    <span className="purple letter">i</span>
-    <span className="red letter">s</span>
-    <span className="orange letter">t</span>
-    <span className="yellow letter">e</span> */}
-    artist header
-  </h1>
- 
-   </>
-  )
+class ArtistHeader extends React.Component {
+
+  static contextType = UserContext;
+
+  handleLogoutClick = () => {    
+    this.context.processLogout();
+    this.props.clearData();   
+  }
+
+  render(){
+    const {user} = this.context; 
+    return (
+      <div className= "artist-header">
+     <h1><Link to='/home'>L'Artist</Link></h1>
+     <nav className = "nav-links">
+       <Link to={`/my-studio`}  className='button' >My Studio</Link>
+       <Link to='/' onClick={this.handleLogoutClick} className='button'>Logout</Link>
+       <div className="button">{user.userName}</div>
+     </nav>
+     </div>
+   )
+  }
+  
 
 }
 

@@ -26,6 +26,10 @@ import TokenService from './services/tokenService';
 import ScrollToTop from './scrollToTop/scrollToTop';
 import UserContext from './context/context';
 import LandingHeader from './landingHeader/landingHeader';
+import MyGalleries from './myGalleries/myGalleries'
+import MyStudio from './myStudio/myStudio'
+import PrivateCollectorRoute from './utils/privateCollectorRoute';
+import PrivateArtistRoute from './utils/privateArtisteRoute';
 
 class App extends React.Component {
 
@@ -33,18 +37,18 @@ class App extends React.Component {
 
   state = {
     artwork: [],
-    galleries: [],           
+    galleries: [],
   };
 
-  componentDidMount() {  
-    this.fetchAllData(); 
+  componentDidMount() {
+    this.fetchAllData();
   }
 
-  
+
   fetchAllData = (galleries = [], artwork = []) => {
     if (TokenService.hasAuthToken() === false) {
       return { galleries, artwork };
-    } else {     
+    } else {
       ArtisteApiService.getGalAndArt()
         .then(([galleries, artwork]) => {
           this.setState({ galleries, artwork });
@@ -64,7 +68,7 @@ class App extends React.Component {
   clearData = () => {
     this.setState({
       galleries: [],
-      artwork: [],        
+      artwork: [],
     });
   };
 
@@ -91,14 +95,14 @@ class App extends React.Component {
       galleries: filteredGalleries
     });
   };
-  
+
   renderNavRoutes() {
     const { artwork, galleries } = this.state;
     return (
       <>
         {[
           '/studio',
-          '/add-gallery', 
+          '/add-gallery',
           '/artpiece',
           '/gallery',
         ].map(path => (
@@ -128,105 +132,115 @@ class App extends React.Component {
             path={['/', '/login', '/register']}
             render={routeProps => <NavLanding {...routeProps} />}
           />
-        </>  
+        </>
         <>
           <Route
             exact
             path='/home'
             render={routeProps => <NavHome {...routeProps} />}
           />
-        </>       
+        </>
       </>
-    
+
 
     );
   }
- 
+
   renderMainRoutes() {
-    const { artwork, galleries, currentUser } = this.state;
+    const { artwork, galleries, currentUser } = this.state;    
     return (
-    
+
       <>
-        <>
-          <PublicOnlyRoute
+
+        <PublicOnlyRoute
+          exact
+          path={['/']}
+          render={routeProps => {
+            return <LandingPage {...routeProps} />;
+          }}
+        />
+        <PublicOnlyRoute
+          exact
+          path="/login"
+          render={routeProps => {
+            return <Login {...routeProps} fetchAllData={this.fetchAllData} />;
+          }}
+        />
+        <PublicOnlyRoute
+          exact
+          path="/register"
+          render={routeProps => {
+            return <Register {...routeProps} />;
+          }}
+        />
+         <PrivateCollectorRoute
             exact
-            path={['/']}
+            path={['/my-galleries']}
             render={routeProps => {
-              return <LandingPage {...routeProps} />;
+              return <MyGalleries {...routeProps}/>;
             }}
           />
-          <PublicOnlyRoute
+             <PrivateArtistRoute
             exact
-            path="/login"
+            path={['/my-studio']}
             render={routeProps => {
-              return <Login {...routeProps} fetchAllData={this.fetchAllData} />;
-            }}
-          />      
-          <PublicOnlyRoute
-            exact
-            path="/register"
-            render={routeProps => {
-              return <Register {...routeProps} />;
+              return <MyStudio {...routeProps} />;
             }}
           />
-          <>
-            <PrivateRoute
-              exact
-              path="/add-gallery"
-              render={routeProps => (
-                <ScrollToTop>
-                  <AddGallery addGallery={this.addGallery} {...routeProps} />
-                </ScrollToTop>
-              )}
-            />
-          </>
-        </>
-        <>
+
         <PrivateRoute
+          exact
+          path="/add-gallery"
+          render={routeProps => (
+            <ScrollToTop>
+              <AddGallery addGallery={this.addGallery} {...routeProps} />
+            </ScrollToTop>
+          )}
+        />
+        <PrivateRoute
+          exact
+          path={['/home']}
+          render={routeProps => {
+            return <Home {...routeProps} />;
+          }}
+        />
+        {['/gallery/:galleryId'].map(path => (
+          <PrivateRoute
             exact
-            path={['/home']}
+            key={path}
+            path={path}
             render={routeProps => {
-              return <Home {...routeProps} />;
-            }}
-          />
-          {['/gallery/:galleryId'].map(path => (
-            <PrivateRoute
-              exact
-              key={path}
-              path={path}
-              render={routeProps => {
-                const { galleryId } = routeProps.match.params;
-                const artworkToGalleries = addArtworkToGalleries(
-                  artwork,
-                  galleryId
-                );
-                return (
-                  <ArtworkListPage
-                    currentUser={currentUser}
-                    artwork={artworkToGalleries}
-                    deleteArtpiece={this.deleteArtpiece}
-                    {...routeProps}
-                  />
-                );
-              }}
-            />
-          ))}
-          <Route        
-            path="/artpiece/:artpieceId"
-            render={routeProps => {
-              const { artpieceId } = routeProps.match.params;
-              const artpiece = findArtpiece(artwork, artpieceId);
+              const { galleryId } = routeProps.match.params;
+              const artworkToGalleries = addArtworkToGalleries(
+                artwork,
+                galleryId
+              );
               return (
-                <ArtpieceMainPage
-                  {...routeProps}
-                  artpiece={artpiece}
+                <ArtworkListPage
+                  currentUser={currentUser}
+                  artwork={artworkToGalleries}
                   deleteArtpiece={this.deleteArtpiece}
-                  artpieceId={artpieceId}
+                  {...routeProps}
                 />
               );
             }}
           />
-        </>
+        ))}
+        <Route
+          path="/artpiece/:artpieceId"
+          render={routeProps => {
+            const { artpieceId } = routeProps.match.params;
+            const artpiece = findArtpiece(artwork, artpieceId);
+            return (
+              <ArtpieceMainPage
+                {...routeProps}
+                artpiece={artpiece}
+                deleteArtpiece={this.deleteArtpiece}
+                artpieceId={artpieceId}
+              />
+            );
+          }}
+        />
         <PrivateRoute
           exact
           path="/studio"
@@ -238,30 +252,28 @@ class App extends React.Component {
             />
           )}
         />
-      <>
-      {/* <Route      
+
+        {/* <Route      
             render={routeProps => {
               return <NotFound {...routeProps} />;
             }}
           /> */}
-    
+
       </>
-      </>
-    
+
     );
   }
 
-  render() {  
-    const {user} = this.context;
-    let header = Object.keys(user).length > 0 ? (user.collector? <CollectorHeader/> : <ArtistHeader/>) : <LandingHeader/>
+  render() {
+    const { user } = this.context;
+    let header = Object.keys(user).length > 0 ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
     return (
       <div className="App">
-
         <nav className="App_nav" role="navigation">
-        {this.renderNavRoutes()}         
+          {this.renderNavRoutes()}
         </nav>
         <header className="App_header">
-        {header}
+          {header}
         </header>
         <ScrollToTop>
           <main className="App__main">{this.renderMainRoutes()}</main>

@@ -22,12 +22,10 @@ export class UserProvider extends Component {
   }
 
   componentDidMount() {
-    this.checkUser();
-    console.log('user in componenetDidmount', this.state.user)
+    this.checkUser();   
   }
 
-  checkUser = () => {
-    console.log('hasAuth', TokenService.hasAuthToken())
+  checkUser = () => { 
     if (TokenService.hasAuthToken()){       
       let updateUser = this.processToken();
       this.setState({
@@ -38,8 +36,7 @@ export class UserProvider extends Component {
       this.setState({
         user: {},
       })
-    }
-       
+    }       
   }
 
   setUser = updateUser => {
@@ -66,15 +63,13 @@ export class UserProvider extends Component {
   }
 
   processLogin = () => {   
-    let user = this.processToken();
-    // this.setUser(user);
-    this.setUserContext(user); 
-    console.log('user in processlogin', this.state.user)
+    let user = this.processToken();   
+    this.setUser(user);    
   }
 
   processLogout = () => {
     TokenService.clearAuthToken()   
-    this.setUser({}, ()=>{console.log('user in processlogout',this.state.user)})
+    this.setUser({})
    
   }
 

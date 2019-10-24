@@ -85,6 +85,15 @@ ul {
   list-style: none;
 }
 
+header h1 a{
+  text-decoration: none;
+  color: rgb(146, 141, 141);
+}
+/* 
+header h1 a:hover {
+  color: var(--purple);
+} */
+
 @media screen and (max-width: 850px) {
   .App {
     margin: 0 auto;

@@ -1,7 +1,6 @@
 import React from 'react';
 import AuthApiService from '../services/authApiService';
 import './login.css';
-import TokenService from '../services/tokenService'
 import UserContext from '../context/context'
 
 class Login extends React.Component {
@@ -24,9 +23,7 @@ class Login extends React.Component {
       user
     })
       .then(res => {
-        this.props.fetchAllData();
-        this.props.checkUser();
-        // this.props.userInfo(res.user.collector, res.user.userName);
+        this.props.fetchAllData();  
         e.target['username'].value = '';
         e.target['password'].value = '';
         e.target['collector'].value = null;

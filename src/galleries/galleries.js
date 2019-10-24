@@ -1,9 +1,10 @@
 import React from 'react';
 import './galleries.css';
 import Gallery from '../gallery/gallery';
-import TokenService from '../services/tokenService';
+import UserContext from '../context/context'
 
 class Galleries extends React.Component {
+  static contextType = UserContext;
   state = { error: null };
   goBack = e => {
     e.preventDefault();    
@@ -39,8 +40,8 @@ class Galleries extends React.Component {
     }
   };
   Logout = e => {
-    e.preventDefault();
-    TokenService.clearAuthToken();
+    e.preventDefault();    
+    this.context.processLogout();
     this.props.clearData();
     this.props.history.push('/');
   };

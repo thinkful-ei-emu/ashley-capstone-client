@@ -33,12 +33,12 @@ class App extends React.Component {
   state = {
     artwork: [],
     galleries: [],
-    user: {}          
+    // user: {}          
   };
 
   componentDidMount() {
     this.fetchAllData(); 
-    this.checkUser();  
+    // this.checkUser();  
   }
 
   fetchAllData = (galleries = [], artwork = []) => {
@@ -93,29 +93,29 @@ class App extends React.Component {
     });
   };
 
-  checkUser = () => { 
-    let updateUser; 
-    console.log('checking context user', this.context.user)
-      if (TokenService.hasAuthToken && this.context.user === {}){  
-        console.log('in the if')      
-        let userToken = TokenService.readJwtToken();      
-        updateUser = {
-          userId: userToken.user_id,
-          userName: userToken.sub,
-          collector: userToken.collector
-        } 
-        this.setState({
-          user: updateUser
-        })           
-      }
-      else {
-        updateUser = this.context.user;
-        this.setState({
-          user: updateUser
-        })
-      }
+  // checkUser = () => { 
+  //   let updateUser; 
+  //   console.log('checking context user', this.context.user)
+  //     if (TokenService.hasAuthToken && this.context.user === {}){  
+  //       console.log('in the if')      
+  //       let userToken = TokenService.readJwtToken();      
+  //       updateUser = {
+  //         userId: userToken.user_id,
+  //         userName: userToken.sub,
+  //         collector: userToken.collector
+  //       } 
+  //       this.setState({
+  //         user: updateUser
+  //       })           
+  //     }
+  //     else {
+  //       updateUser = this.context.user;
+  //       this.setState({
+  //         user: updateUser
+  //       })
+  //     }
     
-  }
+  // }
 
   // userInfo = (collectorStatus, userName) => {     
   //   this.setState({
@@ -192,7 +192,7 @@ class App extends React.Component {
             exact
             path="/login"
             render={routeProps => {
-              return <Login {...routeProps} userInfo={this.userInfo} fetchAllData={this.fetchAllData} />;
+              return <Login {...routeProps} fetchAllData={this.fetchAllData} />;
             }}
           />      
           <PublicOnlyRoute
@@ -285,9 +285,8 @@ class App extends React.Component {
   }
 
   render() {  
-    const {user} = this.state;   
-    console.log('logging user from context', user)
-    let header = user ? (user.collector === true ? <CollectorHeader/> : <ArtistHeader/>) : <CollectorHeader/>
+    const {user} = this.context;  
+    let header = Object.keys(user).length > 0 ? (user.collector === true ? <CollectorHeader/> : <ArtistHeader/>) : <CollectorHeader/>
     return (
       <div className="App">
 

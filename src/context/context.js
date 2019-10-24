@@ -11,44 +11,47 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { 
+    this.state = { 
       user: {},    
-    }
-
+    }   
    
-    this.state = state;  
-    
+  }
 
+  componentDidMount() {
+    this.checkUser();
+  }
+
+  checkUser = () => {
     if (TokenService.getAuthToken()){ 
-      let userToken = TokenService.readJwtToken();      
-      let user = {
-        userId: userToken.user_id,
-        userName: userToken.sub,
-        collector: userToken.collector
-      }
-      state.user = user; 
+      let updateUser = this.processToken();
+      this.setState({
+        user: updateUser,
+      })
     }
     else {
-      state.user = {};
+      this.setState({
+        user: {},
+      })
     }
        
-    
   }
 
   setUser = user => {
-    this.setState({ user })
-  } 
-
-  processLogin = response => {
-    // const authToken = response.authToken;
-    // const user = response.user;
+    this.setState({ user: user })
+  }
+  
+  processToken = () => {
     let userToken = TokenService.readJwtToken();  
-    // TokenService.saveAuthToken(authToken)
     let user = {
       userId: userToken.user_id,
       userName: userToken.sub,
       collector: userToken.collector
     }
+    return user;
+  }
+
+  processLogin = () => {   
+    let user = this.processToken();
     this.setUser({user}) 
   }
 
@@ -62,6 +65,8 @@ export class UserProvider extends Component {
       user: this.state.user,
       teacherClass: this.state.teacherClass,    
       setUser: this.setUser,
+      processLogin: this.processLogin,
+      processLogout: this.processLogout,
      
     }
     return (

@@ -21,10 +21,10 @@ class Login extends React.Component {
       user
     })
       .then(res => {
-        this.props.fetchAllData();  
+        this.props.fetchAllData();
+        this.context.processLogin();  
         e.target['username'].value = '';
-        e.target['password'].value = '';    
-        this.context.processLogin();      
+        e.target['password'].value = '';        
         this.props.history.push('/home');
       })
       .catch(res => {

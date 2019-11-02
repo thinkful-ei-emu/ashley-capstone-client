@@ -14,6 +14,7 @@ class ArtistHeader extends React.Component {
   }
 
   render(){
+    console.log(this.context)
     const {user} = this.context; 
     return (
       <div className= "artist-header">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TokenService from '../services/tokenService'
+import AuthApiService from '../services/authApiService'
 
 const UserContext = React.createContext({
   user: {},
@@ -25,12 +26,19 @@ export class UserProvider extends Component {
     this.checkUser();   
   }
 
+  getUserInfo = () => {
+    AuthApiService.getUser()
+    .then(user => {    
+      this.setState({user: user});
+    })
+    .catch(error => {
+      console.error({ error });
+    });
+  }
+
   checkUser = () => { 
     if (TokenService.hasAuthToken()){       
-      let updateUser = this.processToken();
-      this.setState({
-        user: updateUser,
-      })     
+       this.getUserInfo()   
     }
     else {
       this.setState({
@@ -39,18 +47,6 @@ export class UserProvider extends Component {
     }       
   }
 
-  setUser = updateUser => {
-    this.setState({ user: updateUser })
-  }
-
-  setUserContext = updateUser => {   
-    if(TokenService.hasAuthToken() && Object.keys(this.state.user).length === 0){    
-     this.setUser(updateUser)
-    }   
-    else {    
-      this.setUser(updateUser)
-    }
-  }
   
   processToken = () => {
     let userToken = TokenService.readJwtToken();  
@@ -63,13 +59,12 @@ export class UserProvider extends Component {
   }
 
   processLogin = () => {   
-    let user = this.processToken();   
-    this.setUser(user);    
+   this.getUserInfo()    
   }
 
   processLogout = () => {
     TokenService.clearAuthToken()   
-    this.setUser({})
+    this.setState({ user: {} })
    
   }
 

@@ -147,7 +147,8 @@ class App extends React.Component {
   }
 
   renderMainRoutes() {
-    const { artwork, galleries, currentUser } = this.state;    
+    const { artwork, galleries, currentUser } = this.state; 
+    const {user}  = this.context;
     return (
 
       <>
@@ -179,6 +180,7 @@ class App extends React.Component {
             render={routeProps => {
               return <MyGalleries {...routeProps}/>;
             }}
+            collectorStatus = {user.collector}
           />
              <PrivateArtistRoute
             exact
@@ -186,6 +188,7 @@ class App extends React.Component {
             render={routeProps => {
               return <MyStudio {...routeProps} />;
             }}
+            collectorStatus = {user.collector}
           />
 
         <PrivateRoute

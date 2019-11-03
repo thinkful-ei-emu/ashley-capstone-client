@@ -30,6 +30,7 @@ import MyGalleries from './myGalleries/myGalleries'
 import MyStudio from './myStudio/myStudio'
 import PrivateCollectorRoute from './utils/privateCollectorRoute';
 import PrivateArtistRoute from './utils/privateArtisteRoute';
+import AuthApiService from './services/authApiService';
 
 class App extends React.Component {
 
@@ -178,14 +179,14 @@ class App extends React.Component {
             path={['/my-galleries']}
             render={routeProps => {
               return <MyGalleries {...routeProps}/>;
-            }}
+            }} 
           />
              <PrivateArtistRoute
             exact
             path={['/my-studio']}
             render={routeProps => {
               return <MyStudio {...routeProps} />;
-            }}
+            }}           
           />
 
         <PrivateRoute
@@ -208,7 +209,7 @@ class App extends React.Component {
           <PrivateRoute
             exact
             key={path}
-            path={path}
+            path={path}            
             render={routeProps => {
               const { galleryId } = routeProps.match.params;
               const artworkToGalleries = addArtworkToGalleries(
@@ -266,7 +267,7 @@ class App extends React.Component {
 
   render() {
     const { user } = this.context;
-    let header = Object.keys(user).length > 0 ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
+    let header = TokenService.hasAuthToken() ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
     return (
       <div className="App">
         <nav className="App_nav" role="navigation">

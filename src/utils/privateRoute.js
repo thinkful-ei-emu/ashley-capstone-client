@@ -5,10 +5,10 @@ import TokenService from '../services/tokenService'
 export default function PrivateRoute({ render, ...props }) {
   const Render = render
 
-  return (  
+  
+  return (      
     <Route
-      {...props}
-     
+      {...props}     
       render={componentProps => (
         TokenService.hasAuthToken()       
           ? <Render {...componentProps} />
@@ -17,8 +17,8 @@ export default function PrivateRoute({ render, ...props }) {
                 pathname: '/login',
                 state: { from: componentProps.location }
               }}
-            />
+            /> 
       )}
-    />
+    /> 
   )
 }

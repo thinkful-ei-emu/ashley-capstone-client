@@ -269,7 +269,7 @@ class App extends React.Component {
 
   render() {
     const { user } = this.context;
-    let header = Object.keys(user).length > 0 ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
+    let header = TokenService.hasAuthToken() ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
     return (
       <div className="App">
         <nav className="App_nav" role="navigation">

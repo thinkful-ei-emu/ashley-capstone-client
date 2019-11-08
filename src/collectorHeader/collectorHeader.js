@@ -18,7 +18,7 @@ class CollectorHeader extends React.Component {
       <div className= "collector-header">
      <h1><Link to='/home'>L'Artist</Link></h1>
      <nav className = "nav-links">
-       <Link to={`/my-galleries`}  className='button' >My Galleries</Link>
+       <Link to={'/gallery'}  className='button' >My Galleries</Link>
        <Link to='/' onClick={this.handleLogoutClick} className='button'>Logout</Link>
        <div className="button">{user.userName}</div>
      </nav>

@@ -69,7 +69,7 @@ class Galleries extends React.Component {
           <div className="error-message-gallery" role="alert">
             {error && <p id="error-message">{error}</p>}
           </div>
-          <div className="buttons-container">
+          {/* <div className="buttons-container">
             <div className="top-buttons">
               <button
                 type="button"
@@ -102,7 +102,7 @@ class Galleries extends React.Component {
                 Logout
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

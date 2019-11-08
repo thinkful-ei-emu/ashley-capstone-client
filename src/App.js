@@ -26,7 +26,6 @@ import TokenService from './services/tokenService';
 import ScrollToTop from './scrollToTop/scrollToTop';
 import UserContext from './context/context';
 import LandingHeader from './landingHeader/landingHeader';
-import MyGalleries from './myGalleries/myGalleries'
 import MyStudio from './myStudio/myStudio'
 import PrivateCollectorRoute from './utils/privateCollectorRoute';
 import PrivateArtistRoute from './utils/privateArtisteRoute';
@@ -101,7 +100,7 @@ class App extends React.Component {
     const { artwork, galleries } = this.state;
     return (
       <>
-        {[
+        {/* {[
           '/studio',
           '/add-gallery',
           '/artpiece',
@@ -125,7 +124,7 @@ class App extends React.Component {
               );
             }}
           />
-        ))}
+        ))} */}
 
         <>
           <Route
@@ -174,14 +173,7 @@ class App extends React.Component {
             return <Register {...routeProps} />;
           }}
         />
-         <PrivateCollectorRoute
-            exact
-            path={['/my-galleries']}
-            render={routeProps => {
-              return <MyGalleries {...routeProps}/>;
-            }} 
-          />
-             <PrivateArtistRoute
+         <PrivateArtistRoute
             exact
             path={['/my-studio']}
             render={routeProps => {
@@ -205,6 +197,31 @@ class App extends React.Component {
             return <Home {...routeProps} />;
           }}
         />
+         {[
+          '/studio',
+          '/add-gallery',
+          '/artpiece',
+          '/gallery',
+        ].map(path => (
+          <PrivateCollectorRoute
+            // exact
+            key={path}
+            path={path}
+            render={routeProps => {
+              const { galleryId } = routeProps.match.params;
+              return (
+                <Galleries
+                  galleryId={galleryId}
+                  clearData={this.clearData}
+                  deleteGallery={this.deleteGallery}
+                  galleries={galleries}
+                  artwork={artwork}
+                  {...routeProps}
+                />
+              );
+            }}
+          />
+        ))}
         {['/gallery/:galleryId'].map(path => (
           <PrivateRoute
             exact

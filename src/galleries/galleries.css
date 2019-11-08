@@ -8,8 +8,8 @@
   min-height: 130vh;
   text-align: center;
   padding: 0;
-  background-color: rgb(195, 158, 110);
-  border-right: black solid 2px;
+  /* background-color: rgb(195, 158, 110); */
+  /* border-right: black solid 2px; */
 }
 
 .gallery-list {

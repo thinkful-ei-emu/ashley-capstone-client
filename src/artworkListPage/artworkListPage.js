@@ -6,37 +6,40 @@ import UserContext from '../context/context'
 
 class ArtworkListPage extends React.Component {
   static contextType = UserContext;
-  state = {
-    privateGalArtwork: {},
+  state = {  
+    currentGallery: {},
   }
 
   //***issue with rendering artwork for some reason fetchprivateGallery cannot map through privateGalArtwork eventhough I know
   //that privateGalArtwork should be an obj with a artwork property which is an array (issue with fetch call? async where it is mapping before finding the gallery?)
 //maybe have checker privateGalArtwork ? then map
-  // componentDidMount(){ 
-  //   this.context.fetchPrivateGallery(this.props.match.params.galleryId);
-  // }
+
+componentDidMount(){ 
+    this.fetchPrivateGallery(); 
+  }
   
 
-  // fetchPrivateGallery = () => {   
-  //   ArtisteApiService.getPrivateGallery(this.props.match.params.galleryId)
-  //   .then(privateGalArtwork => {
-  //     this.setState({ privateGalArtwork});
-  //   })
-  //   .catch(error => {
-  //     console.error({ error });
-  //   });
-  // }
+  fetchPrivateGallery = () => {   
+    ArtisteApiService.getPrivateGallery(this.props.galleryId)
+    .then(currentGallery => {
+      console.log(currentGallery)
+      this.setState({currentGallery})
+      // this.context.setCurrentGallery(currentGallery)
+      
+    })
+    .catch(error => {
+      console.error({ error });
+    });
+  }
 
 
-  render() {    
-    const { artwork } = this.props; 
- 
+  render() {      
+    const { currentGallery} = this.state;  
     return (
       <div className="artwork-page">
         <h2>La Galerie d'Art</h2>       
-        <ul className="artwork-list">          
-          {artwork.map(artpiece => (
+        {Object.values(currentGallery).length ? <ul className="artwork-list">          
+          {currentGallery.artwork.map(artpiece => (
             <li key={artpiece.artpieceId}>
               <Artpiece
                 id={artpiece.artpieceId}
@@ -45,10 +48,11 @@ class ArtworkListPage extends React.Component {
                 uploaded={artpiece.artpieceUploaded}
                 deleteArtpiece={this.props.deleteArtpiece}
                 history={this.props.history}
+                galleryId={currentGallery.galleryId}
               />
             </li>
           ))}
-        </ul>
+        </ul> : <p>Loading</p>}
       </div>
     );
   }

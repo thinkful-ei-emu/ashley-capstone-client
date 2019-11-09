@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../gallery/gallery.css';
 import ArtisteApiService from '../services/artisteApiService';
 
@@ -22,9 +22,9 @@ class Gallery extends React.Component {
       <div className="gallery">
         <div className="gallery-name">
           <div>
-            <NavLink className="name" to={`/gallery/${this.props.id}`}>
+            <Link className="name" to={`/gallery/${this.props.id}`}>
               {this.props.name}
-            </NavLink>
+            </Link>
           </div>
 
           <div className="count">

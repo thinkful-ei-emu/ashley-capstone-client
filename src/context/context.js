@@ -14,6 +14,7 @@ const UserContext = React.createContext({
   privateGalArtwork: {},
   currentGallery: {},
   currentArtpiece: {},
+  setCurrentGallery: () => {},
   // findGallery: () => {},
   // findArtpiece: () => {},
 })
@@ -27,7 +28,7 @@ export class UserProvider extends Component {
       user: {},
       privateGalleries: [],
       privateGalArtwork: [],
-      // currentGallery: {},
+      currentGallery: {},
       // currentArtpiece: {},
     }   
    
@@ -68,19 +69,18 @@ export class UserProvider extends Component {
     }
   };
 
-  fetchPrivateGallery = (galleryId) => {     
-    ArtisteApiService.getPrivateGallery(galleryId)
-    .then(privateGalArtwork => {
-      console.log('privategalARtwork in context', privateGalArtwork)
-      this.setState({ privateGalArtwork});
-    })
-    .catch(error => {
-      console.error({ error });
-    });
-  }
+  // fetchPrivateGallery = (galleryId) => {     
+  //   ArtisteApiService.getPrivateGallery(galleryId)
+  //   .then(currentGallery => {
+  //     this.setState({currentGallery});
+  //   })
+  //   .catch(error => {
+  //     console.error({ error });
+  //   });
+  // }
 
-  setCurrentGallery = (currentGallery) => {
-    this.setState({ currentGallery})
+  setCurrentGallery = currentGallery => {
+    this.setState({ currentGallery: currentGallery})
   }
   setCurrentArtpiece = (currentArtpiece) => {
     this.setState({ currentArtpiece})
@@ -133,7 +133,8 @@ export class UserProvider extends Component {
 
   processLogin = () => {   
     let user = this.processToken();   
-    this.setUser(user);    
+    this.setUser(user);
+    this.fetchPrivateGalleries();     
   }
 
   processLogout = () => {
@@ -151,7 +152,7 @@ export class UserProvider extends Component {
       checkUser: this.checkUser,
       processToken: this.processToken, 
       privateGalleries: this.state.privateGalleries,
-      privateGalArtwork: this.state.privateGalArtwork,
+      currentGallery: this.state.currentGallery,
       fetchPrivateGalleries: this.fetchPrivateGalleries,
       fetchPrivateGallery: this.fetchPrivateGallery,
       clearAllData: this.clearAllData,

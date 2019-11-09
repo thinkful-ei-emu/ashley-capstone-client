@@ -21,7 +21,7 @@ class Artpiece extends React.Component {
     return (
       <div className="artpiece">
         <h2 className="artpiece-title">
-          <Link to={`/artpiece/${this.props.id}`}>{this.props.title}</Link>
+          <Link to={`/gallery/${this.props.galleryId}/artpiece/${this.props.id}`}>{this.props.title}</Link>
         </h2>
         <p>Artist: {this.props.artist}</p>
 

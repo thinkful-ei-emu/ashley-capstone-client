@@ -148,7 +148,7 @@ class App extends React.Component {
   }
 
   renderMainRoutes() {
-    const { artwork, galleries, currentUser } = this.state;    
+    const { artwork, galleries, currentUser } = this.state;
     return (
 
       <>
@@ -174,13 +174,13 @@ class App extends React.Component {
             return <Register {...routeProps} />;
           }}
         />
-         <PrivateArtistRoute
-            exact
-            path={['/my-studio']}
-            render={routeProps => {
-              return <MyStudio {...routeProps} />;
-            }}           
-          />
+        <PrivateArtistRoute
+          exact
+          path={['/my-studio']}
+          render={routeProps => {
+            return <MyStudio {...routeProps} />;
+          }}
+        />
 
         <PrivateRoute
           exact
@@ -198,15 +198,13 @@ class App extends React.Component {
             return <Home {...routeProps} />;
           }}
         />
-         {[          
-          '/add-gallery',
-          '/artpiece',
-          '/gallery',
-        ].map(path => (
-          <PrivateCollectorRoute
-            // exact
-            key={path}
-            path={path}
+
+     
+        <PrivateCollectorRoute
+          
+            // key={path}
+            path='/gallery'
+         
             render={routeProps => {
               const { galleryId } = routeProps.match.params;
               return (
@@ -214,70 +212,73 @@ class App extends React.Component {
                   galleryId={galleryId}
                   clearData={this.clearData}
                   deleteGallery={this.deleteGallery}
-                  galleries={galleries}
-                  artwork={artwork}
+                  // galleries={galleries}
+                  // artwork={artwork}
                   {...routeProps}
                 />
               );
             }}
           />
-        ))}
-        {/* {['/gallery/:galleryId'].map(path => (
-          <PrivateRoute
+       
+
+    
+          <PrivateCollectorRoute
             exact
-            key={path}
-            path={path}            
+            // key={path}
+            path='/gallery/:galleryId'
             render={routeProps => {
-              const { galleryId } = routeProps.match.params;      
-            
+              const { galleryId } = routeProps.match.params;
+
               // const artworkToGalleries = addArtworkToGalleries(
               //   artwork,
               //   galleryId
               // );
               return (
                 <ArtworkListPage
-                  // galleryId = {galleryId}
+                  galleryId={galleryId}
                   currentUser={currentUser}
                   // artwork={artworkToGalleries}
                   deleteArtpiece={this.deleteArtpiece}
                   {...routeProps}
                 />
               );
-            }} */}
-            {
+            }}
+          />
+ 
+        {/* {
               <PrivateRoute
                 exact                
                 path={'/gallery/:galleryId'}            
-                render={routeProps => {
-                  const { galleryId } = routeProps.match.params;  
-                  let currentGallery = findGallery(this.context.privateGalleries, galleryId)
-                  this.context.setCurrentGallery(currentGallery)                           
-                  // const artworkToGalleries = addArtworkToGalleries(
-                  //   artwork,
-                  //   galleryId
-                  // );
+                render={routeProps => {                 
+                  const { galleryId } = routeProps.match.params;
+              
                   return (
                     <ArtworkListPage
-                      // galleryId = {galleryId}
+                      galleryId = {galleryId}
                       currentUser={currentUser}
-                      artwork={currentGallery? currentGallery.artwork : []}
+                      // artwork={currentGallery? currentGallery.artwork : []}
+                   
                       deleteArtpiece={this.deleteArtpiece}
+                   
                       {...routeProps}
                     />
                   );
                 }}
           />
-        }
-        <Route
-          path="/artpiece/:artpieceId"
+        } */}
+        <PrivateCollectorRoute
+          exact        
+          path="/gallery/:galleryId/artpiece/:artpieceId"
           render={routeProps => {
-            const { artpieceId } = routeProps.match.params;     
+            const { galleryId, artpieceId } = routeProps.match.params;
+            console.log(galleryId)
             return (
               <ArtpieceMainPage
                 {...routeProps}
                 // artpiece={artpiece}
                 deleteArtpiece={this.deleteArtpiece}
                 artpieceId={artpieceId}
+                galleryId={galleryId}
               />
             );
           }}

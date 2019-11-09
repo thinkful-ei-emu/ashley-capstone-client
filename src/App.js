@@ -197,8 +197,7 @@ class App extends React.Component {
             return <Home {...routeProps} />;
           }}
         />
-         {[
-          '/studio',
+         {[          
           '/add-gallery',
           '/artpiece',
           '/gallery',
@@ -229,14 +228,15 @@ class App extends React.Component {
             path={path}            
             render={routeProps => {
               const { galleryId } = routeProps.match.params;
-              const artworkToGalleries = addArtworkToGalleries(
-                artwork,
-                galleryId
-              );
+              // const artworkToGalleries = addArtworkToGalleries(
+              //   artwork,
+              //   galleryId
+              // );
               return (
                 <ArtworkListPage
+                  // galleryId = {galleryId}
                   currentUser={currentUser}
-                  artwork={artworkToGalleries}
+                  // artwork={artworkToGalleries}
                   deleteArtpiece={this.deleteArtpiece}
                   {...routeProps}
                 />

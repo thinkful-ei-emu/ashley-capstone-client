@@ -48,20 +48,20 @@ class Galleries extends React.Component {
 
   render() {
     const { error } = this.state;
-    const { galleries, artwork } = this.props;
-    //either loop thru object for(let key in privateGalleries from this.context)
-    //or add an gallery_id as a property for each object and then map through Object.values(this.context.privateGalleries)
+    // const { galleries, artwork } = this.props;
+     const {privateGalleries} = this.context;   
     return (
       <div className="gallery-page">
         <div>
           <ul className="gallery-list">
-            {galleries.map(gallery => (
-              <li key={gallery.id} className="gallery-list-names">
+            {privateGalleries.map(gallery => (
+              <li key={gallery.galleryId} className="gallery-list-names">
                 <Gallery
-                  id={gallery.id}
-                  name={gallery.name}
+                  id={gallery.galleryId}
+                  name={gallery.galleryName}
                   deleteGallery={this.props.deleteGallery}
-                  artwork={artwork}
+                  artwork={gallery.artwork}
+                  owner={gallery.galleryOwner}
                   history={this.props.history}
                 />
               </li>

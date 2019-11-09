@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../gallery/gallery.css';
-import { totalArtworkInGallery } from '../artwork-helpers/artwork-helpers';
 import ArtisteApiService from '../services/artisteApiService';
 
 class Gallery extends React.Component {
@@ -29,7 +28,7 @@ class Gallery extends React.Component {
           </div>
 
           <div className="count">
-            Artwork: {totalArtworkInGallery(this.props.artwork, this.props.id)}
+            Artwork: {this.props.artwork.length}
           </div>
           <button
             type="button"

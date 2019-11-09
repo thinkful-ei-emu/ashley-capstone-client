@@ -9,8 +9,8 @@ const UserContext = React.createContext({
   processLogout: () => {},
   checkUser: () => {}, 
   processToken : () => {},
-  privateGalleries: {},
-  privateArtwork: {},
+  privateGalleries: [],
+  // privateGalArtwork: [],
 })
 
 export default UserContext
@@ -20,7 +20,8 @@ export class UserProvider extends Component {
     super(props)
     this.state = { 
       user: {},
-      privateGalleries: {},    
+      privateGalleries: [],
+      privateGalArtwork: []
     }   
    
   }
@@ -28,6 +29,7 @@ export class UserProvider extends Component {
   componentDidMount() {
     this.checkUser();  
     this.fetchPrivateGalleries(); 
+    // this.fetchPrivateGallery();    
   }
 
   checkUser = () => { 
@@ -43,7 +45,7 @@ export class UserProvider extends Component {
       })
     }       
   }
-  fetchPrivateGalleries = (privateGalleries = {}) => {
+  fetchPrivateGalleries = (privateGalleries = []) => {
     if (TokenService.hasAuthToken() === false) {
       return { privateGalleries};
     } else {
@@ -57,6 +59,16 @@ export class UserProvider extends Component {
     }
   };
 
+  fetchPrivateGallery = (galleryId) => {   
+    console.log(galleryId)
+    ArtisteApiService.getPrivateGallery(galleryId)
+    .then(privateGalArtwork => {
+      this.setState({ privateGalArtwork});
+    })
+    .catch(error => {
+      console.error({ error });
+    });
+  }
 
   setUser = updateUser => {
     this.setState({ user: updateUser })
@@ -100,7 +112,9 @@ export class UserProvider extends Component {
       processLogout: this.processLogout,
       checkUser: this.checkUser,
       processToken: this.processToken, 
-      privateGalleries: this.state.privateGalleries,    
+      privateGalleries: this.state.privateGalleries,
+      privateGalArtwork: this.state.privateGalArtwork,
+      fetchPrivateGalleries: this.fetchPrivateGalleries,    
     }
     return (
       <UserContext.Provider value={value}>

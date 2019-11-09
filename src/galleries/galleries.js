@@ -49,7 +49,8 @@ class Galleries extends React.Component {
   render() {
     const { error } = this.state;
     const { galleries, artwork } = this.props;
-
+    //either loop thru object for(let key in privateGalleries from this.context)
+    //or add an gallery_id as a property for each object and then map through Object.values(this.context.privateGalleries)
     return (
       <div className="gallery-page">
         <div>

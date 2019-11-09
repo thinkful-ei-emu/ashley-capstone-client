@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TokenService from '../services/tokenService'
+import ArtisteApiService from '../services/artisteApiService'
 
 const UserContext = React.createContext({
   user: {},
@@ -8,6 +9,8 @@ const UserContext = React.createContext({
   processLogout: () => {},
   checkUser: () => {}, 
   processToken : () => {},
+  privateGalleries: {},
+  privateArtwork: {},
 })
 
 export default UserContext
@@ -16,13 +19,15 @@ export class UserProvider extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      user: {},    
+      user: {},
+      privateGalleries: {},    
     }   
    
   }
 
   componentDidMount() {
-    this.checkUser();   
+    this.checkUser();  
+    this.fetchPrivateGalleries(); 
   }
 
   checkUser = () => { 
@@ -38,6 +43,20 @@ export class UserProvider extends Component {
       })
     }       
   }
+  fetchPrivateGalleries = (privateGalleries = {}) => {
+    if (TokenService.hasAuthToken() === false) {
+      return { privateGalleries};
+    } else {
+      ArtisteApiService.getPrivateGalleries()
+        .then(privateGalleries => {
+          this.setState({ privateGalleries});
+        })
+        .catch(error => {
+          console.error({ error });
+        });
+    }
+  };
+
 
   setUser = updateUser => {
     this.setState({ user: updateUser })
@@ -80,7 +99,8 @@ export class UserProvider extends Component {
       processLogin: this.processLogin,
       processLogout: this.processLogout,
       checkUser: this.checkUser,
-      processToken: this.processToken,     
+      processToken: this.processToken, 
+      privateGalleries: this.state.privateGalleries,    
     }
     return (
       <UserContext.Provider value={value}>

@@ -8,7 +8,8 @@ class CollectorHeader extends React.Component {
 
   handleLogoutClick = () => {    
     this.context.processLogout();
-    this.props.clearData();   
+    this.props.clearData();
+    this.context.clearAllData();   
   }
   
 

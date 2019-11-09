@@ -13,9 +13,9 @@ class ArtworkListPage extends React.Component {
   //***issue with rendering artwork for some reason fetchprivateGallery cannot map through privateGalArtwork eventhough I know
   //that privateGalArtwork should be an obj with a artwork property which is an array (issue with fetch call? async where it is mapping before finding the gallery?)
 //maybe have checker privateGalArtwork ? then map
-  componentDidMount(){ 
-    this.context.fetchPrivateGallery(this.props.match.params.galleryId);
-  }
+  // componentDidMount(){ 
+  //   this.context.fetchPrivateGallery(this.props.match.params.galleryId);
+  // }
   
 
   // fetchPrivateGallery = () => {   
@@ -29,19 +29,20 @@ class ArtworkListPage extends React.Component {
   // }
 
 
-  render() {
-    const { privateGalArtwork } = this.context;
-    console.log(privateGalArtwork)
+  render() {    
+    const { artwork } = this.props; 
+ 
     return (
       <div className="artwork-page">
-        <h2>La Galerie d'Art</h2>
-        <ul className="artwork-list">
-          {privateGalArtwork.artwork.map(artpiece => (
-            <li key={artpiece.id}>
+        <h2>La Galerie d'Art</h2>       
+        <ul className="artwork-list">          
+          {artwork.map(artpiece => (
+            <li key={artpiece.artpieceId}>
               <Artpiece
-                id={artpiece.id}
-                title={artpiece.title}
-                uploaded={artpiece.uploaded}
+                id={artpiece.artpieceId}
+                artist={artpiece.artpieceArtist}
+                title={artpiece.artpieceTitle}
+                uploaded={artpiece.artpieceUploaded}
                 deleteArtpiece={this.props.deleteArtpiece}
                 history={this.props.history}
               />

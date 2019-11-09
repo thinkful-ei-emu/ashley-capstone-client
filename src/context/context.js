@@ -10,7 +10,12 @@ const UserContext = React.createContext({
   checkUser: () => {}, 
   processToken : () => {},
   privateGalleries: [],
-  // privateGalArtwork: [],
+  clearAllData : () => {},
+  privateGalArtwork: {},
+  currentGallery: {},
+  currentArtpiece: {},
+  // findGallery: () => {},
+  // findArtpiece: () => {},
 })
 
 export default UserContext
@@ -21,10 +26,13 @@ export class UserProvider extends Component {
     this.state = { 
       user: {},
       privateGalleries: [],
-      privateGalArtwork: []
+      privateGalArtwork: [],
+      // currentGallery: {},
+      // currentArtpiece: {},
     }   
    
   }
+  
 
   componentDidMount() {
     this.checkUser();  
@@ -51,6 +59,7 @@ export class UserProvider extends Component {
     } else {
       ArtisteApiService.getPrivateGalleries()
         .then(privateGalleries => {
+          console.log(privateGalleries)
           this.setState({ privateGalleries});
         })
         .catch(error => {
@@ -59,15 +68,44 @@ export class UserProvider extends Component {
     }
   };
 
-  fetchPrivateGallery = (galleryId) => {   
-    console.log(galleryId)
+  fetchPrivateGallery = (galleryId) => {     
     ArtisteApiService.getPrivateGallery(galleryId)
     .then(privateGalArtwork => {
+      console.log('privategalARtwork in context', privateGalArtwork)
       this.setState({ privateGalArtwork});
     })
     .catch(error => {
       console.error({ error });
     });
+  }
+
+  setCurrentGallery = (currentGallery) => {
+    this.setState({ currentGallery})
+  }
+  setCurrentArtpiece = (currentArtpiece) => {
+    this.setState({ currentArtpiece})
+  }
+  
+  // findArtpiece = (artpieceId) =>{
+  //   let currentArtpiece = this.state.currentGallery.artwork.find(artpiece => artpiece.artpieceId === Number(artpieceId));
+    
+  //   this.setCurrentArtpiece(currentArtpiece? currentArtpiece: {})
+  // } 
+
+  // findGallery = (galleryId) => {
+  //   let currentGallery = this.state.privateGalleries.find(gallery => gallery.galleryId === Number(galleryId));
+  //   console.log(currentGallery)  
+  //   this.setCurrentGallery(currentGallery? currentGallery: {})    
+  // }
+ 
+
+  clearAllData = () => {
+    this.clearPrivateGalleries();
+
+  }
+
+  clearPrivateGalleries = () => {
+    this.setState({ privateGalleries: [] })
   }
 
   setUser = updateUser => {
@@ -82,7 +120,7 @@ export class UserProvider extends Component {
       this.setUser(updateUser)
     }
   }
-  
+    
   processToken = () => {
     let userToken = TokenService.readJwtToken();  
     let user = {
@@ -114,7 +152,15 @@ export class UserProvider extends Component {
       processToken: this.processToken, 
       privateGalleries: this.state.privateGalleries,
       privateGalArtwork: this.state.privateGalArtwork,
-      fetchPrivateGalleries: this.fetchPrivateGalleries,    
+      fetchPrivateGalleries: this.fetchPrivateGalleries,
+      fetchPrivateGallery: this.fetchPrivateGallery,
+      clearAllData: this.clearAllData,
+      setCurrentGallery: this.setCurrentGallery,
+      // currentGallery: this.state.currentGallery,
+      // currentArtpiece: this.state.currentArtpiece,
+      // findGallery: this.findGallery,
+      // findArtpiece: this.findArtpiece,
+        
     }
     return (
       <UserContext.Provider value={value}>

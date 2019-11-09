@@ -23,6 +23,7 @@ class Artpiece extends React.Component {
         <h2 className="artpiece-title">
           <Link to={`/artpiece/${this.props.id}`}>{this.props.title}</Link>
         </h2>
+        <p>Artist: {this.props.artist}</p>
 
         <div className="artpiece-uploaded-container">
           <div className="artpiece-uploaded">

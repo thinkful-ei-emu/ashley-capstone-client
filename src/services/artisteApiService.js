@@ -37,7 +37,7 @@ const ArtisteApiService = {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
-    }).then(res => {
+    }).then(res => {      
        if (!res.ok) return res.json().then(e => Promise.reject(e));
         return res.json();
     })

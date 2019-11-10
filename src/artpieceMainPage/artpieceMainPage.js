@@ -18,7 +18,7 @@ class ArtpieceMainPage extends React.Component {
   }
 
   fetchPrivateGalleryArtwork = () => {   
-    console.log(this.props)
+  
     ArtisteApiService.getPrivateGallery(this.props.galleryId)
     .then(currentGallery => {
       let currentArtpiece = currentGallery ? currentGallery.artwork.find(artpiece => artpiece.artpieceId === Number(this.props.artpieceId)) : {}

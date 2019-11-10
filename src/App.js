@@ -311,9 +311,9 @@ class App extends React.Component {
     let header = TokenService.hasAuthToken() ? (user.collector ? <CollectorHeader clearData={this.clearData} /> : <ArtistHeader clearData={this.clearData} />) : <LandingHeader />
     return (
       <div className="App">
-        <nav className="App_nav" role="navigation">
+        {/* <nav className="App_nav" role="navigation">
           {this.renderNavRoutes()}
-        </nav>
+        </nav> */}
         <header className="App_header">
           {header}
         </header>

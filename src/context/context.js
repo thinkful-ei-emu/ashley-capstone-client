@@ -27,9 +27,8 @@ export class UserProvider extends Component {
     this.state = { 
       user: {},
       privateGalleries: [],
-      privateGalArtwork: [],
-      currentGallery: {},
-      // currentArtpiece: {},
+     
+  
     }   
    
   }
@@ -69,35 +68,6 @@ export class UserProvider extends Component {
     }
   };
 
-  // fetchPrivateGallery = (galleryId) => {     
-  //   ArtisteApiService.getPrivateGallery(galleryId)
-  //   .then(currentGallery => {
-  //     this.setState({currentGallery});
-  //   })
-  //   .catch(error => {
-  //     console.error({ error });
-  //   });
-  // }
-
-  setCurrentGallery = currentGallery => {
-    this.setState({ currentGallery: currentGallery})
-  }
-  setCurrentArtpiece = (currentArtpiece) => {
-    this.setState({ currentArtpiece})
-  }
-  
-  // findArtpiece = (artpieceId) =>{
-  //   let currentArtpiece = this.state.currentGallery.artwork.find(artpiece => artpiece.artpieceId === Number(artpieceId));
-    
-  //   this.setCurrentArtpiece(currentArtpiece? currentArtpiece: {})
-  // } 
-
-  // findGallery = (galleryId) => {
-  //   let currentGallery = this.state.privateGalleries.find(gallery => gallery.galleryId === Number(galleryId));
-  //   console.log(currentGallery)  
-  //   this.setCurrentGallery(currentGallery? currentGallery: {})    
-  // }
- 
 
   clearAllData = () => {
     this.clearPrivateGalleries();
@@ -151,16 +121,10 @@ export class UserProvider extends Component {
       processLogout: this.processLogout,
       checkUser: this.checkUser,
       processToken: this.processToken, 
-      privateGalleries: this.state.privateGalleries,
-      currentGallery: this.state.currentGallery,
-      fetchPrivateGalleries: this.fetchPrivateGalleries,
-      fetchPrivateGallery: this.fetchPrivateGallery,
+      privateGalleries: this.state.privateGalleries,  
+      fetchPrivateGalleries: this.fetchPrivateGalleries, 
       clearAllData: this.clearAllData,
-      setCurrentGallery: this.setCurrentGallery,
-      // currentGallery: this.state.currentGallery,
-      // currentArtpiece: this.state.currentArtpiece,
-      // findGallery: this.findGallery,
-      // findArtpiece: this.findArtpiece,
+
         
     }
     return (

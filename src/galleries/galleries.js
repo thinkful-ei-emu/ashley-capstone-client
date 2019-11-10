@@ -2,7 +2,8 @@ import React from 'react';
 import './galleries.css';
 import Gallery from '../gallery/gallery';
 import UserContext from '../context/context'
-
+import { Card, CardHeader, CardActionArea } from '@material-ui/core';
+//try putting card/cardheader in gallery componenet
 class Galleries extends React.Component {
   static contextType = UserContext;
   state = { error: null };
@@ -48,14 +49,17 @@ class Galleries extends React.Component {
 
   render() {
     const { error } = this.state;
-    // const { galleries, artwork } = this.props;
      const {privateGalleries} = this.context;   
     return (
       <div className="gallery-page">
         <div>
-          <ul className="gallery-list">
+      
+          <ul className="gallery-list">    
             {privateGalleries.map(gallery => (
+          
+                 
               <li key={gallery.galleryId} className="gallery-list-names">
+            
                 <Gallery
                   id={gallery.galleryId}
                   name={gallery.galleryName}
@@ -64,9 +68,13 @@ class Galleries extends React.Component {
                   owner={gallery.galleryOwner}
                   history={this.props.history}
                 />
+            
               </li>
+           
+          
             ))}
-          </ul>
+          </ul>       
+        
           <div className="error-message-gallery" role="alert">
             {error && <p id="error-message">{error}</p>}
           </div>

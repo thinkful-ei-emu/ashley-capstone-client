@@ -3,6 +3,26 @@
   font-size: 1.3em;
 }
 
+.artpiece-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artpiece-card{
+  color: lightgray;
+  height: 400px;
+  width: 400px;  
+}
+
+.artpiece-image-thumbnail{
+  display: flex;  
+  height: 50%;
+  width: 75%;  
+  margin: 0 auto;
+}
+
 .artpiece {
   color: black;
   text-decoration: none;
@@ -10,6 +30,11 @@
 
 .artpiece-title {
   color: black;
+  display: inline-block;
+  font-size: 25px;
+  margin: 0px 0px 8px auto;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .artpiece-uploaded {

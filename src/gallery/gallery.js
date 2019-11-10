@@ -30,9 +30,10 @@ class Gallery extends React.Component {
       
         <CardMedia
         className="artpiece-thumbnail"
+        //need to add conditional for if no artwork in gallery
         image={this.props.artwork[0].artpieceImage}
         title={this.props.artwork[0].artpieceTitle}/>
-        <CardContent className="card-content">
+        <CardContent className="gallery-content">
         <p className="total-artwork">Artwork: {this.props.artwork.length}</p>
               
         <IconButton className="fas fa-trash-alt"       

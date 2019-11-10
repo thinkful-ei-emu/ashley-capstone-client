@@ -37,7 +37,7 @@ componentDidMount(){
     const { currentGallery} = this.state;  
     return (
       <div className="artwork-page">
-        <h2>La Galerie d'Art</h2>       
+          <h2>{currentGallery.galleryName}</h2>       
         {Object.values(currentGallery).length ? <ul className="artwork-list">          
           {currentGallery.artwork.map(artpiece => (
             <li key={artpiece.artpieceId}>
@@ -46,6 +46,7 @@ componentDidMount(){
                 artist={artpiece.artpieceArtist}
                 title={artpiece.artpieceTitle}
                 uploaded={artpiece.artpieceUploaded}
+                image={artpiece.artpieceImage}
                 deleteArtpiece={this.props.deleteArtpiece}
                 history={this.props.history}
                 galleryId={currentGallery.galleryId}

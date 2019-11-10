@@ -58,8 +58,7 @@ class Galleries extends React.Component {
             {privateGalleries.map(gallery => (
           
                  
-              <li key={gallery.galleryId} className="gallery-list-names">
-            
+              <li key={gallery.galleryId} className="gallery-list-names">            
                 <Gallery
                   id={gallery.galleryId}
                   name={gallery.galleryName}
@@ -67,8 +66,7 @@ class Galleries extends React.Component {
                   artwork={gallery.artwork}
                   owner={gallery.galleryOwner}
                   history={this.props.history}
-                />
-            
+                />            
               </li>
            
           

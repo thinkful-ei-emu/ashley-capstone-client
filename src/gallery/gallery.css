@@ -16,7 +16,7 @@
   width: 400px;  
 }
 
-.card-content{  
+.gallery-content{  
   display: flex;
   flex-direction: row;
   align-items: center;

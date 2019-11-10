@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import './artpiece.css';
 import ArtisteApiService from '../services/artisteApiService';
+import { Card, CardHeader, CardContent, IconButton, CardActionArea, CardMedia} from '@material-ui/core';
 
 class Artpiece extends React.Component {
   handleDelete = e => {
@@ -20,23 +21,28 @@ class Artpiece extends React.Component {
   render() {
     return (
       <div className="artpiece">
-        <h2 className="artpiece-title">
-          <Link to={`/gallery/${this.props.galleryId}/artpiece/${this.props.id}`}>{this.props.title}</Link>
-        </h2>
-        <p>Artist: {this.props.artist}</p>
+        <Card className= "artpiece-card">
+    <CardHeader  title={<Link className="artpiece-title" to={`/gallery/${this.props.galleryId}/artpiece/${this.props.id}`}>{this.props.title}</Link>} subheader={this.props.artist}/>
+    <CardMedia
+        className="artpiece-image-thumbnail"
+        image={this.props.image}
+        title={this.props.title}/>
+        <CardContent className="artpiece-content">      
 
-        <div className="artpiece-uploaded-container">
-          <div className="artpiece-uploaded">
-            Uploaded:{' '}
-            <span className="uploaded">
-              {format(this.props.uploaded, 'MMM, Do, YYYY')}
-            </span>
-          </div>
-        </div>
-
-        <button className="delete-button" onClick={this.handleDelete}>
+            <p className="uploaded">
+              {format(this.props.uploaded, 'MM/DD/YYYY')}
+            </p>
+        
+        <IconButton className="fas fa-trash-alt"       
+            aria-label="delete" 
+            onClick={this.handleDelete} 
+            >          
+          </IconButton>
+        {/* <button className="delete-button" onClick={this.handleDelete}>
           Remove
-        </button>
+        </button> */}
+        </CardContent>
+        </Card>
       </div>
     );
   }

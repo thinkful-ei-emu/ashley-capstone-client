@@ -204,7 +204,7 @@ class App extends React.Component {
           
             // key={path}
             path='/gallery'
-         
+            exact
             render={routeProps => {
               const { galleryId } = routeProps.match.params;
               return (

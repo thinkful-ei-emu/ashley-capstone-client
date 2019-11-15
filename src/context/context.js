@@ -15,6 +15,7 @@ const UserContext = React.createContext({
   currentGallery: {},
   currentArtpiece: {},
   setCurrentGallery: () => {},
+  fetchPrivateGalleries: () => {},
   // findGallery: () => {},
   // findArtpiece: () => {},
 })

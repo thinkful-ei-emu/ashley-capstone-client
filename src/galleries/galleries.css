@@ -4,18 +4,19 @@
 
 .gallery-page {
   list-style-type: none;
-  margin: 150px 0 0px;
-  min-height: 130vh;
+  margin: 10px auto; 
   text-align: center;
   padding: 0;
-  background-color: rgb(195, 158, 110);
-  border-right: black solid 2px;
+  /* background-color: rgb(195, 158, 110); */
+  /* border-right: black solid 2px; */
 }
 
 .gallery-list {
   list-style-type: none;
-  margin: 20px 0 20px;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+ 
 }
 
 #error-message {
@@ -23,7 +24,7 @@
   color: darkred;
 }
 
-.gallery-list-names:nth-of-type(1) {
+/* .gallery-list-names:nth-of-type(1) {
   background-color: red;
 }
 
@@ -49,7 +50,7 @@
 
 .gallery-list-names:nth-of-type(7) {
   background-color: pink;
-}
+} */
 
 .button {
   padding: 12px 8px;

@@ -1,8 +1,12 @@
 import React from 'react';
 import ArtisteApiService from '../services/artisteApiService';
 import './addGallery.css';
+import UserContext from '../context/context'
 
 class AddGallery extends React.Component {
+
+  static contextType = UserContext;
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -11,6 +15,7 @@ class AddGallery extends React.Component {
       .then(gallery => {
         this.props.addGallery(gallery);
         this.props.history.goBack();
+        this.context.fetchPrivateGalleries();        
       })
       .catch(error => {
         console.error({ error });

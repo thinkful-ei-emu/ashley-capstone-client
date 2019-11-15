@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TokenService from '../services/tokenService'
+import ArtisteApiService from '../services/artisteApiService'
 
 const UserContext = React.createContext({
   user: {},
@@ -8,6 +9,15 @@ const UserContext = React.createContext({
   processLogout: () => {},
   checkUser: () => {}, 
   processToken : () => {},
+  privateGalleries: [],
+  clearAllData : () => {},
+  privateGalArtwork: {},
+  currentGallery: {},
+  currentArtpiece: {},
+  setCurrentGallery: () => {},
+  fetchPrivateGalleries: () => {},
+  // findGallery: () => {},
+  // findArtpiece: () => {},
 })
 
 export default UserContext
@@ -16,13 +26,19 @@ export class UserProvider extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      user: {},    
+      user: {},
+      privateGalleries: [],
+     
+  
     }   
    
   }
+  
 
   componentDidMount() {
-    this.checkUser();   
+    this.checkUser();  
+    this.fetchPrivateGalleries(); 
+    // this.fetchPrivateGallery();    
   }
 
   checkUser = () => { 
@@ -38,6 +54,30 @@ export class UserProvider extends Component {
       })
     }       
   }
+  fetchPrivateGalleries = (privateGalleries = []) => {
+    if (TokenService.hasAuthToken() === false) {
+      return { privateGalleries};
+    } else {
+      ArtisteApiService.getPrivateGalleries()
+        .then(privateGalleries => {
+          console.log(privateGalleries)
+          this.setState({ privateGalleries});
+        })
+        .catch(error => {
+          console.error({ error });
+        });
+    }
+  };
+
+
+  clearAllData = () => {
+    this.clearPrivateGalleries();
+
+  }
+
+  clearPrivateGalleries = () => {
+    this.setState({ privateGalleries: [] })
+  }
 
   setUser = updateUser => {
     this.setState({ user: updateUser })
@@ -51,7 +91,7 @@ export class UserProvider extends Component {
       this.setUser(updateUser)
     }
   }
-  
+    
   processToken = () => {
     let userToken = TokenService.readJwtToken();  
     let user = {
@@ -64,7 +104,8 @@ export class UserProvider extends Component {
 
   processLogin = () => {   
     let user = this.processToken();   
-    this.setUser(user);    
+    this.setUser(user);
+    this.fetchPrivateGalleries();     
   }
 
   processLogout = () => {
@@ -80,7 +121,12 @@ export class UserProvider extends Component {
       processLogin: this.processLogin,
       processLogout: this.processLogout,
       checkUser: this.checkUser,
-      processToken: this.processToken,     
+      processToken: this.processToken, 
+      privateGalleries: this.state.privateGalleries,  
+      fetchPrivateGalleries: this.fetchPrivateGalleries, 
+      clearAllData: this.clearAllData,
+
+        
     }
     return (
       <UserContext.Provider value={value}>

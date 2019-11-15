@@ -2,12 +2,13 @@ import React from 'react';
 import './galleries.css';
 import Gallery from '../gallery/gallery';
 import UserContext from '../context/context'
-
+import { Card, CardHeader, CardActionArea } from '@material-ui/core';
+//try putting card/cardheader in gallery componenet
 class Galleries extends React.Component {
   static contextType = UserContext;
   state = { error: null };
   goBack = e => {
-    e.preventDefault();    
+    e.preventDefault();
     if (this.props.location.pathname === '/gallery/:galleryId') {
       this.props.history.push('/gallery/:galleryId');
     } else {
@@ -16,17 +17,26 @@ class Galleries extends React.Component {
   };
 
   goToAddGallery = e => {
-    e.preventDefault();
-    if (this.props.galleries.length >= 7) {
-      this.setState({
-        error:
-          'Your galleries are full. Please delete a gallery to add a new one.'
-      });
-    } else {
-      this.setState({ error: null });
-      this.props.history.push('/add-gallery');
-    }
+
+    this.props.history.push('/add-gallery');
+    // e.preventDefault();
+    // if (this.props.galleries.length >= 7) {
+    //   this.setState({
+    //     error:
+    //       'Your galleries are full. Please delete a gallery to add a new one.'
+    //   });
+    // } else {
+    //   this.setState({ error: null });
+    //   this.props.history.push('/add-gallery');
+    // }
   };
+
+
+  setErrorMessage = errorMessage => {
+    this.setState({
+      error: errorMessage
+    });
+  }
 
   goToStudio = e => {
     e.preventDefault();
@@ -40,7 +50,7 @@ class Galleries extends React.Component {
     }
   };
   Logout = e => {
-    e.preventDefault();    
+    e.preventDefault();
     this.context.processLogout();
     this.props.clearData();
     this.props.history.push('/');
@@ -48,28 +58,47 @@ class Galleries extends React.Component {
 
   render() {
     const { error } = this.state;
-    const { galleries, artwork } = this.props;
-
+    const { privateGalleries } = this.context;
     return (
       <div className="gallery-page">
-        <div>
-          <ul className="gallery-list">
-            {galleries.map(gallery => (
-              <li key={gallery.id} className="gallery-list-names">
-                <Gallery
-                  id={gallery.id}
-                  name={gallery.name}
-                  deleteGallery={this.props.deleteGallery}
-                  artwork={artwork}
-                  history={this.props.history}
-                />
-              </li>
-            ))}
-          </ul>
-          <div className="error-message-gallery" role="alert">
+        <h1>My Galleries</h1>
+        <div className="error-message-gallery" role="alert">
             {error && <p id="error-message">{error}</p>}
           </div>
-          <div className="buttons-container">
+        <div>
+          <ul className="gallery-list">
+            {privateGalleries.map(gallery => (
+
+              <li key={gallery.galleryId} className="gallery-list-names">
+                <Gallery
+                  id={gallery.galleryId}
+                  name={gallery.galleryName}
+                  deleteGallery={this.props.deleteGallery}
+                  artwork={gallery.artwork}
+                  owner={gallery.galleryOwner}
+                  history={this.props.history}
+                  setErrorMessage={this.setErrorMessage}
+                />
+              </li>
+
+
+            ))}
+          </ul>
+
+         
+          {/* <div>
+            <button
+              type="button"
+              className="button add-gallery"
+              onClick={this.goToAddGallery}
+            >
+              Add Gallery
+              </button>
+          </div> */}
+
+
+
+          {/* <div className="buttons-container">
             <div className="top-buttons">
               <button
                 type="button"
@@ -102,7 +131,7 @@ class Galleries extends React.Component {
                 Logout
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

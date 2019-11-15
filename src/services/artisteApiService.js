@@ -22,7 +22,26 @@ const ArtisteApiService = {
       return Promise.all([galleriesRes.json(), artworkRes.json()]);
     });
   },
-
+  getPrivateGalleries(){
+    return fetch(`${config.API_ENDPOINT}/galleries-artwork/private/galleries`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => {
+       if (!res.ok) return res.json().then(e => Promise.reject(e));
+        return res.json();
+    })
+  },
+  getPrivateGallery(galleryId){
+    return fetch(`${config.API_ENDPOINT}/galleries-artwork/private/galleries/${galleryId}`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => {      
+       if (!res.ok) return res.json().then(e => Promise.reject(e));
+        return res.json();
+    })
+  },
   postGallery(gallery) {
     return fetch(`${config.API_ENDPOINT}/galleries`, {
       method: 'POST',

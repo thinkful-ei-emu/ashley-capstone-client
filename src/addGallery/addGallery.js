@@ -12,9 +12,8 @@ class AddGallery extends React.Component {
 
     const gallery = { name: e.target['gallery-name'].value };
     ArtisteApiService.postGallery(gallery)
-      .then(gallery => {
-        this.props.addGallery(gallery);
-        this.props.history.goBack();
+      .then(gallery => {    
+        this.props.history.goBack();        
         this.context.fetchPrivateGalleries();        
       })
       .catch(error => {

@@ -32,12 +32,13 @@ class Artpiece extends React.Component {
             <p className="uploaded">
               {format(this.props.uploaded, 'MM/DD/YYYY')}
             </p>
-        
-        <IconButton className="fas fa-trash-alt"       
+{/*disabled delete button on artpiece for collectors */}
+     
+        {/* <IconButton className="fas fa-trash-alt"       
             aria-label="delete" 
             onClick={this.handleDelete} 
             >          
-          </IconButton>
+          </IconButton> */}
         {/* <button className="delete-button" onClick={this.handleDelete}>
           Remove
         </button> */}

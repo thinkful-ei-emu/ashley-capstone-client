@@ -125,7 +125,7 @@ export class UserProvider extends Component {
       privateGalleries: this.state.privateGalleries,  
       fetchPrivateGalleries: this.fetchPrivateGalleries, 
       clearAllData: this.clearAllData,
-
+     
         
     }
     return (

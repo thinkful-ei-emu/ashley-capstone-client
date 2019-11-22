@@ -3,7 +3,7 @@ import './galleries.css';
 import Gallery from '../gallery/gallery';
 import UserContext from '../context/context'
 import { Card, CardHeader, CardActionArea } from '@material-ui/core';
-//try putting card/cardheader in gallery componenet
+
 class Galleries extends React.Component {
   static contextType = UserContext;
   state = { error: null };

@@ -55,6 +55,20 @@ const ArtisteApiService = {
       return res.json();
     });
   },
+  updateGalleryName(galleryName, galleryId) {
+    return fetch(`${config.API_ENDPOINT}/galleries/${galleryId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify(galleryName)
+    }).then(res => {
+      console.log(res)
+      if (!res.ok) return res.json().then(e => Promise.reject(e));
+      // return res.json();
+    });
+  },
   postArtpiece(artpiece) {
     return fetch(`${config.API_ENDPOINT}/artwork`, {
       method: 'POST',
